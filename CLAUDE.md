@@ -1,5 +1,5 @@
 # HOIN Insight — 안티(Antigravity) 부팅 지침서
-# 최종 수정: 2026-05-12 | v26.6 [Cost-Efficient & Market Crash Tuned]
+# 최종 수정: 2026-05-15 | v27.0 [Agnostic Hunter & Fact-Purity]
 
 ---
 
@@ -15,7 +15,7 @@ git pull origin main
 
 ### Step 2 — HANDOFF 최신 엔진 DNA 읽기
 ```
-파일: docs/HANDOFF_STORY_DNA.md (v23.0 지능형 사냥꾼 지침서)
+파일: docs/HANDOFF_20260515_AGNOSTIC_HUNTER.md (v27.0 전략적 사냥꾼 지침서)
 ```
 이 문서는 **지능형 사냥 엔진(Arbiter v2.5)**, **저장 표준(YYYY/MM/DD)**, **페르소나 하드닝**의 핵심 로직을 담고 있으므로 반드시 숙지한다.
 
@@ -23,11 +23,11 @@ git pull origin main
 아래 형식으로 사용자에게 현황을 보고한다:
 
 ```
-✅ 보급 및 엔진 점검 완료 (git pull 완료, v23.0 HANDOFF 숙지)
+✅ 보급 및 엔진 점검 완료 (git pull 완료, v27.0 HANDOFF 숙지)
 
 📌 현재 상태:
-- 엔진 버전: v26.6 [Cost-Efficient & Market Crash Tuned]
-- 완료된 것: 2026년형 최신 모델(`gemini-flash-latest`) 표준화, 파이프라인 비용 95% 절감 튜닝, 하락장 분석(Market Crash Priority) 로직 주입, 유튜브 수집 비용 제로화(Analysis Paused)
+- 엔진 버전: v27.0 [Agnostic Hunter & Fact-Purity]
+- 완료된 것: 자율 토픽 추출 엔진(Arbiter v27.0) 안착, 팩트 기반 트리거(Fact-Purity) 로직 주입, KRX ID/PW 연동 성공
 - 세션 비용 현황: Last run ~$0.02 (USD) - *기존 대비 약 1/20 수준*
 - 다음 우선순위: [1순위: 하락장 이후 반등 섹터 선점 사냥 / 2순위: youtube_data/ 보관된 대본의 배치(Batch) 학습 재개 시점 검토]
 
@@ -50,7 +50,7 @@ git pull origin main
 
 | 항목 | 경로 |
 |---|---|
-| **최신 HANDOFF** | `docs/HANDOFF_STORY_DNA.md` |
+| **최신 HANDOFF** | `docs/HANDOFF_20260515_AGNOSTIC_HUNTER.md` |
 | **사냥 실록 (Chronicle)** | `docs/CHRONICLE.md` |
 | **지능형 스케줄러** | `run_full_pipeline.py` |
 | **비용 추적 로그** | `data/monitoring/session_cost.json` |
