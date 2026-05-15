@@ -1,26 +1,5 @@
 [
   {
-    "timestamp": "2026-05-12T09:11:32.072256",
-    "agent": "INSTA_WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T13:06:59.209999",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T13:14:12.077402",
-    "agent": "DEEP_RESEARCHER",
-    "success": false,
-    "fallback_used": true,
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-05-12T13:14:17.674725",
     "agent": "ARBITER_V2",
     "success": false,
@@ -698,5 +677,26 @@
     "success": false,
     "fallback_used": true,
     "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T08:59:49.839857",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T09:08:07.550591",
+    "agent": "DEEP_RESEARCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-15T09:08:13.807293",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
   }
 ]
