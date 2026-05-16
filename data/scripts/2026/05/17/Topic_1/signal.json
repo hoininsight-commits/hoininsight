@@ -1,0 +1,53 @@
+{
+  "topic": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "event": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1786개의 데이터 노드 중 'Trump'(빈도: 31.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 AI, China, 분기와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: Trump(31.0), AI(27.0), China(22.0), 분기(22.0), 억원(16.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] Indian tycoon had lobbied Trump administration and pledged billions of dollars of investment in Amer",
+      "url": "https://www.ft.com/content/4d9bfc38-9f14-42a5-8962-6f6ce83f3eb0"
+    },
+    {
+      "text": "[NEWS] [2026-05-16] Why Taiwan became the defining issue in the Trump-Xi talks",
+      "url": "https://www.cnbc.com/2026/05/16/trumps-meeting-with-chinas-xi-steers-the-us-away-from-taiwan-again.html"
+    },
+    {
+      "text": "[NEWS] U.S. President Donald Trump had said arms sales to Taiwan would be on the agenda for his talks with",
+      "url": "https://www.cnbc.com/2026/05/16/trumps-meeting-with-chinas-xi-steers-the-us-away-from-taiwan-again.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/16/trumps-meeting-with-chinas-xi-steers-the-us-away-from-taiwan-again.h",
+      "url": "https://www.cnbc.com/2026/05/16/trumps-meeting-with-chinas-xi-steers-the-us-away-from-taiwan-again.html"
+    },
+    {
+      "text": "[NEWS] [2026-05-15] Trump-Xi summit: The 3 big takeaways from historic meeting in Beijing",
+      "url": "https://www.cnbc.com/2026/05/15/trump-xi-summit-the-3-big-takeaways-from-historic-meeting-in-beijing.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/15/trump-xi-summit-the-3-big-takeaways-from-historic-meeting-in-beijing",
+      "url": "https://www.cnbc.com/2026/05/15/trump-xi-summit-the-3-big-takeaways-from-historic-meeting-in-beijing.html"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "UFC",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "LD",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "LEAD",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    }
+  ]
+}

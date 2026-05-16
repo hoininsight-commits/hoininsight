@@ -1,17 +1,5 @@
 [
   {
-    "timestamp": "2026-05-12T09:10:30.707940",
-    "agent": "ARBITER_V2",
-    "failure_type": "SERVER_ERROR",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T13:14:06.914442",
-    "agent": "DEEP_RESEARCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-05-12T13:14:12.077150",
     "agent": "DEEP_RESEARCHER",
     "failure_type": "RATE_LIMIT",
@@ -1129,6 +1117,84 @@
   },
   {
     "timestamp": "2026-05-16T12:02:27.102733",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-16T17:57:55.049161",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T17:58:00.275096",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T18:03:13.256841",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T18:03:18.429340",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T18:03:18.880033",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T18:03:24.420839",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T18:03:24.730604",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T18:03:29.916842",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T18:03:40.104530",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 2
+  },
+  {
+    "timestamp": "2026-05-16T18:04:00.291297",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-16T18:04:30.521069",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 4
+  },
+  {
+    "timestamp": "2026-05-16T18:05:15.752332",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 5
+  },
+  {
+    "timestamp": "2026-05-16T18:06:15.985658",
     "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
     "retry_count": 6
