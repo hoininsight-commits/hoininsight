@@ -982,5 +982,41 @@
     "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
     "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-15T23:57:39.231061",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-15T23:57:44.426944",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T00:09:11.087494",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T00:09:16.191858",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T00:09:16.449886",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T00:09:21.911038",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
   }
 ]

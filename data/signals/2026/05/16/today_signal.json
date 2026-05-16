@@ -1,10 +1,14 @@
 {
   "topic": "[데이터 통계] AI 중심 시장 변화 포착",
   "event": "[데이터 통계] AI 중심 시장 변화 포착",
-  "arbiter_rationale": "수집된 1367개의 데이터 노드 중 'AI'(빈도: 28.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "arbiter_rationale": "수집된 1404개의 데이터 노드 중 'AI'(빈도: 26.0)가 가장 강력한 연결 고리로 포착되었습니다.",
   "hunter_insight": "현재 Trump, China, 분기와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
-  "data_chain": "통계적 우위 키워드: AI(28.0), Trump(24.0), China(21.0), 분기(13.0), off(12.0)",
+  "data_chain": "통계적 우위 키워드: AI(26.0), Trump(24.0), China(22.0), 분기(13.0), Jim(12.0)",
   "evidence": [
+    {
+      "text": "[NEWS] [2026-05-15] Peru run-off pits autocrat’s daughter against leftwinger",
+      "url": "https://www.ft.com/content/5332646a-8c75-4c4b-9b97-e664ebdf9bd1"
+    },
     {
       "text": "[NEWS] Stephen Fitzpatrick to receive payment for brand royalty fees under arrangement with retail energy c",
       "url": "https://www.ft.com/content/bcdf7f55-981d-425f-ac35-ecbc7691499b"
@@ -18,16 +22,12 @@
       "url": "https://www.ft.com/content/4d9bfc38-9f14-42a5-8962-6f6ce83f3eb0"
     },
     {
-      "text": "[NEWS] [2026-05-15] Big Tech groups launch global borrowing spree to fund AI expansion",
+      "text": "[NEWS] [2026-05-15] Big Tech goes beyond Wall Street for huge AI borrowing",
       "url": "https://www.ft.com/content/d137f1a1-4188-4784-b274-f53082d27aa8"
     },
     {
       "text": "[NEWS] Investors expected to accept $1.75tn valuation, weak shareholder rights and billionaire’s sci-fi bus",
       "url": "https://www.ft.com/content/00382ab9-3dfe-468c-8966-853cd787dd43"
-    },
-    {
-      "text": "[NEWS] [2026-05-15] Obscure Japanese stock measure widens on global hunt for AI winners",
-      "url": "https://www.ft.com/content/f9bffe4e-30ca-44a5-ab2f-0ed85fbf00a7"
     }
   ],
   "tier": "MAIN/TIER_1",
@@ -42,15 +42,15 @@
       "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
     },
     {
+      "name": "MU",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    },
+    {
       "name": "GM",
       "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
     },
     {
-      "name": "IPO",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    },
-    {
-      "name": "NBIS",
+      "name": "CEO",
       "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
     }
   ]
