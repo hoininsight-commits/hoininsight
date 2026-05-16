@@ -1018,5 +1018,41 @@
     "agent": "ARBITER_V2",
     "failure_type": "RATE_LIMIT",
     "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T07:16:25.251492",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T07:16:30.614676",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T07:23:14.778094",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T07:23:19.962448",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-16T07:23:20.402466",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-16T07:23:25.845425",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
   }
 ]
