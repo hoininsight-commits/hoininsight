@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "collected_at": "2026-05-17T08:56:05.173022+00:00",
+    "collected_at": "2026-05-17T16:34:31.681214+00:00",
     "source_timestamp": null,
     "cache_hit": false,
     "ttl_policy_minutes": 30,
@@ -11,20 +11,20 @@
     "data": {
       "kospi": 7493.18,
       "kospi_1d_change": -6.12,
-      "gold": 4555.8,
+      "gold": 4561.9,
       "dxy": 99.27,
       "sp500": 7408.5,
       "nasdaq": 26225.14,
-      "wti_oil": 105.42,
-      "wti_1d_change": 4.2,
-      "wti_5d_change": 10.48,
-      "wti_20d_change": 25.72,
+      "wti_oil": 101.02,
+      "wti_1d_change": -0.15,
+      "wti_5d_change": 5.87,
+      "wti_20d_change": 20.48,
       "vix": 18.43,
       "us10y": 4.59,
       "brent": 109.26,
       "usd_krw": 1497.76,
       "kospi_foreign_net": null,
-      "fear_greed_index": 31.0,
+      "fear_greed_index": 27.0,
       "multi_period_stats": {
         "usd_krw": {
           "current": 1497.76,
@@ -38,25 +38,25 @@
           "low_5d": 1474.45
         },
         "gold": {
-          "current": 4555.7998,
-          "avg_5d": 4665.5801,
-          "avg_20d": 4661.345,
-          "avg_60d": 4802.7217,
-          "chg_5d": -3.49,
-          "chg_20d": -6.21,
-          "z_score_20d": -1.44,
+          "current": 4561.8999,
+          "avg_5d": 4666.8001,
+          "avg_20d": 4661.65,
+          "avg_60d": 4802.8233,
+          "chg_5d": -3.36,
+          "chg_20d": -6.09,
+          "z_score_20d": -1.37,
           "high_5d": 4718.7002,
-          "low_5d": 4555.7998
+          "low_5d": 4561.8999
         },
         "wti_oil": {
-          "current": 105.42,
-          "avg_5d": 101.572,
-          "avg_20d": 98.85,
+          "current": 101.02,
+          "avg_5d": 100.692,
+          "avg_20d": 98.63,
           "avg_60d": null,
-          "chg_5d": 10.48,
-          "chg_20d": 25.72,
-          "z_score_20d": 1.33,
-          "high_5d": 105.42,
+          "chg_5d": 5.87,
+          "chg_20d": 20.48,
+          "z_score_20d": 0.5,
+          "high_5d": 102.18,
           "low_5d": 98.07
         },
         "vix": {
@@ -156,9 +156,9 @@
         ]
       },
       "gold": {
-        "current": 4555.8,
-        "avg_90d": 4831.63,
-        "max_90d": 5318.4,
+        "current": 4561.9,
+        "avg_90d": 4825.13,
+        "max_90d": 5294.4,
         "min_90d": 4375.5,
         "trend": [
           4656.8,
@@ -190,14 +190,14 @@
           4677.6,
           4697.7,
           4678.1,
-          4555.8
+          4561.9
         ]
       },
       "dxy": {
         "current": 99.27,
-        "avg_90d": 98.52,
+        "avg_90d": 98.55,
         "max_90d": 100.51,
-        "min_90d": 96.28,
+        "min_90d": 96.8,
         "trend": [
           99.98,
           99.64,
@@ -308,12 +308,11 @@
         ]
       },
       "wti_oil": {
-        "current": 105.42,
-        "avg_90d": 97.45,
+        "current": 101.02,
+        "avg_90d": 97.31,
         "max_90d": 106.88,
         "min_90d": 83.85,
         "trend": [
-          96.57,
           99.08,
           91.28,
           91.29,
@@ -338,7 +337,7 @@
           102.18,
           101.02,
           101.17,
-          105.42
+          101.02
         ]
       },
       "vix": {
@@ -419,7 +418,7 @@
       },
       "brent": {
         "current": 109.26,
-        "avg_90d": 92.94,
+        "avg_90d": 93.24,
         "max_90d": 118.35,
         "min_90d": 66.3,
         "trend": [

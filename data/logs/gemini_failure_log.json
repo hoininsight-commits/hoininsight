@@ -1,41 +1,5 @@
 [
   {
-    "timestamp": "2026-05-12T19:01:08.487665",
-    "agent": "DEEP_RESEARCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T19:01:13.625727",
-    "agent": "DEEP_RESEARCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-05-12T19:01:13.904222",
-    "agent": "ARBITER_V2",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T19:01:19.160904",
-    "agent": "ARBITER_V2",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
-    "timestamp": "2026-05-12T19:01:19.283416",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-12T19:01:24.413590",
-    "agent": "WRITER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-05-12T19:01:34.558114",
     "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
@@ -1198,5 +1162,41 @@
     "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
     "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-17T07:34:49.924066",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-17T07:34:55.073791",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-17T07:42:04.625296",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-17T07:42:09.789034",
+    "agent": "DEEP_RESEARCHER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-17T07:42:10.292769",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-17T07:42:15.803966",
+    "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
   }
 ]
