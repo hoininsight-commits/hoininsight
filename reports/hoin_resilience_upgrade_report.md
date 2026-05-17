@@ -20,4 +20,4 @@
 
 ## 📥 산출물 위치
 - Fallback JSON: `data/scripts/fallback_deterministic.json`
-- Final Script: `data/scripts/20260517/today_script_long.md`
+- Final Script: `data/scripts/20260518/today_script_long.md`
