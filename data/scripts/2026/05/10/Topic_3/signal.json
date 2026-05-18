@@ -1,0 +1,58 @@
+{
+  "candidate_id": "61311e78",
+  "candidate_type": "HYBRID",
+  "event": "[2026-04-27] This bank CEO let his AI clone handle an earnings call — now he's signing an OpenAI deal",
+  "entity": [
+    "s signing an openai deal [deep_detail] 49% 49% 49% | it",
+    "s effort to get ahead in the industry",
+    "2026-04-27",
+    "deep_detail"
+  ],
+  "core_facts": [
+    {
+      "name": "sp500",
+      "value": 7163.5698,
+      "change": 0.77,
+      "z_score": 1.17
+    }
+  ],
+  "expected_paths": [
+    "안정적 흐름 유지"
+  ],
+  "actual_paths": [
+    "EARNINGS"
+  ],
+  "recency_score": 0.9,
+  "evidence_score": 0.8,
+  "is_mismatch": false,
+  "structure_axis": "emerging",
+  "evidence_bundle": {
+    "axis": "emerging",
+    "market_reaction": {
+      "main_asset": "sp500",
+      "intensity": 0.77,
+      "other_reactions": []
+    },
+    "temporal_context": {
+      "current_time": "2026-04-27 23:15",
+      "is_market_closed": false,
+      "market_data_ref": "Real-time/Today's Prices"
+    },
+    "related_events": [
+      "[NEWS] [2026-04-26] UK car loan companies accept £9bn mis-selling redress scheme - main industry finance trade body reverses course on legal challenge to fca plan ()",
+      "[NEWS] [2026-04-26] US motorists skimp at the pump as Iran war keeps petrol prices high - the soaring cost of driving presents a political problem for trump ahead of midterm elections in november ()",
+      "[NEWS] [2026-04-26] Iran war hits pistachio supplies amid Dubai chocolate boom - prices for the nuts have surged after disruption to export routes from iran, a major producer of the nut ()",
+      "[NEWS] [2026-04-24] Procter & Gamble earnings beat estimates as sales grow 7% - [deep_detail] 7% 3% 7% | the company reiterated its full-year forecast for earnings and sales. ()"
+    ],
+    "social_prediction": [],
+    "supporting_assets": [
+      "kospi: 6.37%"
+    ],
+    "contradictions": [
+      "No clear contradictions found"
+    ],
+    "event_market_link": [
+      "earnings/tech → investor sentiment → capital flow → equity positive"
+    ]
+  }
+}

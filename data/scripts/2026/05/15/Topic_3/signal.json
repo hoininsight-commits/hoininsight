@@ -1,0 +1,57 @@
+{
+  "topic": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "event": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1751개의 데이터 노드 중 'Trump'(빈도: 34.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 China, AI, 분기와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: Trump(34.0), China(25.0), AI(21.0), 분기(20.0), 억원(14.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] Indian tycoon had lobbied Trump administration and pledged billions of dollars of investment in Amer",
+      "url": "https://www.ft.com/content/4d9bfc38-9f14-42a5-8962-6f6ce83f3eb0"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] US audit regulator weighs deep cuts in Trump administration overhaul",
+      "url": "https://www.ft.com/content/f5c56c66-2896-4ef1-9a6a-49c59e76f23e"
+    },
+    {
+      "text": "[NEWS] [2026-05-15] Trump leaves China after talks dominated by trade, oil and Taiwan",
+      "url": "https://www.cnbc.com/2026/05/15/trump-wraps-up-two-day-china-trip-invites-xi-for-a-september-visit.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/15/trump-wraps-up-two-day-china-trip-invites-xi-for-a-september-visit.h",
+      "url": "https://www.cnbc.com/2026/05/15/trump-wraps-up-two-day-china-trip-invites-xi-for-a-september-visit.html"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] UFC's Dana White urges Trump to reverse gambling tax law. His letter moved the predicti",
+      "url": "https://www.cnbc.com/2026/05/14/ufcs-dana-white-urges-trump-to-reverse-gambling-tax-law.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/14/ufcs-dana-white-urges-trump-to-reverse-gambling-tax-law.html",
+      "url": "https://www.cnbc.com/2026/05/14/ufcs-dana-white-urges-trump-to-reverse-gambling-tax-law.html"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "KOSPI",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "SK",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "FTSE",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "UK",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    }
+  ]
+}

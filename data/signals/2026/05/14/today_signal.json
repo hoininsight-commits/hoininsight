@@ -1,0 +1,57 @@
+{
+  "topic": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "event": "[데이터 통계] Trump 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1956개의 데이터 노드 중 'Trump'(빈도: 26.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 China, AI, prices와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: Trump(26.0), China(22.0), AI(16.0), prices(15.0), Xi(13.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] [2026-05-13] Shares surge in debut of power producer favoured by Trump energy agenda",
+      "url": "https://www.ft.com/content/fd5ca76d-23b7-42b5-a09d-0a1fd7d1de01"
+    },
+    {
+      "text": "[NEWS] [2026-05-13] Eric Trump joins Beijing trip as family-linked group chases China deal",
+      "url": "https://www.ft.com/content/8fc422d3-a943-48c5-9119-d823e62f115a"
+    },
+    {
+      "text": "[NEWS] [2026-05-14] Xi asks Trump if U.S. and China can avoid 'Thucydides Trap' at high-stakes summit",
+      "url": "https://www.cnbc.com/2026/05/14/trump-xi-beijing-summit-trade-taiwan-ai-iran-rare-earths-tariffs.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/14/trump-xi-beijing-summit-trade-taiwan-ai-iran-rare-earths-tariffs.htm",
+      "url": "https://www.cnbc.com/2026/05/14/trump-xi-beijing-summit-trade-taiwan-ai-iran-rare-earths-tariffs.html"
+    },
+    {
+      "text": "[NEWS] [2026-05-13] Trump in China: Traders predict a tariff truce extension and Boeing aircraft purchases",
+      "url": "https://www.cnbc.com/2026/05/13/traders-predict-trump-will-make-major-announcements-during-china-trip.html"
+    },
+    {
+      "text": "[NEWS] https://www.cnbc.com/2026/05/13/traders-predict-trump-will-make-major-announcements-during-china-tri",
+      "url": "https://www.cnbc.com/2026/05/13/traders-predict-trump-will-make-major-announcements-during-china-trip.html"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "FTSE",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "UK",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "GDP",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    },
+    {
+      "name": "LEAD",
+      "rationale": "뉴스 제목 내 주요 키워드 'Trump'와 함께 언급됨"
+    }
+  ]
+}

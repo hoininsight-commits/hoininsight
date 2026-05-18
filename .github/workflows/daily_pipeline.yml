@@ -1,0 +1,79 @@
+name: HOIN Insight Daily Pipeline
+
+on:
+  schedule:
+    - cron: "0 5,11,17,23 * * *"  # KST 14:00, 20:00, 02:00, 08:00
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🔥 RUN UNIFIED HUNTER PIPELINE (v24.0)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+          DASHBOARD_URL: https://hoininsight-commits.github.io/hoininsight
+        run: python3 run_full_pipeline.py
+
+      - name: Step 3 - Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "chore: auto-update intelligence data [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Step 3 - Prepare Dashboard
+        run: |
+          mkdir -p _site
+          cp -r dashboard _site/
+          cp -r data _site/
+          # 루트에 index.html이 없으므로 dashboard/index.html을 루트로 복사하여 접근성 향상
+          cp dashboard/index.html _site/index.html
+
+      - name: Step 4 - Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+  deploy:
+    needs: hunt
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

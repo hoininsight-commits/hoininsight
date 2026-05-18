@@ -1,0 +1,57 @@
+{
+  "topic": "[데이터 통계] AI 중심 시장 변화 포착",
+  "event": "[데이터 통계] AI 중심 시장 변화 포착",
+  "arbiter_rationale": "수집된 1936개의 데이터 노드 중 'AI'(빈도: 25.0)가 가장 강력한 연결 고리로 포착되었습니다.",
+  "hunter_insight": "현재 Trump, CEO, China와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
+  "data_chain": "통계적 우위 키워드: AI(25.0), Trump(19.0), CEO(14.0), China(13.0), credit(11.0)",
+  "evidence": [
+    {
+      "text": "[NEWS] Japanese lender in talks over risk transfer as private capital industry is under strain",
+      "url": "https://www.ft.com/content/580f7625-56a0-4858-91da-f7698bd7e672"
+    },
+    {
+      "text": "[NEWS] [2026-05-13] Who do gilt investors want to lead Britain?",
+      "url": "https://www.ft.com/content/3e1c5173-bdb0-456c-9d00-398ccf0d5a60"
+    },
+    {
+      "text": "[NEWS] [2026-05-13] Europe’s few AI plays soar as US tech frenzy goes global",
+      "url": "https://www.ft.com/content/adabe0fe-3418-4f06-8c08-98db21250a49"
+    },
+    {
+      "text": "[NEWS] [DEEP_DETAIL] 8% 8% 20% | Investors hunt for winners in market that for years has lagged behind Wall",
+      "url": "https://www.ft.com/content/adabe0fe-3418-4f06-8c08-98db21250a49"
+    },
+    {
+      "text": "[NEWS] [2026-05-12] China’s big tech groups miss out on AI stock market frenzy",
+      "url": "https://www.ft.com/content/cba72e03-e47d-4d59-b59b-7dc4259b1265"
+    },
+    {
+      "text": "[NEWS] [DEEP_DETAIL] 8% 8% 20% | Tencent and Alibaba left behind as investors focus on pure AI plays",
+      "url": "https://www.ft.com/content/cba72e03-e47d-4d59-b59b-7dc4259b1265"
+    }
+  ],
+  "tier": "MAIN/TIER_1",
+  "source": "DETERMINISTIC_STATISTICS",
+  "stocks": [
+    {
+      "name": "AI",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    },
+    {
+      "name": "CEO",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    },
+    {
+      "name": "US",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    },
+    {
+      "name": "CME",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    },
+    {
+      "name": "GM",
+      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
+    }
+  ]
+}
