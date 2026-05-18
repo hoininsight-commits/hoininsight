@@ -1,40 +1,5 @@
 [
   {
-    "timestamp": "2026-05-14T00:11:19.898820",
-    "agent": "ARBITER_V2",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-14T00:11:32.600115",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-14T00:11:37.427458",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-14T00:11:49.567762",
-    "agent": "INSTA_WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-14T02:59:24.384270",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-05-14T03:05:16.655375",
     "agent": "DEEP_RESEARCHER",
     "success": true,
@@ -697,6 +662,41 @@
     "agent": "INSTA_WRITER",
     "success": true,
     "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-18T18:54:19.644548",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T18:58:45.619437",
+    "agent": "DEEP_RESEARCHER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T18:58:51.648207",
+    "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T19:01:42.946201",
+    "agent": "WRITER",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 6
+  },
+  {
+    "timestamp": "2026-05-18T19:01:43.074570",
+    "agent": "INSTA_WRITER",
+    "success": false,
+    "fallback_used": true,
     "retry_count": 0
   }
 ]
