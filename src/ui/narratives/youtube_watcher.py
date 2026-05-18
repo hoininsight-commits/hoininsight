@@ -63,34 +63,29 @@ def fetch_rss_feed(channel_id: str) -> str:
         logger.error(f"RSS Fetch Failed for {channel_id}: {e}")
         return ""
 
-def fetch_videos_via_ytdlp(channel_id: str) -> list:
-    """Fallback method using yt-dlp when RSS is down."""
-    logger.info(f"Attempting yt-dlp fallback for channel: {channel_id}")
+def _fetch_via_ytdlp(playlist_url: str, label: str = "") -> list:
+    """yt-dlp로 주어진 플레이리스트 URL에서 최신 5개 영상 메타데이터를 가져온다."""
     entries = []
     try:
         import subprocess
-        # Get latest 5 videos with metadata
-        channel_url = f"https://www.youtube.com/channel/{channel_id}/videos"
         cmd = [
             "python3", "-m", "yt_dlp",
             "--dump-json",
             "--playlist-end", "5",
             "--flat-playlist",
-            channel_url
+            "--no-cache-dir",
+            playlist_url
         ]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        
+
         for line in result.stdout.strip().split('\n'):
             if not line: continue
             video_data = json.loads(line)
-            
-            # Format date to ISO (yt-dlp uses YYYYMMDD)
             upload_date = video_data.get("upload_date", "")
             if len(upload_date) == 8:
                 published = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}T00:00:00+00:00"
             else:
                 published = get_now_kst().isoformat()
-
             entries.append({
                 "id": video_data.get("id"),
                 "title": video_data.get("title", "No Title"),
@@ -98,12 +93,21 @@ def fetch_videos_via_ytdlp(channel_id: str) -> list:
                 "url": f"https://www.youtube.com/watch?v={video_data.get('id')}",
                 "channel_name": video_data.get("uploader", "Unknown")
             })
-            
-        logger.info(f"yt-dlp found {len(entries)} videos.")
+
+        logger.info(f"yt-dlp{' (' + label + ')' if label else ''} found {len(entries)} entries.")
     except Exception as e:
-        logger.error(f"yt-dlp fallback failed: {e}")
-        
+        logger.error(f"yt-dlp failed{' (' + label + ')' if label else ''}: {e}")
     return entries
+
+def fetch_videos_via_ytdlp(channel_id: str) -> list:
+    """Fallback method using yt-dlp when RSS is down."""
+    logger.info(f"Attempting yt-dlp fallback for channel: {channel_id}")
+    return _fetch_via_ytdlp(f"https://www.youtube.com/channel/{channel_id}/videos", label="videos")
+
+def fetch_shorts_via_ytdlp(channel_id: str) -> list:
+    """쇼츠 탭에서 최신 영상을 가져온다. RSS에는 쇼츠가 포함되지 않으므로 항상 별도 호출한다."""
+    logger.info(f"Fetching shorts for channel: {channel_id}")
+    return _fetch_via_ytdlp(f"https://www.youtube.com/channel/{channel_id}/shorts", label="shorts")
 
 def parse_feed_entries(xml_content: str):
     if not xml_content:
@@ -197,7 +201,12 @@ def run_watcher(run_round: int = 1):
             entries = fetch_videos_via_ytdlp(cid)
         else:
             entries = parse_feed_entries(xml_data)
-        
+
+        # 쇼츠는 RSS에 포함되지 않으므로 항상 별도 수집
+        shorts_entries = fetch_shorts_via_ytdlp(cid)
+        seen_ids = {e["id"] for e in entries}
+        entries += [e for e in shorts_entries if e["id"] not in seen_ids]
+
         for vid in entries:
             vid_id = vid["id"]
             y, m, d = _utc_date_parts(vid["published_at"])
