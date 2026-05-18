@@ -1,47 +1,5 @@
 [
   {
-    "timestamp": "2026-05-13T13:27:37.474616",
-    "agent": "ARBITER_V2",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T13:28:12.467380",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T13:28:35.263241",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T13:29:10.565685",
-    "agent": "INSTA_WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T18:59:02.301567",
-    "agent": "WRITER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T19:04:08.381876",
-    "agent": "DEEP_RESEARCHER",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-05-13T19:04:33.936602",
     "agent": "ARBITER_V2",
     "success": true,
@@ -697,6 +655,48 @@
     "agent": "ARBITER_V2",
     "success": false,
     "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T08:47:09.696174",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T08:49:59.697471",
+    "agent": "DEEP_RESEARCHER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-18T08:50:29.892700",
+    "agent": "ARBITER_V2",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-18T08:52:02.426827",
+    "agent": "WRITER",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2026-05-18T08:52:12.347163",
+    "agent": "QUALITY_GATE",
+    "success": true,
+    "fallback_used": false,
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-18T08:52:45.534020",
+    "agent": "INSTA_WRITER",
+    "success": true,
+    "fallback_used": false,
     "retry_count": 1
   }
 ]
