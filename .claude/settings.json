@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport json, os\npath = os.path.join(os.getcwd(), 'HANDOFF.md')\nif os.path.exists(path):\n    with open(path, 'r') as f:\n        content = f.read()\n    print(json.dumps({'systemMessage': '[HANDOFF.md 자동 로드]\\n' + content[:4000]}))\n\" 2>/dev/null || true",
+            "statusMessage": "HANDOFF.md 로드 중..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"[HOIN] 세션 종료 전 HANDOFF.md를 최신 상태로 업데이트했나요?\"}'",
+            "statusMessage": "HANDOFF 체크 중..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json,datetime,pathlib; d=json.load(sys.stdin); cmd=d.get('tool_input',{}).get('command',''); ec=d.get('tool_response',{}).get('exit_code','?'); log=pathlib.Path('/Users/jihopa/claude/hoininsight/data/history/pipeline_run_log.txt'); log.parent.mkdir(parents=True,exist_ok=True); ('src.agents' in cmd) and log.open('a').write(f\\\"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} [PIPELINE] {cmd} → exit:{ec}\\\\n\\\")\" 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "파이프라인 실행 기록 중..."
+          }
+        ]
+      }
+    ]
+  }
+}

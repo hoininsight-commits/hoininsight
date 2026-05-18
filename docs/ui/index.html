@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Insight | 운영 대시보드</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="operator_simple.js" defer></script>
+</head>
+<body class="dark-mode">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">HOIN <span>Insight</span></div>
+            <nav class="nav-menu">
+                <button class="nav-item active"><span class="icon">📌</span> 오늘 포착 주제</button>
+                <button class="nav-item"><span class="icon">📊</span> 과거 포착 리스트</button>
+                <button class="nav-item"><span class="icon">📡</span> 현재 이슈 흐름</button>
+            </nav>
+            <div class="footer-info">
+                <p id="last-sync">마지막 갱신: 로딩 중...</p>
+                <p>V3.5.0 STABLE • SSOT READ ONLY</p>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <header class="dashboard-header">
+                <div class="header-breadcrumb">운영 대시보드 / <span>오늘의 주제</span></div>
+                <div id="global-status-badge" class="badge status-loading">데이터 동기화 중</div>
+            </header>
+
+            <section class="viewport">
+                <!-- 1. 오늘의 주제 -->
+                <div class="card main-theme">
+                    <h2 class="card-title">📌 오늘 포착 주제</h2>
+                    <h1 id="topic-title">주제를 불러오는 중...</h1>
+                    <div class="narrative-box">
+                        <h3>왜 지금인가? (WHY NOW)</h3>
+                        <p id="why-now-text">핵심 근거 데이터를 분석 중입니다.</p>
+                    </div>
+                </div>
+
+                <!-- 2. 핵심 지표 (Action/Timing/Confidence) -->
+                <div class="metrics-grid">
+                    <div class="card metric-card">
+                        <h3>강도</h3>
+                        <div id="intensity-val" class="metric-val text-gradient">ACCELERATING</div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>행동 지침</h3>
+                        <div id="action-val" class="metric-val action-watch">WATCH</div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>신뢰도</h3>
+                        <div id="confidence-val" class="metric-val">0%</div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>리스크</h3>
+                        <div id="risk-val" class="metric-val">LOW</div>
+                    </div>
+                </div>
+
+                <!-- 3. 핵심 수혜 종목 (Top 3) -->
+                <div class="card stocks-section">
+                    <h2 class="card-title">🚀 핵심 수혜 종목 (Top 3)</h2>
+                    <div id="stocks-list" class="stocks-grid">
+                        <!-- Stock cards will be injected here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

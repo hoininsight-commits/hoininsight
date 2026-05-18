@@ -1,0 +1,57 @@
+{
+  "MAIN": {
+    "candidate_id": "9b93cde1",
+    "candidate_type": "HYBRID",
+    "event": "[대우건설] [기재정정]단일판매ㆍ공급계약체결              ",
+    "entity": [
+      "대우건설"
+    ],
+    "core_facts": [
+      {
+        "name": "kospi",
+        "value": 6690.8999,
+        "change": 4.25,
+        "z_score": 1.45
+      }
+    ],
+    "expected_paths": [
+      "안정적 흐름 유지"
+    ],
+    "actual_paths": [
+      "LIQUIDITY"
+    ],
+    "recency_score": 1.1,
+    "evidence_score": 0.8,
+    "is_mismatch": false,
+    "structure_axis": "emerging",
+    "evidence_bundle": {
+      "axis": "emerging",
+      "market_reaction": {
+        "main_asset": "kospi",
+        "intensity": 4.25,
+        "other_reactions": []
+      },
+      "temporal_context": {
+        "current_time": "2026-05-01 01:37",
+        "is_market_closed": false,
+        "market_data_ref": "Real-time/Today's Prices"
+      },
+      "related_events": [
+        "[DART] [계룡건설산업] [기재정정]단일판매ㆍ공급계약체결               - 금액: 344,512,640,000 원 (매출액 대비 91.5%) / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430800383 ()",
+        "[DART] [파두] [기재정정]단일판매ㆍ공급계약체결               - 금액: 60 원 (매출액 대비 0.5%) / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430900594 ()",
+        "[DART] [대우건설] [기재정정]단일판매ㆍ공급계약체결               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430800486 ()",
+        "[DART] [센코] [기재정정]단일판매ㆍ공급계약체결(자율공시)               - 금액: 수치 확인 중 / 링크: https://dart.fss.or.kr/dsaf001/main.do?rcpno=20260430900466 ()"
+      ],
+      "social_prediction": [],
+      "supporting_assets": [
+        "us10y: 1.46%"
+      ],
+      "contradictions": [
+        "No clear contradictions found"
+      ],
+      "event_market_link": []
+    }
+  },
+  "SECONDARY": [],
+  "EARLY": []
+}

@@ -1,0 +1,287 @@
+{
+  "ts_utc": "2026-02-21T08:21:21Z",
+  "status": "SUCCESS",
+  "checks_ok": true,
+  "checks": [
+    "[SKIP] outputs(fx_dxy_index_stooq) missing",
+    "[SKIP] outputs(metal_platinum_xptusd_stooq) missing",
+    "[SKIP] outputs(struct_krx_foreigner_flow) missing",
+    "[SKIP] outputs(real_estate_price_index) missing",
+    "[SKIP] outputs(real_estate_volume) missing",
+    "[SKIP] outputs(real_estate_unsold) missing"
+  ],
+  "per_dataset": [
+    {
+      "dataset_id": "crypto_btc_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_us10y_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_vix_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_spx_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_kospi_stooq",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "index_nasdaq_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_dxy_index_stooq",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "rates_us02y_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "comm_wti_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_platinum_xptusd_stooq",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "metal_gold_paxg_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_silver_kag_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "metal_silver_kag_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "crypto_eth_usd_spot_coingecko",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_kor_base_rate_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "inflation_kor_cpi_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "fx_usdkrw_ecos",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "rates_fed_funds_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "inflation_cpi_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "inflation_pce_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "liquidity_m2_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "employment_unrate_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "credit_hy_spread_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "risk_financial_stress_fred",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "derived_yield_curve_10y_2y",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "derived_gold_silver_ratio",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "struct_dart_cb_bw",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "struct_dart_disposal",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "struct_krx_foreigner_flow",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": false,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "real_estate_price_index",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "real_estate_volume",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "real_estate_unsold",
+      "soft_fail": true,
+      "status": "SKIPPED",
+      "curated_ok": true,
+      "anomalies_ok": false,
+      "topics_ok": false
+    },
+    {
+      "dataset_id": "meta_topics",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    },
+    {
+      "dataset_id": "daily_report",
+      "soft_fail": true,
+      "status": "OK",
+      "curated_ok": true,
+      "anomalies_ok": true,
+      "topics_ok": true
+    }
+  ]
+}

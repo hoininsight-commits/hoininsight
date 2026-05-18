@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoin Insight - Advanced RRG Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d14;
+            --panel-bg: #1a1a28;
+            --text-main: #e8e8f0;
+            --text-dim: #888899;
+            --accent: #3b82f6;
+            --q-leading: #22c55e;
+            --q-weakening: #eab308;
+            --q-lagging: #ef4444;
+            --q-improving: #3b82f6;
+        }
+
+        body { 
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif; 
+            margin: 0; padding: 0; 
+            background: var(--bg-color); 
+            color: var(--text-main); 
+            display: flex; flex-direction: column;
+            height: 100vh; overflow: hidden; 
+        }
+
+        /* Top Bar Controls */
+        .top-bar {
+            padding: 12px 20px;
+            background: rgba(26, 26, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2a3a;
+            display: flex; align-items: center; justify-content: space-between;
+            z-index: 100;
+        }
+
+        .mode-tabs {
+            display: flex; background: #090910; padding: 4px; border-radius: 8px; gap: 4px;
+        }
+        .tab {
+            padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600;
+            transition: all 0.2s; color: var(--text-dim);
+        }
+        .tab.active { background: var(--panel-bg); color: var(--text-main); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+        .tf-buttons { display: flex; gap: 8px; }
+        .btn-tf {
+            background: transparent; border: 1px solid #2a2a3a; color: var(--text-dim);
+            padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
+            transition: all 0.2s;
+        }
+        .btn-tf.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn-tf:hover:not(.active) { background: #2a2a3a; }
+
+        /* Main Layout */
+        .main-container { flex: 1; display: flex; position: relative; }
+        #rrg-chart { flex: 1; background: var(--panel-bg); }
+
+        /* Sidebar - Hot Themes */
+        .sidebar {
+            width: 260px; background: #11111d; border-left: 1px solid #2a2a3a;
+            display: flex; flex-direction: column; transition: transform 0.3s;
+        }
+        .sidebar.hidden { display: none; }
+        .sidebar-header { padding: 15px; border-bottom: 1px solid #2a2a3a; font-size: 14px; font-weight: 600; color: var(--accent); }
+        .theme-list { flex: 1; overflow-y: auto; padding: 10px; }
+        .theme-item {
+            padding: 12px; border-radius: 8px; margin-bottom: 8px; cursor: pointer;
+            background: #1a1a28; border: 1px solid transparent; transition: all 0.2s;
+        }
+        .theme-item:hover { border-color: var(--accent); background: #202035; }
+        .theme-item.active { border-color: var(--accent); background: rgba(59, 130, 246, 0.1); }
+        .theme-name { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+        .theme-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); }
+
+        .legend-box { display: flex; gap: 12px; font-size: 11px; margin-right: 20px; }
+        .q-tag { display: flex; align-items: center; gap: 4px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        #update-time { font-size: 11px; color: #555566; }
+
+        /* Tooltip style */
+        .custom-tooltip {
+            position: absolute; display: none; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 4px;
+            font-size: 12px; border: 1px solid var(--accent); z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="mode-tabs">
+                <div class="tab active" data-mode="standard">Standard View</div>
+                <div class="tab" data-mode="dynamic">Dynamic View</div>
+                <div class="tab" data-mode="radar">Radar View</div>
+            </div>
+            <div class="tf-buttons">
+                <button class="btn-tf" data-tf="1d">Daily</button>
+                <button class="btn-tf active" data-tf="1wk">Weekly</button>
+                <button class="btn-tf" data-tf="1mo">Monthly</button>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+            <div class="legend-box">
+                <div class="q-tag"><div class="dot" style="background: var(--q-leading);"></div> Leading</div>
+                <div class="q-tag"><div class="dot" style="background: var(--q-weakening);"></div> Weakening</div>
+                <div class="q-tag"><div class="dot" style="background: var(--q-lagging);"></div> Lagging</div>
+                <div class="q-tag"><div class="dot" style="background: var(--q-improving);"></div> Improving</div>
+            </div>
+            <span id="update-time"></span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div id="rrg-chart"></div>
+        <div class="sidebar hidden" id="hot-themes-sidebar">
+            <div class="sidebar-header">🔥 Hot Themes (Persistent)</div>
+            <div class="theme-list" id="theme-list">
+                <!-- Dynamic Items -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'standard';
+        let currentTF = '1wk';
+        let fullData = null;
+        let highlightedTheme = null;
+
+        const modeTabs = document.querySelectorAll('.tab');
+        const tfButtons = document.querySelectorAll('.btn-tf');
+        const sidebar = document.getElementById('hot-themes-sidebar');
+        const themeList = document.getElementById('theme-list');
+
+        // Initial Data from In-place Injection (Optional for first load)
+        window.RRG_DATA = {
+  "last_update": "2026-04-15 22:15:06",
+  "benchmark": {
+    "symbol": "^KS11",
+    "name": "KOSPI"
+  },
+  "timeframe": "1wk",
+  "data": {
+    "091160.KS": {
+      "name": "반도체",
+      "points": [
+        {
+          "rs_ratio": 113.66062805195477,
+          "rs_momentum": 106.03800886513474,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 112.75465788742395,
+          "rs_momentum": 104.40250118355885,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 109.36583725270721,
+          "rs_momentum": 100.66533553725506,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 107.63637325390172,
+          "rs_momentum": 98.68801711455993,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 106.03984808981102,
+          "rs_momentum": 97.05506690100599,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "091170.KS": {
+      "name": "은행",
+      "points": [
+        {
+          "rs_ratio": 93.40935038805578,
+          "rs_momentum": 98.57384555029533,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 96.16827435690114,
+          "rs_momentum": 101.56662430729637,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 97.46877866010007,
+          "rs_momentum": 102.94041686992848,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 98.26698578240205,
+          "rs_momentum": 103.64596704461039,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 98.24031319201532,
+          "rs_momentum": 103.3819122220155,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "091180.KS": {
+      "name": "자동차",
+      "points": [
+        {
+          "rs_ratio": 97.32571400538599,
+          "rs_momentum": 94.2630100612449,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 95.36096222992504,
+          "rs_momentum": 93.16517913625546,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 94.25758109899186,
+          "rs_momentum": 92.96351641981948,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 93.09367029858697,
+          "rs_momentum": 92.62518474407395,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 92.24564501961638,
+          "rs_momentum": 92.57680239600384,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "117680.KS": {
+      "name": "철강",
+      "points": [
+        {
+          "rs_ratio": 94.6627576624388,
+          "rs_momentum": 98.0256170229107,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 94.40076213938184,
+          "rs_momentum": 98.00960423167064,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 94.61010576628851,
+          "rs_momentum": 98.49353892526757,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 95.04353070890512,
+          "rs_momentum": 99.15921968680597,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 95.94979258113271,
+          "rs_momentum": 100.03550591594154,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "117690.KS": {
+      "name": "에너지화학",
+      "points": [
+        {
+          "rs_ratio": 81.16823363857586,
+          "rs_momentum": 95.91880581513668,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 86.07849278681627,
+          "rs_momentum": 102.23052294746466,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 89.06229132985308,
+          "rs_momentum": 105.98577215544768,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 89.51171494138123,
+          "rs_momentum": 106.60885535664514,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 90.29280737723168,
+          "rs_momentum": 107.46568329050027,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "227540.KS": {
+      "name": "IT가전",
+      "points": [
+        {
+          "rs_ratio": 82.14677311688448,
+          "rs_momentum": 91.25776387998471,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 84.72946702956514,
+          "rs_momentum": 95.30296908011574,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 86.27605301265355,
+          "rs_momentum": 98.04798919054767,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 86.61499202689416,
+          "rs_momentum": 99.41292973992302,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 87.68053970443285,
+          "rs_momentum": 101.50122427791062,
+          "date": "2026-04-13"
+        }
+      ]
+    },
+    "266370.KS": {
+      "name": "미디어엔터",
+      "points": [
+        {
+          "rs_ratio": 107.61254539049372,
+          "rs_momentum": 102.84449109790972,
+          "date": "2026-03-16"
+        },
+        {
+          "rs_ratio": 106.96246071922376,
+          "rs_momentum": 102.081931727405,
+          "date": "2026-03-23"
+        },
+        {
+          "rs_ratio": 106.15272488477811,
+          "rs_momentum": 101.15439430221123,
+          "date": "2026-03-30"
+        },
+        {
+          "rs_ratio": 106.43601738109088,
+          "rs_momentum": 101.24863262642313,
+          "date": "2026-04-06"
+        },
+        {
+          "rs_ratio": 106.52324381649548,
+          "rs_momentum": 101.12960982567515,
+          "date": "2026-04-13"
+        }
+      ]
+    }
+  },
+  "mode": "standard"
+};
+
+        async function init() {
+            modeTabs.forEach(t => t.addEventListener('click', () => switchMode(t.dataset.mode)));
+            tfButtons.forEach(b => b.addEventListener('click', () => switchTF(b.dataset.tf)));
+            
+            await loadData();
+        }
+
+        async function loadData() {
+            try {
+                // Filename pattern: rrg_[mode]_[tf].json
+                const filename = `rrg_${currentMode}_${currentTF}.json`;
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    // Fallback to default if files don't exist yet
+                    if (window.RRG_DATA) fullData = window.RRG_DATA;
+                    else return;
+                } else {
+                    fullData = await response.json();
+                }
+                
+                render();
+            } catch (e) {
+                console.warn("Using fallback data...");
+                if (window.RRG_DATA) {
+                    fullData = window.RRG_DATA;
+                    render();
+                }
+            }
+        }
+
+        function switchMode(mode) {
+            currentMode = mode;
+            modeTabs.forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
+            sidebar.classList.toggle('hidden', mode === 'standard');
+            loadData();
+        }
+
+        function switchTF(tf) {
+            currentTF = tf;
+            tfButtons.forEach(b => b.classList.toggle('active', b.dataset.tf === tf));
+            loadData();
+        }
+
+        function render() {
+            if (!fullData) return;
+            document.getElementById('update-time').innerText = `Updated: ${fullData.last_update}`;
+            
+            if (currentMode === 'dynamic' || currentMode === 'radar') {
+                updateSidebar(fullData.data);
+            }
+            
+            renderChart(fullData.data);
+        }
+
+        function updateSidebar(data) {
+            themeList.innerHTML = '';
+            // In Dynamic mode, we group by theme name if available
+            // Note: Our data structure for dynamic might be slightly different
+            const themes = {};
+            Object.values(data).forEach(asset => {
+                const theme = asset.name.split(' (')[0]; // Simple split for display
+                if (!themes[theme]) themes[theme] = { count: 0, symbols: [] };
+                themes[theme].count++;
+                themes[theme].symbols.push(asset.name);
+            });
+
+            Object.keys(themes).forEach(t => {
+                const item = document.createElement('div');
+                item.className = 'theme-item';
+                if (highlightedTheme === t) item.classList.add('active');
+                
+                let bonusAttr = "";
+                if (currentMode === 'radar' && data[t]?.metrics?.is_anticipation) {
+                    bonusAttr = 'border-color: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);';
+                }
+
+                item.innerHTML = `
+                    <span class="theme-name">${t}</span>
+                    <div class="theme-meta">
+                        <span>${themes[t].count} Stocks</span>
+                        <span style="${bonusAttr}">${currentMode === 'radar' ? 'Radar Tracked' : 'Persistent'}</span>
+                    </div>
+                `;
+                item.onclick = () => {
+                    highlightedTheme = (highlightedTheme === t) ? null : t;
+                    updateSidebar(data);
+                    renderChart(data);
+                };
+                themeList.appendChild(item);
+            });
+        }
+
+        function renderChart(data) {
+            const traces = [];
+            
+            Object.keys(data).forEach(sym => {
+                const asset = data[sym];
+                const points = asset.points;
+                const isHighlighted = !highlightedTheme || asset.name.includes(highlightedTheme);
+                
+                traces.push({
+                    x: points.map(p => p.rs_ratio),
+                    y: points.map(p => p.rs_momentum),
+                    mode: 'lines+markers',
+                    name: asset.name,
+                    opacity: isHighlighted ? 1.0 : 0.1,
+                    line: { 
+                        shape: 'spline', 
+                        width: isHighlighted ? 3 : 1,
+                        color: isHighlighted ? null : '#333344'
+                    },
+                    marker: {
+                        size: points.map((p, i) => i === points.length - 1 ? (isHighlighted ? 14 : 6) : 4),
+                        opacity: isHighlighted ? 1.0 : 0.2
+                    },
+                    text: points.map(p => `${asset.name}<br>${p.date}<br>Ratio: ${p.rs_ratio.toFixed(2)}<br>Mom: ${p.rs_momentum.toFixed(2)}`),
+                    hoverinfo: 'text'
+                });
+            });
+
+            const layout = {
+                hovermode: 'closest',
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#888899', family: 'Outfit' },
+                xaxis: { 
+                    title: 'RS-Ratio (Strength)', range: [85, 115],
+                    gridcolor: '#222233', zeroline: false, tickfont: { size: 10 }
+                },
+                yaxis: { 
+                    title: 'RS-Momentum (Momentum)', range: [85, 115],
+                    gridcolor: '#222233', zeroline: false, tickfont: { size: 10 }
+                },
+                shapes: [
+                    { type: 'line', x0: 100, y0: 80, x1: 100, y1: 120, line: { color: '#333344', width: 2, dash: 'dot' } },
+                    { type: 'line', x0: 80, y0: 100, x1: 120, y1: 100, line: { color: '#333344', width: 2, dash: 'dot' } },
+                    { type: 'rect', x0: 100, y0: 100, x1: 120, y1: 120, fillcolor: 'rgba(34, 197, 94, 0.05)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 100, y0: 80, x1: 120, y1: 100, fillcolor: 'rgba(234, 179, 8, 0.05)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 80, y0: 80, x1: 100, y1: 100, fillcolor: 'rgba(239, 68, 68, 0.05)', line: {width: 0}, layer: 'below' },
+                    { type: 'rect', x0: 80, y0: 100, x1: 100, y1: 120, fillcolor: 'rgba(59, 130, 246, 0.05)', line: {width: 0}, layer: 'below' }
+                ],
+                annotations: [
+                    { x: 112, y: 112, text: 'LEADING', showarrow: false, font: { size: 12, color: '#22c55e', opacity: 0.3 } },
+                    { x: 112, y: 88, text: 'WEAKENING', showarrow: false, font: { size: 12, color: '#eab308', opacity: 0.3 } },
+                    { x: 88, y: 88, text: 'LAGGING', showarrow: false, font: { size: 12, color: '#ef4444', opacity: 0.3 } },
+                    { x: 88, y: 112, text: 'IMPROVING', showarrow: false, font: { size: 12, color: '#3b82f6', opacity: 0.3 } }
+                ],
+                margin: { l: 50, r: 30, b: 50, t: 30 },
+                showlegend: (currentMode === 'standard'),
+                legend: { orientation: 'h', y: -0.15, font: { size: 10 } }
+            };
+
+            Plotly.newPlot('rrg-chart', traces, layout, {responsive: true});
+        }
+
+        init();
+    </script>
+    <script src="enhanced_visualizer.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Insight | Hunter Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #08080C;
+            --card-bg: rgba(18, 20, 28, 0.8);
+            --accent-gold: #D4AF37;
+            --accent-blue: #00A3FF;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Outfit', 'Noto+Sans+KR', sans-serif;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, #1c223a 0%, #08080c 50%);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo { font-weight: 700; font-size: 1.4rem; letter-spacing: 4px; color: var(--accent-gold); }
+        #status-tag { font-size: 0.8rem; letter-spacing: 2px; color: var(--accent-blue); display: flex; align-items: center; gap: 8px; }
+        #status-tag::before { content: ''; width: 8px; height: 8px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 10px var(--accent-blue); animation: pulse 2s infinite; }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        main { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem; }
+
+        /* HERO CARD */
+        .hero {
+            background: var(--card-bg);
+            border-radius: 32px;
+            padding: 5rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%); pointer-events: none; }
+        .hero:hover { border-color: var(--accent-gold); transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+
+        .hero-tag { color: var(--accent-gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 2rem; display: block; }
+        .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 2rem; line-height: 1.1; }
+        .hero-summary { font-size: 1.25rem; color: var(--text-secondary); max-width: 900px; margin: 0 auto 3rem auto; }
+        .hero-chain { color: var(--accent-blue); font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* GRID */
+        .section-header { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; display: flex; align-items: center; gap: 15px; }
+        .section-header::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+
+        .timeline-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 2.5rem; margin-bottom: 5rem; }
+
+        .item-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover { border-color: var(--accent-blue); transform: scale(1.02); }
+        .item-date { font-size: 0.85rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 1rem; display: block; }
+        .item-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4; color: var(--text-primary); }
+        .item-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .target-label { font-size: 0.75rem; font-weight: 700; background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); padding: 4px 12px; border-radius: 6px; }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 4, 6, 0.95); backdrop-filter: blur(20px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+
+        .modal-content {
+            width: 95%; max-width: 1200px; max-height: 90vh;
+            background: #0C0D13; border-radius: 40px; border: 1px solid var(--glass-border);
+            padding: 4rem; position: relative; overflow-y: auto;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .close-btn { position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.5; }
+        .close-btn:hover { opacity: 1; }
+
+        .modal-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+        .content-section { background: rgba(255,255,255,0.02); padding: 3.5rem; border-radius: 24px; border: 1px solid var(--glass-border); }
+        .section-tag { font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 2px; margin-bottom: 1.5rem; display: block; border-left: 3px solid var(--accent-gold); padding-left: 12px; }
+        .script-text { white-space: pre-wrap; font-family: 'Noto Sans KR', sans-serif; font-size: 1.15rem; line-height: 2.1; color: rgba(255,255,255,0.85); }
+
+        .copy-btn {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-gold);
+            border: none;
+            border-radius: 12px;
+            color: black;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover { background: #E5C35D; transform: scale(0.98); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HOIN INSIGHT</div>
+        <div id="status-tag">COMMAND CENTER ACTIVE</div>
+    </header>
+
+    <main>
+        <section id="hero-card" class="hero">
+            <span class="hero-tag">MAIN TARGET</span>
+            <h1 class="hero-title" id="main-title">데이터 사냥 중...</h1>
+            <p class="hero-summary" id="main-summary">엔진이 시장의 이상 징후를 추적하고 있습니다.</p>
+            <div class="hero-chain" id="main-chain">
+                <span>🔍</span>
+                <span id="main-chain-text">연결 고리 분석 중</span>
+            </div>
+        </section>
+
+        <div class="section-header">PAST INTEL LOGS</div>
+        <div id="timeline-container" class="timeline-grid"></div>
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2 id="modal-title" style="font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2;"></h2>
+            
+            <div class="modal-body">
+                <div class="left-col">
+                    <div class="content-section">
+                        <span class="section-tag">HUNTER STRATEGY</span>
+                        <div id="modal-strategy" class="script-text"></div>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="content-section" style="border-color: var(--accent-gold);">
+                        <span class="section-tag">BROADCAST SCRIPT</span>
+                        <div id="modal-script" class="script-text"></div>
+                        <button class="copy-btn" onclick="copyScript()">원고 전체 복사하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let globalData = null;
+
+        async function loadDashboard() {
+            try {
+                // 서버 환경에서는 fetch가 정상 작동합니다.
+                const response = await fetch('today_data.json');
+                if (!response.ok) throw new Error('데이터 파일을 찾을 수 없습니다.');
+                
+                const data = await response.json();
+                globalData = data;
+                
+                const top = data.top_decision || {};
+                document.getElementById('main-title').innerText = top.topic || "분석 완료";
+                document.getElementById('main-summary').innerText = top.summary || top.why_now || "시장의 숨겨진 흐름을 포착했습니다.";
+                
+                if (top.why_hypothesis) {
+                    document.getElementById('main-chain-text').innerText = top.why_hypothesis.substring(0, 100) + "...";
+                }
+
+                const heroCard = document.getElementById('hero-card');
+                heroCard.onclick = () => openModal(top);
+
+                renderTimeline(data);
+            } catch (err) { 
+                console.error("데이터 로드 실패:", err);
+                document.getElementById('main-title').innerText = "데이터 연결 실패 (서버 확인 필요)";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+        });
+
+        function renderTimeline(data) {
+            const container = document.getElementById('timeline-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            const contents = data.content_pack?.TIER_3 || [];
+            contents.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                card.innerHTML = `
+                    <span class="item-date">${data.last_updated?.split('T')[0] || 'NEW'}</span>
+                    <div class="item-title">${item.topic}</div>
+                    <div class="item-meta">
+                        <span class="target-label">${item.content_tier || 'TIER_3'}</span>
+                        <span style="font-size: 0.8rem; color: var(--accent-blue);">분석 완료</span>
+                    </div>
+                `;
+                card.onclick = () => openModal(item);
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(item) {
+            const overlay = document.getElementById('modal-overlay');
+            const title = document.getElementById('modal-title');
+            const strategy = document.getElementById('modal-strategy');
+            const script = document.getElementById('modal-script');
+
+            title.innerText = item.topic || "제목 없음";
+            
+            let strategyContent = `【 선정 이유 】\n${item.summary || item.why_now || 'N/A'}\n\n`;
+            if (item.why_hypothesis) strategyContent += `【 가설 】\n${item.why_hypothesis}\n\n`;
+            if (item.mechanism) strategyContent += `【 작동 메커니즘 】\n${item.mechanism}\n\n`;
+            
+            strategy.innerText = strategyContent;
+            script.innerText = item.script || "상세 분석 내용이 아직 생성되지 않았습니다.";
+
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        function copyScript() {
+            const script = document.getElementById('modal-script')?.innerText;
+            if (!script) return;
+            navigator.clipboard.writeText(script).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "✅ 복사 완료!";
+                btn.style.background = "#4CAF50";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = "var(--accent-gold)";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

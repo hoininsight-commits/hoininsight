@@ -1,0 +1,20 @@
+{
+  "daily_api_usage": [
+    {
+      "service": "LLM",
+      "tokens": 12500,
+      "cost": 0.12
+    },
+    {
+      "service": "Search",
+      "queries": 45,
+      "cost": 0.04
+    },
+    {
+      "service": "Storage",
+      "io_ops": 850,
+      "cost": 0.01
+    }
+  ],
+  "audit_timestamp": "2026-04-01T16:34:26.895628"
+}

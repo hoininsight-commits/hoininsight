@@ -1,0 +1,232 @@
+name: HOIN Daily Intelligence Pipeline
+
+on:
+  schedule:
+    - cron: '0 15 * * *'   # 00:00 KST
+    - cron: '0 21 * * *'   # 06:00 KST
+    - cron: '0 3 * * *'    # 12:00 KST
+    - cron: '0 9 * * *'    # 18:00 KST
+  workflow_dispatch:
+    inputs:
+      start_from:
+        description: '시작 단계 (이전 단계는 건너뜀)'
+        required: false
+        default: collect
+        type: choice
+        options:
+          - collect
+          - detect
+          - write
+          - publish
+
+env:
+  PYTHONPATH: ${{ github.workspace }}
+  HOIN_RUNTIME_MODE: live
+
+# ──────────────────────────────────────────────
+# Job 1: COLLECT
+# 데이터 수집 + Rotation Radar
+# ──────────────────────────────────────────────
+jobs:
+  collect:
+    name: 📡 Collect
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'schedule' ||
+      inputs.start_from == 'collect'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run CollectorAgent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          DATA_GO_KR_API_KEY: ${{ secrets.DATA_GO_KR_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+        run: python -m src.agents.collector
+
+      - name: Run RotationRadar
+        env:
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+        run: python scripts/rotation_radar.py
+        continue-on-error: true   # Rotation 실패가 파이프라인을 중단시키지 않음
+
+      - name: Upload raw data artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-data
+          path: data/raw/
+          retention-days: 1
+
+# ──────────────────────────────────────────────
+# Job 2: DETECT
+# 이상징후 탐지 + 토픽 선정 (Arbiter)
+# ──────────────────────────────────────────────
+  detect:
+    name: 🔍 Detect
+    runs-on: ubuntu-latest
+    needs: collect
+    if: >-
+      always() &&
+      !cancelled() &&
+      (needs.collect.result == 'success' || needs.collect.result == 'skipped') &&
+      (github.event_name == 'schedule' ||
+       inputs.start_from == 'collect' ||
+       inputs.start_from == 'detect')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download raw data
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-data
+          path: data/raw/
+        continue-on-error: true   # start_from=detect 시 이전 run artifact 없을 수 있음
+
+      - name: Run DetectorAgent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m src.agents.detector
+
+      - name: Upload analysis artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-data
+          path: |
+            data/signals/
+            data/fact_pack/
+          retention-days: 1
+
+# ──────────────────────────────────────────────
+# Job 3: WRITE
+# 스크립트 생성 (Gemini + Deterministic fallback)
+# ──────────────────────────────────────────────
+  write:
+    name: ✍️ Write
+    runs-on: ubuntu-latest
+    needs: detect
+    if: >-
+      always() &&
+      !cancelled() &&
+      (needs.detect.result == 'success' || needs.detect.result == 'skipped') &&
+      (github.event_name == 'schedule' ||
+       inputs.start_from == 'collect' ||
+       inputs.start_from == 'detect' ||
+       inputs.start_from == 'write')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download raw data
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-data
+          path: data/raw/
+        continue-on-error: true
+
+      - name: Download analysis data
+        uses: actions/download-artifact@v4
+        with:
+          name: analysis-data
+          path: data/
+        continue-on-error: true
+
+      - name: Run WriterAgent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -m src.agents.writer
+
+      - name: Upload script artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: script-data
+          path: data/scripts/
+          retention-days: 1
+
+# ──────────────────────────────────────────────
+# Job 4: PUBLISH
+# 대시보드 업데이트 + 텔레그램 발송 + Git 커밋
+# 항상 실행 (이전 단계 실패해도)
+# ──────────────────────────────────────────────
+  publish:
+    name: 📢 Publish
+    runs-on: ubuntu-latest
+    needs: write
+    if: >-
+      always() &&
+      !cancelled() &&
+      (needs.write.result == 'success' || needs.write.result == 'skipped')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download raw data
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-data
+          path: data/raw/
+        continue-on-error: true
+
+      - name: Download analysis data
+        uses: actions/download-artifact@v4
+        with:
+          name: analysis-data
+          path: data/
+        continue-on-error: true
+
+      - name: Download script data
+        uses: actions/download-artifact@v4
+        with:
+          name: script-data
+          path: data/scripts/
+        continue-on-error: true
+
+      - name: Run PublisherAgent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m src.agents.publisher
+
+      - name: Commit & Push
+        run: |
+          git config user.name "HOIN Bot"
+          git config user.email "hoin.insight@gmail.com"
+          git add docs/data/ docs/index.html docs/today_data.json dashboard/ data/history/ || true
+          git diff --staged --quiet && echo "변경사항 없음" && exit 0
+          git commit -m "chore: daily update [$(TZ='Asia/Seoul' date '+%Y-%m-%d %H:%M KST')]"
+          git push

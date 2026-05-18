@@ -1,0 +1,150 @@
+/**
+ * router.js — Modular ES Router for HoinInsight Dashboard
+ * Features: Lazy-loading Operator Views, Active State Tracking, Error Recovery
+ */
+
+export async function initRouter() {
+    console.log('[Router] v2.8 Initializing...');
+    window.addEventListener('hashchange', handleRoute);
+    await handleRoute();
+}
+
+async function handleRoute() {
+    const hash = window.location.hash || '#market-radar';
+    const app = document.getElementById('app');
+    
+    // 1. Update active state in sidebar
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === hash) link.classList.add('active');
+    });
+
+    // 2. Loading State
+    app.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-[60vh] animate-in fade-in">
+            <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Routing to ${hash.substring(1)}...</p>
+        </div>
+    `;
+
+    try {
+        switch (hash) {
+            case '#market-radar':
+                const { initMarketRadarView } = await import('./operator_market_radar.js?v=' + Date.now());
+                await initMarketRadarView(app);
+                break;
+            case '#narrative-brief':
+                const { initNarrativeBriefView } = await import('./operator_narrative_brief.js?v=' + Date.now());
+                await initNarrativeBriefView(app);
+                break;
+            case '#impact-map':
+                const { initImpactMapView } = await import('./operator_impact_map.js?v=' + Date.now());
+                await initImpactMapView(app);
+                break;
+            case '#content-studio':
+                const { initContentStudioView } = await import('./operator_content_studio.js?v=' + Date.now());
+                await initContentStudioView(app);
+                break;
+            case '#today':
+                const { initTodayView } = await import('./operator_today.js?v=' + Date.now());
+                await initTodayView(app);
+                break;
+            case '#history':
+                const { initHistoryView } = await import('./operator_history.js?v=' + Date.now());
+                await initHistoryView(app);
+                break;
+            case '#system':
+                const { initSystemView } = await import('./operator_system.js?v=' + Date.now());
+                await initSystemView(app);
+                break;
+            case '#video':
+                const { initVideoView } = await import('./operator_video.js?v=' + Date.now());
+                await initVideoView(app);
+                break;
+            case '#memory':
+                const { initMemoryView } = await import('./operator_memory.js?v=' + Date.now());
+                await initMemoryView(app);
+                break;
+            case '#ontology':
+                const { initOntologyView } = await import('./operator_ontology.js?v=' + Date.now());
+                await initOntologyView(app);
+                break;
+            case '#cycles':
+                const { initCycleView } = await import('./operator_cycles.js?v=' + Date.now());
+                await initCycleView(app);
+                break;
+            case '#evolution':
+                const { initEvolutionView } = await import('./operator_evolution.js?v=' + Date.now());
+                await initEvolutionView(app);
+                break;
+            case '#market-state':
+                const { initMarketStateView } = await import('./operator_market_state.js?v=' + Date.now());
+                await initMarketStateView(app);
+                break;
+            case '#mentionables':
+                const { initMentionablesView } = await import('./operator_mentionables.js?v=' + Date.now());
+                await initMentionablesView(app);
+                break;
+            case '#video-script':
+                const { initVideoScriptView } = await import('./operator_video_script.js?v=' + Date.now());
+                await initVideoScriptView(app);
+                break;
+            case '#top-topic':
+                const { initTopTopicView } = await import('./operator_top_topic.js?v=' + Date.now());
+                await initTopTopicView(app);
+                break;
+            case '#theme-momentum':
+                const { initThemeMomentumView } = await import('./operator_theme_momentum.js?v=' + Date.now());
+                await initThemeMomentumView(app);
+                break;
+            case '#theme-evolution':
+                const { initThemeEvolutionView } = await import('./operator_theme_evolution.js?v=' + Date.now());
+                await initThemeEvolutionView(app);
+                break;
+            case '#early-theme':
+                const { initEarlyThemeView } = await import('./operator_early_theme.js?v=' + Date.now());
+                await initEarlyThemeView(app);
+                break;
+            case '#theme-narrative':
+                const { initThemeNarrativeView } = await import('./operator_theme_narrative.js?v=' + Date.now());
+                await initThemeNarrativeView(app);
+                break;
+            case '#market-story':
+                const { initMarketStoryView } = await import('./operator_market_story.js?v=' + Date.now());
+                await initMarketStoryView(app);
+                break;
+            case '#structural-tensions':
+                const { initStructuralTensionsView } = await import('./operator_structural_tensions.js?v=' + Date.now());
+                await initStructuralTensionsView(app);
+                break;
+            case '#early':
+                const { initEarlyView } = await import('./operator_early_topics.js?v=' + Date.now());
+                await initEarlyView(app);
+                break;
+            case '#escalation':
+                const { initEscalationView } = await import('./operator_escalation.js?v=' + Date.now());
+                await initEscalationView(app);
+                break;
+            case '#actions':
+                const { initActionView } = await import('./operator_actions.js?v=' + Date.now());
+                await initActionView(app);
+                break;
+            case '#scripts':
+                const { initScriptView } = await import('./scripts.js?v=' + Date.now());
+                await initScriptView(app);
+                break;
+            default:
+                window.location.hash = '#market-radar';
+        }
+    } catch (err) {
+        console.error('[Router] Load Error:', err);
+        app.innerHTML = `
+            <div class="p-8 bg-red-500/10 border border-red-500/20 rounded-xl m-4 text-center">
+                <div class="text-2xl mb-2">⚠</div>
+                <div class="text-sm font-bold text-red-500 uppercase mb-1">Navigation Error</div>
+                <div class="text-[10px] text-slate-500 font-mono">${err.message}</div>
+                <button onclick="location.reload()" class="mt-4 px-4 py-1.5 bg-red-600 text-white text-[10px] font-black rounded uppercase hover:bg-red-500 transition-colors">Reload Dashboard</button>
+            </div>
+        `;
+    }
+}

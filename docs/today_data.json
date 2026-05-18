@@ -1,0 +1,97 @@
+{
+  "top_decision": {
+    "topic": "N/A",
+    "final_action": "N/A",
+    "content_tier": "TIER_3",
+    "summary": "데이터 분석 중",
+    "why_now": "분석 중",
+    "why_hypothesis": "",
+    "mechanism": "",
+    "confidence": ""
+  },
+  "market_axis": {},
+  "content_pack": {
+    "TIER_1": [],
+    "TIER_2": [],
+    "TIER_3": []
+  },
+  "reason_layer": {
+    "quality_score": 0,
+    "reality_score": 0,
+    "score_trust": "COLD"
+  },
+  "market_snapshot": {
+    "rates": "4.36%",
+    "spx": "7398.93",
+    "btc": "N/A",
+    "trend_short": "NEUTRAL",
+    "trend_mid": "UP"
+  },
+  "risk_layer": {
+    "kill_switch": "조건 미정",
+    "opposite_scenario": "시나리오 미정"
+  },
+  "history_layer": [
+    {
+      "date": "20260510",
+      "topic": "하늘길이 열린다! 현대차-KAI 초거대 동맹, K-UAM(도심항공교통) 테마 이륙 준비 완료",
+      "strength": 50.0,
+      "anomaly_type": "",
+      "filters_hit": [
+        "S"
+      ],
+      "why_now": "",
+      "path": "topics/items/20260510__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-09",
+      "rank": 1,
+      "topic": "전쟁이 부활시킨 바다의 왕, 'K-조선'의 귀환",
+      "strength": 50.0,
+      "anomaly_type": "롱폼",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-09__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-08",
+      "rank": 1,
+      "topic": "호르무즈 분쟁 장기화에 따른 '공급망 발 구조적 인플레이션(Supply-side Structural Inflation)'과 글로벌 자본의 방어적 재편",
+      "strength": 50.0,
+      "anomaly_type": "롱폼",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-08__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-06",
+      "rank": 1,
+      "topic": "미-이란 평화 협정 타결 임박에 따른 '글로벌 공급망 리스크 해소와 자본의 대이동(Great Rotation)'",
+      "strength": 0,
+      "anomaly_type": "쇼츠",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-06__top1.json",
+      "isToday": false
+    },
+    {
+      "date": "2026-05-01",
+      "rank": 1,
+      "topic": "[대우건설] [기재정정]단일판매ㆍ공급계약체결              ",
+      "strength": 0,
+      "anomaly_type": "쇼츠",
+      "filters_hit": [
+        "S"
+      ],
+      "path": "topics/items/2026-05-01__top1.json",
+      "isToday": false
+    }
+  ],
+  "last_updated": "2026-05-10T17:02:24.907223"
+}

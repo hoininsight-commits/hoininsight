@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "QuoteEvidencePack",
+    "type": "object",
+    "properties": {
+        "quote_text": {
+            "type": "string",
+            "description": "1–2 lines verbatim excerpt (max 240 chars excluding metadata)",
+            "maxLength": 240
+        },
+        "speaker": {
+            "type": "string",
+            "description": "Speaker or issuing body"
+        },
+        "event_name": {
+            "type": "string"
+        },
+        "event_time_utc": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "source_url": {
+            "type": "string"
+        },
+        "source_type": {
+            "type": "string",
+            "enum": [
+                "OFFICIAL_TRANSCRIPT",
+                "OFFICIAL_RELEASE",
+                "OFFICIAL_SCHEDULE",
+                "REGULATORY_DOCKET",
+                "EARNINGS_CALL_TRANSCRIPT"
+            ]
+        },
+        "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "hash": {
+            "type": "string",
+            "description": "Stable hash for identity"
+        }
+    },
+    "required": [
+        "quote_text",
+        "speaker",
+        "event_name",
+        "event_time_utc",
+        "source_type",
+        "hash"
+    ]
+}
