@@ -226,7 +226,8 @@ jobs:
         run: |
           git config user.name "HOIN Bot"
           git config user.email "hoin.insight@gmail.com"
-          git add docs/data/ docs/index.html docs/today_data.json dashboard/ data/history/ || true
+          git add docs/data/ docs/today_data.json data/history/ || true
+          git add dashboard/today_data.json dashboard/today_brief.txt dashboard/topics/ || true
           git diff --staged --quiet && echo "변경사항 없음" && exit 0
           git commit -m "chore: daily update [$(TZ='Asia/Seoul' date '+%Y-%m-%d %H:%M KST')]"
           git push
