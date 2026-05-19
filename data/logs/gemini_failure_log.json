@@ -1,17 +1,5 @@
 [
   {
-    "timestamp": "2026-05-13T06:31:24.019062",
-    "agent": "DEEP_RESEARCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 0
-  },
-  {
-    "timestamp": "2026-05-13T06:31:29.237314",
-    "agent": "DEEP_RESEARCHER",
-    "failure_type": "RATE_LIMIT",
-    "retry_count": 1
-  },
-  {
     "timestamp": "2026-05-13T06:31:29.625242",
     "agent": "ARBITER_V2",
     "failure_type": "RATE_LIMIT",
@@ -1196,6 +1184,18 @@
   {
     "timestamp": "2026-05-19T00:18:55.962505",
     "agent": "ARBITER_V2",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-19T08:30:04.427707",
+    "agent": "WRITER",
+    "failure_type": "RATE_LIMIT",
+    "retry_count": 0
+  },
+  {
+    "timestamp": "2026-05-19T08:30:11.034104",
+    "agent": "WRITER",
     "failure_type": "RATE_LIMIT",
     "retry_count": 1
   }

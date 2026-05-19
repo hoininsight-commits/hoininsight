@@ -1,12 +1,5 @@
 [
   {
-    "timestamp": "2026-05-14T03:05:59.177631",
-    "agent": "QUALITY_GATE",
-    "success": true,
-    "fallback_used": false,
-    "retry_count": 0
-  },
-  {
     "timestamp": "2026-05-14T03:06:14.742410",
     "agent": "INSTA_WRITER",
     "success": true,
@@ -695,6 +688,13 @@
   {
     "timestamp": "2026-05-19T00:18:55.963537",
     "agent": "ARBITER_V2",
+    "success": false,
+    "fallback_used": true,
+    "retry_count": 1
+  },
+  {
+    "timestamp": "2026-05-19T08:30:11.038303",
+    "agent": "WRITER",
     "success": false,
     "fallback_used": true,
     "retry_count": 1
