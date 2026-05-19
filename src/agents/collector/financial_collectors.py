@@ -29,39 +29,134 @@ class ConsensusCollector(CollectorAgent):
             return {"process_success": False, "error": str(e)}
 
 class COTCollector(CollectorAgent):
-    """[RESTORED] COT (Commitment of Traders) Intelligence Agent"""
+    """COT (Commitment of Traders) — CFTC 공개 데이터 + yfinance 포지션 프록시"""
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir
         self.today = datetime.now().strftime("%Y%m%d")
         self.name = "COTCollector"
-        self.ttl_minutes = 1440  # COT는 주 1회 업데이트되므로 TTL 길게 설정
+        self.ttl_minutes = 1440
         self.sensitivity = "LOW"
 
     def run(self) -> dict:
-        """COT 데이터 수집 (FRED 또는 주요 거래소 데이터 시뮬레이션)"""
-        print("📊 COT 데이터 분석 중...")
+        print("📊 COT 포지션 데이터 수집 중...")
         try:
-            # 실무적으로는 FRED의 'Net Non-Commercial Position' 시리즈 활용
-            result_data = {
-                "date": self.today,
-                "source": "CFTC/FRED",
-                "market_sentiment": "BULLISH (Neutral-Bias)",
-                "details": "COT data integration point restored."
-            }
-            
-            # wrap_data는 CollectorAgent에 정의됨
-            result = self._wrap_data(result_data, ttl_minutes=self.ttl_minutes)
+            data = self._fetch_cot()
+            result = self._wrap_data(data, ttl_minutes=self.ttl_minutes)
             output_path = self.output_dir / "cot.json"
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
-            
-            return {
-                "process_success": True,
-                "data_valid": True,
-                "freshness_status": "FRESH"
-            }
+            print(f"  ✅ COT 저장 — S&P순포지션:{data.get('sp500_net_pct')}% 금:{data.get('gold_net_pct')}% 원유:{data.get('oil_net_pct')}%")
+            return {"process_success": True, "data_valid": True, "freshness_status": "FRESH"}
         except Exception as e:
+            print(f"  ⚠️ COT 수집 실패: {e}")
             return {"process_success": False, "error": str(e)}
+
+    def _fetch_cot(self) -> dict:
+        import yfinance as yf
+        import zipfile, io, csv
+
+        # ── 1. CFTC Disaggregated Futures-Only (현년도 zip) ──
+        year = datetime.now().year
+        cot_url = f"https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
+        targets = {
+            "E-MINI S&P 500 - CHICAGO MERCANTILE EXCHANGE": "sp500",
+            "GOLD - COMMODITY EXCHANGE INC.":               "gold",
+            "CRUDE OIL, LIGHT SWEET - COMMODITY EXCHANGE":  "crude_oil",
+            "U.S. DOLLAR INDEX - ICE FUTURES U.S.":         "usd_index",
+        }
+        positions = {}
+        try:
+            resp = requests.get(cot_url, timeout=20)
+            if resp.ok:
+                with zipfile.ZipFile(io.BytesIO(resp.content)) as z:
+                    fname = [n for n in z.namelist() if n.endswith(".txt")][0]
+                    lines = z.read(fname).decode("utf-8", errors="ignore").splitlines()
+                reader = csv.DictReader(lines)
+                latest = {}  # market_name -> latest row
+                for row in reader:
+                    mkt = row.get("Market and Exchange Names", "").strip().upper()
+                    for key in targets:
+                        if key in mkt:
+                            # 날짜 기준 최신 행만 유지
+                            prev = latest.get(key)
+                            if prev is None or row.get("As of Date in Form YYYY-MM-DD","") >= prev.get("As of Date in Form YYYY-MM-DD",""):
+                                latest[key] = row
+                for key, alias in targets.items():
+                    row = latest.get(key)
+                    if row:
+                        try:
+                            longs  = float(row.get("NonComm_Positions_Long_All", 0) or 0)
+                            shorts = float(row.get("NonComm_Positions_Short_All", 0) or 0)
+                            total  = longs + shorts
+                            net_pct = round((longs - shorts) / total * 100, 1) if total > 0 else None
+                            positions[alias] = {
+                                "long": int(longs),
+                                "short": int(shorts),
+                                "net": int(longs - shorts),
+                                "net_pct": net_pct,
+                                "report_date": row.get("As of Date in Form YYYY-MM-DD", ""),
+                            }
+                        except Exception:
+                            pass
+        except Exception as e:
+            print(f"  ⚠️ CFTC zip 수집 실패: {e} — yfinance 프록시로 전환")
+
+        # ── 2. yfinance 프록시 (CFTC 실패 시 또는 보완) ──
+        proxy_tickers = {
+            "sp500":     ("ES=F",  "^VIX"),
+            "gold":      ("GC=F",  None),
+            "crude_oil": ("CL=F",  None),
+            "usd_index": ("DX=F",  None),
+        }
+        for alias, (ticker, aux) in proxy_tickers.items():
+            if alias in positions:
+                continue  # CFTC 성공 시 스킵
+            try:
+                t = yf.Ticker(ticker)
+                hist = t.history(period="5d")
+                if not hist.empty:
+                    last = hist.iloc[-1]
+                    prev = hist.iloc[-2] if len(hist) > 1 else last
+                    chg_pct = round((last["Close"] - prev["Close"]) / prev["Close"] * 100, 2)
+                    vol_ratio = round(last["Volume"] / hist["Volume"].mean(), 2) if hist["Volume"].mean() > 0 else 1.0
+                    # 가격 방향 + 거래량으로 순포지션 대리 추정
+                    estimated_net_pct = round(chg_pct * vol_ratio * 10, 1)
+                    positions[alias] = {
+                        "price": round(float(last["Close"]), 2),
+                        "change_pct": chg_pct,
+                        "volume_ratio": vol_ratio,
+                        "estimated_net_pct": max(-100, min(100, estimated_net_pct)),
+                        "source": "yfinance_proxy",
+                    }
+            except Exception:
+                pass
+
+        # ── 3. 종합 센티먼트 판정 ──
+        sp = positions.get("sp500", {})
+        gold = positions.get("gold", {})
+        oil = positions.get("crude_oil", {})
+
+        sp_net = sp.get("net_pct") or sp.get("estimated_net_pct") or 0
+        gold_net = gold.get("net_pct") or gold.get("estimated_net_pct") or 0
+
+        if sp_net > 20:
+            sentiment = "BULLISH"
+        elif sp_net < -20:
+            sentiment = "BEARISH"
+        elif gold_net > 30:
+            sentiment = "RISK-OFF (금 피난처 수요)"
+        else:
+            sentiment = "NEUTRAL"
+
+        return {
+            "date": self.today,
+            "source": "CFTC/yfinance",
+            "market_sentiment": sentiment,
+            "sp500_net_pct":   sp.get("net_pct") or sp.get("estimated_net_pct"),
+            "gold_net_pct":    gold.get("net_pct") or gold.get("estimated_net_pct"),
+            "oil_net_pct":     oil.get("net_pct") or oil.get("estimated_net_pct"),
+            "positions":       positions,
+        }
 
 class ECOSCollector(CollectorAgent):
     def __init__(self, output_dir: Path):
@@ -112,13 +207,15 @@ class MarketBreadthCollector(CollectorAgent):
                 up = m_data["advancing"]
                 down = m_data["declining"]
                 
-                # 조건: 상승 > 하락 * 2
-                if up > (down * 2) and up > 0:
+                # 조건: 상승 > 하락 * 2 (RotationConfirmationEngine과 동일 기준)
+                ratio = round(up / down, 2) if down > 0 else 0.0
+                if down > 0 and up > down * 2:
                     m_data["signal_1_detected"] = True
-                    m_data["message"] = f"🔥 {market} 순환매 1단계 신호 포착! (상승 {up} / 하락 {down})"
+                    m_data["message"] = f"🔥 {market} 순환매 1단계 신호 포착! (상승 {up} / 하락 {down}, 비율 {ratio}x)"
                 else:
                     m_data["signal_1_detected"] = False
-                    m_data["message"] = "대장주 독주 또는 관망 구간"
+                    m_data["message"] = f"대장주 독주 또는 관망 구간 (상승 {up} / 하락 {down}, 비율 {ratio}x)"
+                m_data["ratio"] = ratio
 
             # 데이터 저장
             result = self._wrap_data(data, ttl_minutes=self.ttl_minutes)

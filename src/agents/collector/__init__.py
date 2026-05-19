@@ -472,10 +472,21 @@ class CollectorAgent:
                     now = get_now_kst()
                     for entry in feedparser.parse(resp.content).entries[:50]:
                         pub = entry.get("published_parsed")
-                        prefix = f"[{datetime(*pub[:6], tzinfo=timezone.utc).strftime('%Y-%m-%d')}] " if pub else f"[{now.strftime('%Y-%m-%d')}] "
-                        items.append({"title": prefix + entry.get("title", "").strip(),
-                                      "summary": entry.get("summary", "")[:1000].strip(),
-                                      "source": feed["name"]})
+                        if pub:
+                            pub_dt = datetime(*pub[:6], tzinfo=timezone.utc)
+                            pub_date_str = pub_dt.strftime("%Y-%m-%d")
+                            pub_iso = pub_dt.isoformat()
+                        else:
+                            pub_date_str = now.strftime("%Y-%m-%d")
+                            pub_iso = now.isoformat()
+                        prefix = f"[{pub_date_str}] "
+                        items.append({
+                            "title": prefix + entry.get("title", "").strip(),
+                            "summary": entry.get("summary", "")[:1000].strip(),
+                            "source": feed["name"],
+                            "link": entry.get("link", ""),
+                            "pubDate": pub_iso,
+                        })
             except Exception as e:
                 print(f"  [RSS] {feed['name']}: {e}")
             return items
