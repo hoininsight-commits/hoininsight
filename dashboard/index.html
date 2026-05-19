@@ -3,223 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOIN Insight | Hunting Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>HOIN Insight | Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Black+Han+Sans&family=Outfit:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00f2ff;
-            --accent: #ff007a;
-            --bg: #0a0a0c;
-            --card-bg: #16161a;
-            --glass: rgba(255, 255, 255, 0.05);
-            --nav-bg: rgba(22, 22, 26, 0.8);
+            --accent:  #ff007a;
+            --bg:      #0a0a0c;
+            --card-bg: rgba(20,20,20,0.7);
+            --glass:   rgba(255,255,255,0.05);
+            --dim:     #888;
+            --green:   #00ff88;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:var(--bg); color:#fff; font-family:'Outfit','Noto Sans KR',sans-serif; min-height:100vh; overflow-x:hidden; }
+
+        /* ── 탑바 ── */
+        .topbar {
+            position:sticky; top:0; z-index:300;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:0 28px; height:54px;
+            background:rgba(10,10,12,0.94); backdrop-filter:blur(20px);
+            border-bottom:1px solid rgba(255,255,255,0.06);
+        }
+        .logo { font-family:'Orbitron'; font-size:.9rem; font-weight:900; letter-spacing:4px; background:linear-gradient(90deg,var(--primary),#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .tab-nav { display:flex; gap:4px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:10px; padding:4px; }
+        .tab-btn { padding:6px 20px; border-radius:7px; border:none; cursor:pointer; font-family:'Orbitron'; font-size:.6rem; font-weight:700; letter-spacing:1.5px; background:transparent; color:var(--dim); transition:all .2s; }
+        .tab-btn.active { background:rgba(0,242,255,0.12); color:var(--primary); box-shadow:0 0 14px rgba(0,242,255,0.15); }
+        .tab-btn:hover:not(.active) { color:#fff; }
+        .live { font-family:'Orbitron'; font-size:.6rem; color:var(--primary); display:flex; align-items:center; gap:7px; }
+        .live::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--primary); box-shadow:0 0 7px var(--primary); animation:blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+        .tab-panel { display:none; }
+        .tab-panel.active { display:block; }
+
+        /* ════════════════════════
+           인스타뷰 — 유튜브 그리드
+           ════════════════════════ */
+        #panel-insta { padding:32px 28px 80px; }
+
+        .grid-header {
+            display:flex; align-items:center; justify-content:space-between;
+            max-width:1400px; margin:0 auto 24px;
+        }
+        .grid-title { font-family:'Orbitron'; font-size:.85rem; letter-spacing:3px; color:var(--dim); }
+        .grid-count { font-size:.75rem; color:var(--dim); }
+
+        /* 유튜브 스타일 그리드 */
+        .yt-grid {
+            max-width:1400px; margin:0 auto;
+            display:grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap:20px;
+        }
+        @media(max-width:1100px){ .yt-grid{ grid-template-columns:repeat(3,1fr); } }
+        @media(max-width:720px) { .yt-grid{ grid-template-columns:repeat(2,1fr); } }
+        @media(max-width:480px) { .yt-grid{ grid-template-columns:1fr; } }
+
+        .yt-card {
+            cursor:pointer; border-radius:10px; overflow:hidden;
+            background:transparent; transition:transform .2s;
+        }
+        .yt-card:hover { transform:translateY(-3px); }
+        .yt-card:hover .yt-thumb::after { opacity:1; }
+
+        .yt-thumb {
+            width:100%; aspect-ratio:4/3; position:relative;
+            background:#111; overflow:hidden; border-radius:10px;
+        }
+        .yt-thumb img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform .3s;
+        }
+        .yt-card:hover .yt-thumb img { transform:scale(1.04); }
+        .yt-thumb::after {
+            content:'▶'; position:absolute; inset:0;
+            display:flex; align-items:center; justify-content:center;
+            font-size:2.5rem; color:#fff;
+            background:rgba(0,0,0,.45);
+            opacity:0; transition:opacity .2s;
+        }
+        .yt-thumb .slide-badge {
+            position:absolute; bottom:8px; right:8px;
+            background:rgba(0,0,0,.85); color:#fff;
+            font-size:11px; font-weight:700; padding:2px 7px; border-radius:4px;
+        }
+        .yt-thumb .new-badge {
+            position:absolute; top:8px; left:8px;
+            background:var(--primary); color:#000;
+            font-size:10px; font-weight:900; padding:2px 8px; border-radius:4px;
+            font-family:'Orbitron'; letter-spacing:.5px;
+        }
+        .yt-thumb .no-cover {
+            width:100%; height:100%;
+            display:flex; align-items:center; justify-content:center;
+            background:linear-gradient(135deg,#0d1117 0%,#1a1f2e 100%);
+            font-size:2rem; color:var(--primary); opacity:.4;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: var(--bg);
-            color: #fff;
-            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
-            padding: 40px 20px;
-            line-height: 1.6;
+        .yt-info { padding:10px 4px 0; }
+        .yt-info-top { display:flex; gap:10px; }
+        .yt-avatar {
+            width:32px; height:32px; border-radius:50%; flex-shrink:0;
+            background:linear-gradient(135deg,var(--primary),var(--accent));
+            display:flex; align-items:center; justify-content:center;
+            font-size:12px; font-weight:900; color:#000;
+        }
+        .yt-meta { flex:1; min-width:0; }
+        .yt-card-title {
+            font-size:13px; font-weight:700; line-height:1.45;
+            color:#fff; word-break:keep-all;
+            display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+            margin-bottom:5px;
+        }
+        .yt-card-sub { font-size:11px; color:var(--dim); line-height:1.5; }
+        .yt-tag {
+            display:inline-block; margin-top:5px;
+            padding:2px 7px; border-radius:3px; font-size:10px; font-weight:700;
+            background:rgba(0,242,255,.1); color:var(--primary); border:1px solid rgba(0,242,255,.2);
         }
 
-        header {
-            max-width: 1000px;
-            margin: 0 auto 50px;
-            text-align: center;
-        }
+        /* 로딩 / 에러 */
+        .insta-msg { font-family:'Orbitron'; font-size:.7rem; letter-spacing:2px; color:var(--primary); text-align:center; padding:80px 20px; }
 
-        header h1 {
-            font-size: 42px;
-            font-weight: 700;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        /* ── 슬라이드 뷰어 모달 ── */
+        .viewer-modal {
+            display:none; position:fixed; inset:0; z-index:500;
+            background:rgba(0,0,0,.97); backdrop-filter:blur(12px);
+            flex-direction:column; align-items:center; justify-content:center;
         }
+        .viewer-modal.open { display:flex; }
 
-        header p {
-            color: #888;
-            font-size: 18px;
+        .viewer-topbar {
+            position:absolute; top:0; left:0; right:0;
+            display:flex; align-items:center; justify-content:space-between;
+            padding:16px 24px; background:rgba(0,0,0,.6);
         }
+        .viewer-title { font-size:13px; font-weight:700; color:rgba(255,255,255,.8); max-width:60%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+        .viewer-close { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:6px 16px; border-radius:20px; cursor:pointer; font-size:13px; }
 
-        nav {
-            max-width: 1000px;
-            margin: -20px auto 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        /* 폰 프레임 */
+        .phone-frame {
+            width:100%; max-width:400px; aspect-ratio:4/5;
+            background:#000; border-radius:22px; overflow:hidden;
+            box-shadow:0 40px 80px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.06);
         }
+        .slide-container { width:100%; height:100%; display:flex; transition:transform .4s cubic-bezier(.4,0,.2,1); }
+        .slide {
+            min-width:100%; height:100%; position:relative;
+            padding:52px 34px; display:flex; flex-direction:column;
+            background-size:cover; background-position:center; background-color:#0d1117;
+        }
+        .slide::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.85) 100%); z-index:1; }
+        .slide-content { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; }
+        .page-num { position:absolute; top:16px; right:16px; font-family:'Outfit'; font-size:12px; color:rgba(255,255,255,.5); z-index:10; }
+        .slide-header { display:flex; align-items:center; gap:9px; margin-bottom:28px; }
+        .logo-box { width:26px; height:26px; background:var(--primary); border-radius:4px; flex-shrink:0; }
+        .brand { font-family:'Outfit'; font-weight:700; font-size:14px; }
+        .title-main { font-family:'Black Han Sans'; font-size:36px; line-height:1.1; margin-bottom:14px; word-break:keep-all; text-shadow:0 4px 12px rgba(0,0,0,.5); }
+        .highlight { color:var(--primary); font-weight:900; font-size:20px; margin-bottom:8px; }
+        .fact-box { background:rgba(255,255,255,.1); backdrop-filter:blur(20px); border-left:4px solid var(--primary); padding:16px; margin:12px 0; border-radius:5px; flex:1; overflow:hidden; }
+        .body-text { font-size:15px; line-height:1.65; color:#ddd; word-break:keep-all; }
+        .slide-footer { margin-top:auto; display:flex; justify-content:space-between; font-size:11px; color:#888; }
 
-        .nav-link {
-            text-decoration: none;
-            color: #888;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 8px 20px;
-            border-radius: 30px;
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        /* 점 인디케이터 + 하단 버튼 */
+        .dot-nav { display:flex; gap:6px; justify-content:center; margin:14px 0 10px; }
+        .dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.2); cursor:pointer; transition:all .2s; }
+        .dot.active { background:var(--primary); box-shadow:0 0 6px var(--primary); width:18px; border-radius:3px; }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary);
-            border-color: var(--primary);
-            background: rgba(0, 242, 255, 0.1);
-        }
+        .viewer-btns { display:flex; gap:12px; margin-top:4px; }
+        .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:10px 20px; border-radius:24px; cursor:pointer; font-size:13px; transition:.2s; font-family:'Outfit'; }
+        .nav-btn:hover { background:var(--primary); color:#000; border-color:var(--primary); }
+        .nav-btn.primary { background:var(--primary); color:#000; font-weight:700; border:none; }
 
-        .archive-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
+        /* 원고 모달 */
+        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:600; padding:40px 20px; overflow-y:auto; }
+        .modal-inner { max-width:760px; margin:0 auto; }
+        .modal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; border-bottom:1px solid #222; padding-bottom:14px; }
+        .modal-ttl { font-family:'Black Han Sans'; font-size:22px; color:var(--primary); }
+        .close-btn { background:none; border:1px solid var(--primary); color:var(--primary); padding:5px 14px; border-radius:20px; cursor:pointer; font-size:13px; }
+        .modal-body { color:#ddd; line-height:1.9; font-size:15px; white-space:pre-wrap; padding-bottom:80px; }
 
-        .topic-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            text-decoration: none;
-            color: inherit;
+        /* ════════════════════════
+           순환매 레이더 패널
+           ════════════════════════ */
+        #panel-radar {
+            padding:20px;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(0,242,255,.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(255,0,122,.05) 0%, transparent 50%);
         }
-
-        .topic-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
-        }
-
-        .thumb {
-            width: 100%;
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .thumb::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to top, var(--card-bg), transparent);
-        }
-
-        .card-info {
-            padding: 20px;
-        }
-
-        .date-badge {
-            font-size: 12px;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
-            letter-spacing: 1px;
-        }
-
-        .card-info h2 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            word-break: keep-all;
-        }
-
-        .status-pill {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--primary);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-        }
-
-        /* Loading State */
-        #loading {
-            text-align: center;
-            padding: 50px;
-            color: var(--primary);
-        }
+        .radar-hdr { max-width:1800px; margin:0 auto 30px; display:flex; justify-content:space-between; align-items:flex-end; padding:0 10px; }
+        .radar-title { font-family:'Orbitron'; font-size:1.7rem; letter-spacing:4px; background:linear-gradient(90deg,var(--primary),#fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:5px; }
+        .mkt-msg { font-family:'Orbitron'; font-size:.75rem; color:var(--primary); text-shadow:0 0 10px var(--primary); }
+        .breadth-board { display:flex; gap:18px; background:var(--card-bg); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.1); padding:14px 22px; border-radius:18px; }
+        .stat-item { text-align:center; }
+        .stat-lbl { font-size:.58rem; color:var(--dim); margin-bottom:4px; font-family:'Orbitron'; }
+        .stat-val { font-family:'Orbitron'; font-size:1.3rem; font-weight:900; }
+        .stat-val.up { color:var(--green); }
+        .stat-val.dn { color:var(--accent); }
+        .streak-row { display:flex; gap:7px; margin-top:5px; }
+        .sdot { width:9px; height:9px; border-radius:50%; background:#222; border:1px solid rgba(255,255,255,.1); }
+        .sdot.on { background:var(--primary); box-shadow:0 0 8px var(--primary); }
+        .timeline-sec { max-width:1800px; margin:0 auto 36px; background:var(--card-bg); border-radius:22px; padding:28px; border:1px solid rgba(255,255,255,.05); }
+        .sec-title { font-family:'Orbitron'; font-size:1rem; margin-bottom:22px; letter-spacing:3px; color:var(--primary); display:flex; align-items:center; gap:12px; }
+        .hm-wrap { display:grid; grid-template-columns:140px 1fr; gap:18px; }
+        .hm-labels { display:flex; flex-direction:column; gap:10px; justify-content:center; }
+        .hm-lbl { font-size:.65rem; color:var(--dim); text-align:right; padding-right:12px; font-family:'Orbitron'; height:32px; display:flex; align-items:center; justify-content:flex-end; }
+        .hm-grid { display:flex; flex-direction:column; gap:10px; }
+        .hm-row { display:flex; gap:4px; }
+        .hm-cell { flex:1; height:32px; border-radius:5px; background:#111; position:relative; transition:all .25s; }
+        .hm-cell:hover { transform:scale(1.1); z-index:10; cursor:crosshair; }
+        .hm-cell .tip { position:absolute; bottom:100%; left:50%; transform:translateX(-50%); background:#fff; color:#000; padding:4px 8px; border-radius:4px; font-size:10px; font-weight:900; display:none; white-space:nowrap; z-index:100; }
+        .hm-cell:hover .tip { display:block; }
+        .date-row { grid-column:2; display:flex; gap:4px; margin-top:8px; }
+        .date-lbl { flex:1; text-align:center; font-size:.58rem; color:#444; font-family:'Orbitron'; }
+        .radar-grid { display:flex; justify-content:space-between; gap:14px; max-width:1800px; margin:0 auto; flex-wrap:wrap; }
+        .stage-card { flex:1; min-width:190px; background:var(--card-bg); border:1px solid rgba(255,255,255,.05); border-radius:22px; padding:22px; min-height:480px; position:relative; transition:all .5s; backdrop-filter:blur(15px); display:flex; flex-direction:column; }
+        .stage-card.on { border-color:var(--theme-color); box-shadow:0 0 36px rgba(var(--theme-rgb),.1); }
+        .stage-card:not(.on) { opacity:.2; filter:grayscale(1); }
+        .stg-lbl { font-family:'Orbitron'; color:var(--theme-color); font-size:.65rem; font-weight:700; margin-bottom:4px; display:block; }
+        .stg-name { font-size:1.1rem; font-weight:900; margin-bottom:4px; }
+        .stg-desc { font-size:.72rem; color:var(--dim); line-height:1.4; }
+        .basis-box { background:rgba(0,0,0,.3); border-radius:10px; padding:11px; font-size:.72rem; color:#ccc; margin:14px 0; border-left:3px solid var(--theme-color); }
+        .sig-item { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.05); border-radius:10px; padding:10px; margin-bottom:8px; cursor:pointer; transition:.3s; }
+        .sig-item:hover { transform:translateX(4px); background:rgba(255,255,255,.08); border-color:var(--theme-color); }
+        .sig-item .comp { font-weight:800; color:#fff; font-size:.82rem; display:block; }
+        .sig-item .tit { color:var(--dim); font-size:.68rem; }
+        .cur-badge { position:absolute; top:14px; right:14px; background:var(--theme-color); color:#000; font-family:'Orbitron'; font-size:.58rem; font-weight:900; padding:3px 7px; border-radius:4px; box-shadow:0 0 14px var(--theme-color); animation:blink 1.5s infinite; }
+        .gauge-cont { width:100%; height:10px; background:rgba(255,255,255,.05); border-radius:5px; margin:12px 0; position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.08); }
+        .gauge-bar { height:100%; border-radius:5px; transition:width .8s ease-out; box-shadow:0 0 8px var(--theme-color); }
+        .peak-mk { position:absolute; top:0; bottom:0; width:2px; background:#fff; box-shadow:0 0 6px #fff; z-index:2; }
+        .gauge-lbl { display:flex; justify-content:space-between; font-size:.62rem; color:var(--dim); font-family:'Orbitron'; margin-bottom:3px; }
+        .rdr-foot { text-align:center; margin-top:46px; color:#333; font-size:.65rem; font-family:'Orbitron'; }
+        .rdr-loading { text-align:center; padding:60px; color:var(--primary); font-family:'Orbitron'; font-size:.72rem; letter-spacing:2px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>HOIN HUNTING ARCHIVE</h1>
-        <p>시장의 맥락을 사냥하고 기록한 전리품들</p>
-    </header>
+<!-- ── 탑바 ── -->
+<header class="topbar">
+    <div class="logo">HOIN INSIGHT</div>
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('insta', this)">인스타뷰</button>
+        <button class="tab-btn"        onclick="switchTab('radar', this)">순환매 레이더</button>
+    </div>
+    <div class="live">LIVE</div>
+</header>
 
-    <nav>
-        <a href="index.html" class="nav-link active">Archive</a>
-        <a href="rotation_radar.html" class="nav-link">Rotation Radar</a>
-    </nav>
+<!-- ════════ TAB: 인스타뷰 ════════ -->
+<div id="tab-insta" class="tab-panel active">
+    <div id="panel-insta">
+        <div class="grid-header">
+            <div class="grid-title">HUNT ARCHIVE</div>
+            <div class="grid-count" id="grid-count"></div>
+        </div>
+        <div id="insta-loading" class="insta-msg">⚡ 사냥 기록 로딩 중...</div>
+        <div id="insta-err" class="insta-msg" style="display:none;color:#ff4466"></div>
+        <div class="yt-grid" id="yt-grid"></div>
+    </div>
+</div>
 
-    <div id="loading">사냥 기록을 불러오는 중...</div>
-    <div class="archive-grid" id="archive-grid"></div>
+<!-- 슬라이드 뷰어 모달 -->
+<div id="viewer-modal" class="viewer-modal">
+    <div class="viewer-topbar">
+        <div class="viewer-title" id="viewer-title"></div>
+        <button class="viewer-close" onclick="closeViewer()">✕ 닫기</button>
+    </div>
+    <div class="phone-frame">
+        <div class="slide-container" id="slide-container"></div>
+    </div>
+    <div class="dot-nav" id="dot-nav"></div>
+    <div class="viewer-btns">
+        <button class="nav-btn" onclick="prevSlide()">◀</button>
+        <button class="nav-btn primary" onclick="openScript()">보고서 전문</button>
+        <button class="nav-btn" onclick="nextSlide()">▶</button>
+    </div>
+</div>
 
-    <script>
-        // [v24.2] 지능형 환경 인지: GitHub Pages 표준 BASE_URL 시스템
-        const BASE_URL = window.location.hostname.includes('github.io') ? '/hoininsight' : '..';
+<!-- 원고 모달 -->
+<div id="script-modal" class="modal">
+    <div class="modal-inner">
+        <div class="modal-head">
+            <div class="modal-ttl">🏹 사냥꾼의 비밀 대본</div>
+            <button class="close-btn" onclick="closeScript()">닫기</button>
+        </div>
+        <div id="modal-body" class="modal-body">로딩 중...</div>
+    </div>
+</div>
 
-        function getDataPath() {
-            return BASE_URL + '/data/history/content_log.json';
-        }
+<!-- ════════ TAB: 순환매 레이더 ════════ -->
+<div id="tab-radar" class="tab-panel">
+    <div id="panel-radar">
+        <div id="rdr-loading" class="rdr-loading">⚡ ANALYZING WATERFLOW...</div>
 
-        function getBaseDataPath(path) {
-            return BASE_URL + '/' + path + '/';
-        }
+        <div id="rdr-hdr" class="radar-hdr" style="display:none">
+            <div>
+                <div class="radar-title">ROTATION RADAR</div>
+                <div id="mkt-msg" class="mkt-msg">ANALYZING...</div>
+            </div>
+            <div class="breadth-board">
+                <div class="stat-item"><div class="stat-lbl">ADVANCING</div><div id="adv" class="stat-val up">—</div></div>
+                <div class="stat-item"><div class="stat-lbl">DECLINING</div><div id="dec" class="stat-val dn">—</div></div>
+                <div class="stat-item"><div class="stat-lbl">RATIO</div><div id="ratio" class="stat-val">—</div></div>
+                <div class="stat-item">
+                    <div class="stat-lbl">3-DAY STREAK</div>
+                    <div class="streak-row">
+                        <div id="s1" class="sdot"></div><div id="s2" class="sdot"></div><div id="s3" class="sdot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        async function loadArchive() {
-            try {
-                const response = await fetch(getDataPath());
-                const data = await response.json();
-                const grid = document.getElementById('archive-grid');
-                const loading = document.getElementById('loading');
-                
-                loading.style.display = 'none';
-                
-                // 최신순 정렬
-                const items = data.contents.reverse();
-                
-                items.forEach(item => {
-                    const card = document.createElement('a');
-                    card.className = 'topic-card';
-                    // insta_viewer.html로 연결 (path 파라미터 전달)
-                    card.href = `insta_viewer.html?path=${encodeURIComponent(item.path)}&title=${encodeURIComponent(item.title)}`;
-                    
-                    // [v22.2] 주제별 격리 폴더 내부의 assets/cover.png를 직접 사용
-                    const thumbUrl = `../${item.path}/assets/cover.png`;
-                    
-                    card.innerHTML = `
-                        <div class="thumb" style="background-image: url('${thumbUrl}');"></div>
-                        <div class="card-info">
-                            <span class="date-badge">${item.date}</span>
-                            <h2>${item.title}</h2>
-                            <div class="status-pill">CARD NEWS READY</div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            } catch (error) {
-                console.error('Failed to load archive:', error);
-                document.getElementById('loading').innerText = '기록을 불러오지 못했습니다. (데이터 파일 확인 필요)';
-            }
-        }
+        <div id="rdr-timeline" class="timeline-sec" style="display:none">
+            <div class="sec-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                WATERFLOW TIMELINE (15D ENERGY)
+            </div>
+            <div class="hm-wrap">
+                <div id="hm-labels" class="hm-labels"></div>
+                <div>
+                    <div id="hm-grid" class="hm-grid"></div>
+                    <div id="date-row" class="date-row"></div>
+                </div>
+            </div>
+        </div>
 
-        window.onload = loadArchive;
-    </script>
+        <div id="radar-grid" class="radar-grid"></div>
+        <div id="rdr-foot" class="rdr-foot" style="display:none">LAST SYNC: <span id="sync-time">—</span></div>
+    </div>
+</div>
+
+<script>
+/* ── 탭 전환 ── */
+function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    if (name === 'radar' && !radarLoaded) loadRadar();
+}
+
+/* ════════════════════════
+   인스타뷰 — 유튜브 그리드
+   ════════════════════════ */
+const BASE = window.location.hostname.includes('github.io') ? '/hoininsight' : '..';
+let currentSlide = 0, totalSlides = 0, currentScriptPath = '';
+
+async function loadInsta() {
+    try {
+        const res = await fetch(BASE + '/data/history/content_log.json');
+        const log = await res.json();
+        const items = [...(log.contents || [])].reverse();
+
+        // insta_cards.json 실제 존재 여부 병렬 확인
+        const checks = items.map(item =>
+            fetch(BASE + '/' + item.path + '/insta_cards.json', {method:'HEAD'})
+                .then(r => r.ok ? item : null).catch(() => null)
+        );
+        const results = await Promise.all(checks);
+        const validItems = results.filter(Boolean);
+
+        document.getElementById('insta-loading').style.display = 'none';
+        if (!validItems.length) { showErr('insta_cards.json 없음. 파이프라인을 먼저 실행하세요.'); return; }
+
+        document.getElementById('grid-count').textContent = validItems.length + '개 콘텐츠';
+        renderGrid(validItems);
+    } catch(e) {
+        showErr('content_log.json 로드 실패: ' + e.message);
+    }
+}
+
+function renderGrid(items) {
+    const grid = document.getElementById('yt-grid');
+    grid.innerHTML = '';
+    const today = new Date().toISOString().slice(0,10);
+
+    items.forEach((item, i) => {
+        const coverUrl = BASE + '/' + item.path + '/assets/cover.png';
+        const isNew = item.date === today;
+        const card = document.createElement('div');
+        card.className = 'yt-card';
+        card.innerHTML = `
+            <div class="yt-thumb">
+                <img src="${coverUrl}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="no-cover" style="display:none">🏹</div>
+                ${isNew ? '<div class="new-badge">NEW</div>' : ''}
+                <div class="slide-badge" id="badge-${i}">— 슬라이드</div>
+            </div>
+            <div class="yt-info">
+                <div class="yt-info-top">
+                    <div class="yt-avatar">H</div>
+                    <div class="yt-meta">
+                        <div class="yt-card-title">${item.title}</div>
+                        <div class="yt-card-sub">경제사냥꾼 · ${item.date}</div>
+                        <span class="yt-tag">${item.type || '롱폼'}</span>
+                    </div>
+                </div>
+            </div>`;
+        card.onclick = () => openViewer(item, card);
+        grid.appendChild(card);
+
+        // 슬라이드 수 비동기 로드
+        fetch(BASE + '/' + item.path + '/insta_cards.json')
+            .then(r => r.json())
+            .then(d => {
+                const b = document.getElementById('badge-' + i);
+                if (b) b.textContent = (d.slides||[]).length + ' 슬라이드';
+            }).catch(() => {});
+    });
+}
+
+async function openViewer(item, cardEl) {
+    currentScriptPath = item.path;
+    const basePath = BASE + '/' + item.path + '/';
+
+    try {
+        const res = await fetch(basePath + 'insta_cards.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const slides = data.slides || [];
+        if (!slides.length) throw new Error('슬라이드 없음');
+
+        totalSlides = slides.length;
+        currentSlide = 0;
+
+        // 슬라이드 렌더
+        const cont = document.getElementById('slide-container');
+        cont.innerHTML = '';
+        slides.forEach((slide, idx) => {
+            const div = document.createElement('div');
+            div.className = 'slide';
+            div.style.backgroundImage = `url('${basePath}assets/cover.png')`;
+            div.innerHTML = `
+                <div class="page-num">${idx+1} / ${slides.length}</div>
+                <div class="slide-content">
+                    <div class="slide-header"><div class="logo-box"></div><span class="brand">HOIN INSIGHT</span></div>
+                    ${idx === 0
+                        ? `<h1 class="title-main">${slide.title}</h1>`
+                        : `<div class="highlight">${slide.title}</div>`}
+                    <div class="fact-box"><p class="body-text">${slide.content.replace(/\n/g,'<br>')}</p></div>
+                    <div class="slide-footer"><span>경제의 맥을 짚는 사냥꾼</span><span>@hoin_insight</span></div>
+                </div>`;
+            cont.appendChild(div);
+        });
+
+        // 점 인디케이터
+        const dots = document.getElementById('dot-nav');
+        dots.innerHTML = '';
+        slides.forEach((_, i) => {
+            const d = document.createElement('div');
+            d.className = 'dot' + (i === 0 ? ' active' : '');
+            d.onclick = () => goSlide(i);
+            dots.appendChild(d);
+        });
+
+        document.getElementById('viewer-title').textContent = item.title;
+        document.getElementById('viewer-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        goSlide(0);
+    } catch(e) {
+        alert('슬라이드 로드 실패: ' + e.message);
+    }
+}
+
+function closeViewer() {
+    document.getElementById('viewer-modal').classList.remove('open');
+    document.body.style.overflow = 'auto';
+}
+
+function goSlide(n) {
+    currentSlide = Math.max(0, Math.min(n, totalSlides-1));
+    document.getElementById('slide-container').style.transform = `translateX(-${currentSlide*100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+}
+function nextSlide() { goSlide(currentSlide + 1); }
+function prevSlide() { goSlide(currentSlide - 1); }
+
+async function openScript() {
+    document.getElementById('script-modal').style.display = 'block';
+    const body = document.getElementById('modal-body');
+    body.textContent = '로딩 중...';
+    try {
+        const res = await fetch(BASE + '/' + currentScriptPath + '/today_script_long.md');
+        body.textContent = res.ok ? await res.text() : '대본 파일을 찾을 수 없습니다.';
+    } catch(e) { body.textContent = '로드 실패: ' + e.message; }
+}
+function closeScript() { document.getElementById('script-modal').style.display = 'none'; }
+
+function showErr(msg) {
+    document.getElementById('insta-loading').style.display = 'none';
+    const err = document.getElementById('insta-err');
+    err.innerHTML = '❌ ' + msg;
+    err.style.display = 'block';
+}
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeViewer(); closeScript(); }
+});
+
+/* ════════════════════════
+   순환매 레이더
+   ════════════════════════ */
+let radarLoaded = false;
+const h2r = hex => { const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); return `${r},${g},${b}`; };
+
+async function loadRadar() {
+    try {
+        const res = await fetch('../data/monitoring/rotation_radar.json?t=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        renderRadar(await res.json());
+        radarLoaded = true;
+    } catch(e) {
+        document.getElementById('rdr-loading').innerHTML = `❌ 로드 실패: ${e.message}<br><small style="font-size:.6rem">python scripts/rotation_radar.py 실행 필요</small>`;
+    }
+}
+
+function renderRadar(d) {
+    document.getElementById('rdr-loading').style.display = 'none';
+    document.getElementById('rdr-hdr').style.display = 'flex';
+    document.getElementById('rdr-timeline').style.display = 'block';
+    document.getElementById('rdr-foot').style.display = 'block';
+
+    const b = d.breadth || {};
+    document.getElementById('adv').innerText = b.today_adv ?? '—';
+    document.getElementById('dec').innerText = b.today_dec ?? '—';
+    document.getElementById('ratio').innerText = b.today_ratio != null ? b.today_ratio.toFixed(2) : '—';
+    document.getElementById('mkt-msg').innerText = 'CURRENT FOCUS: ' + (d.current_stage_name || '—').toUpperCase();
+    document.getElementById('sync-time').innerText = d.last_updated || '—';
+    for (let i=1; i<=3; i++) document.getElementById('s'+i).classList.toggle('on', i <= (b.streak_days||0));
+
+    const stIds = Object.keys(d.stages || {});
+    const tl = d.flow_timeline || [];
+    const hmL = document.getElementById('hm-labels'), hmG = document.getElementById('hm-grid'), dR = document.getElementById('date-row');
+    hmL.innerHTML = hmG.innerHTML = dR.innerHTML = '';
+
+    stIds.forEach(sid => {
+        const lbl = document.createElement('div'); lbl.className='hm-lbl'; lbl.innerText=(d.stages[sid].name||sid).split(' ')[0]; hmL.appendChild(lbl);
+        const row = document.createElement('div'); row.className='hm-row';
+        tl.forEach(day => {
+            const cell=document.createElement('div'); cell.className='hm-cell';
+            const v=(day.values||{})[sid]||0, bc=d.stages[sid].color, op=Math.min(Math.max(v/5,.05),1);
+            cell.style.background = v>0 ? `rgba(${h2r(bc)},${op})` : '#111';
+            if(v>2) cell.style.boxShadow=`0 0 12px rgba(${h2r(bc)},.5)`;
+            cell.innerHTML=`<div class="tip">${day.date}: ${typeof v==='number'?v.toFixed(1):v}%</div>`;
+            row.appendChild(cell);
+        });
+        hmG.appendChild(row);
+    });
+    tl.forEach(day => { const d2=document.createElement('div'); d2.className='date-lbl'; d2.innerText=day.date; dR.appendChild(d2); });
+
+    const grid=document.getElementById('radar-grid'); grid.innerHTML='';
+    Object.entries(d.stages||{}).forEach(([id,info],i) => {
+        const card=document.createElement('div'); card.className=`stage-card ${info.active?'on':''}`;
+        card.style.setProperty('--theme-color',info.color); card.style.setProperty('--theme-rgb',h2r(info.color));
+        const stocks=(info.tracking_stocks||[]).length>0
+            ? `<div style="margin-bottom:16px">${info.tracking_stocks.map(s=>`<div style="display:flex;justify-content:space-between;font-size:.72rem;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span style="color:#fff;font-weight:500">${s.name}</span><span style="color:${s.change>0?'var(--green)':s.change<0?'var(--accent)':'#888'};font-weight:800">${s.change>0?'+':''}${s.change.toFixed(2)}%</span></div>`).join('')}</div>` : '';
+        const sigs=(info.signals||[]).length>0
+            ? `<div style="font-size:.58rem;color:var(--dim);margin-bottom:7px;font-family:Orbitron">RECENT SIGNALS</div>`+info.signals.slice(0,2).map(s=>`<div class="sig-item" onclick="window.open('${s.link}','_blank')"><span class="comp">${s.company}</span><span class="tit">${(s.title||'').substring(0,30)}...</span></div>`).join('') : '';
+        const icon={PEAK:'👑',RISING:'↑',FALLING:'↓'}[info.trend]||'';
+        const avg=(info.tracking_stocks||[]).length>0?info.tracking_stocks.reduce((a,s)=>a+s.change,0)/info.tracking_stocks.length:0;
+        const gw=Math.min(Math.max((avg/5)*100,5),100);
+        card.innerHTML=`
+            ${info.is_current?'<div class="cur-badge">CURRENT</div>':''}
+            <div><span class="stg-lbl">STAGE 0${i+1}</span><div class="stg-name">${info.name} ${icon}</div><div class="stg-desc">${info.desc||''}</div></div>
+            <div class="gauge-lbl"><span>ENERGY</span><span>${avg.toFixed(2)}%</span></div>
+            <div class="gauge-cont"><div class="gauge-bar" style="width:${gw}%;background:${info.color}"></div><div class="peak-mk" style="left:85%"></div></div>
+            <div class="basis-box">${info.basis||''}</div>
+            ${stocks}<div>${sigs}</div>`;
+        grid.appendChild(card);
+    });
+    setTimeout(() => { radarLoaded=false; loadRadar(); }, 30000);
+}
+
+/* 초기 로드 */
+window.onload = loadInsta;
+</script>
 </body>
 </html>
