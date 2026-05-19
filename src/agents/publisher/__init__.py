@@ -170,7 +170,7 @@ class PublisherAgent:
             "filters_used": signal.get("filters_hit", []),
             "stocks": stock_names,
             "status": "승인대기",
-            "publish_status": "SUCCESS"
+            "publish_status": signal.get("status", "PENDING")
         }
 
         # 기존 이력 로드

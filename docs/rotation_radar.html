@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>순환매 레이더 | HOIN Insight</title>
+<style>
+  :root {
+    --bg: #09090c;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0f0f5;
+    --text2: rgba(240,240,245,0.55);
+    --blue: #00cfff;
+    --green: #00ff88;
+    --yellow: #ffea00;
+    --orange: #ff8800;
+    --pink: #ff007a;
+    --gold: #d4af37;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Noto Sans KR',system-ui,sans-serif; min-height:100vh; }
+
+  /* ── 헤더 ── */
+  .header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; border-bottom:1px solid var(--border);
+    background:var(--surface);
+  }
+  .header-left h1 { font-size:22px; font-weight:700; letter-spacing:-0.5px; }
+  .header-left h1 span { color:var(--gold); }
+  .header-left .sub { font-size:12px; color:var(--text2); margin-top:2px; }
+  .badge {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700;
+    letter-spacing:.5px; text-transform:uppercase;
+  }
+  .badge-hold    { background:rgba(255,255,255,.08); color:var(--text2); }
+  .badge-watch   { background:rgba(255,234,0,.12); color:var(--yellow); }
+  .badge-rotate  { background:rgba(0,255,136,.12); color:var(--green); }
+  .badge-confirm { background:rgba(255,136,0,.15); color:var(--orange); }
+
+  .timestamp { font-size:11px; color:var(--text2); margin-top:6px; text-align:right; }
+
+  /* ── 레이아웃 ── */
+  .main { padding:28px 32px; display:grid; gap:24px; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .row3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+  @media(max-width:900px){ .row2,.row3{ grid-template-columns:1fr; } }
+
+  /* ── 카드 ── */
+  .card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:16px; padding:22px;
+  }
+  .card-title { font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.8px; margin-bottom:16px; }
+
+  /* ── 스코어 히어로 ── */
+  .score-hero {
+    display:flex; align-items:center; gap:28px;
+    padding:28px; background:var(--surface2); border-radius:16px; border:1px solid var(--border);
+  }
+  .score-ring {
+    position:relative; width:100px; height:100px; flex-shrink:0;
+  }
+  .score-ring svg { transform:rotate(-90deg); }
+  .score-ring .ring-bg { fill:none; stroke:var(--border); stroke-width:8; }
+  .score-ring .ring-fill { fill:none; stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset .8s ease; }
+  .score-ring .ring-label {
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+  }
+  .score-ring .ring-num { font-size:26px; font-weight:800; line-height:1; }
+  .score-ring .ring-max { font-size:11px; color:var(--text2); }
+  .score-info h2 { font-size:24px; font-weight:800; margin-bottom:6px; }
+  .score-info p  { font-size:13px; color:var(--text2); line-height:1.6; }
+
+  /* ── 신호 5개 ── */
+  .signal-list { display:flex; flex-direction:column; gap:10px; }
+  .signal-item {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 14px; border-radius:10px;
+    background:var(--surface2); border:1px solid transparent;
+  }
+  .signal-item.confirmed { border-color:rgba(0,255,136,.3); }
+  .signal-item.watch { border-color:rgba(255,234,0,.25); }
+  .sig-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .sig-bars { display:flex; gap:3px; margin-left:auto; flex-shrink:0; }
+  .sig-bar { width:6px; height:18px; border-radius:2px; background:var(--border); }
+  .sig-bar.filled { background:var(--blue); }
+  .signal-item.confirmed .sig-bar.filled { background:var(--green); }
+  .signal-item.watch .sig-bar.filled { background:var(--yellow); }
+  .sig-label { font-size:12px; font-weight:600; min-width:120px; }
+  .sig-msg { font-size:11px; color:var(--text2); flex:1; }
+
+  /* ── 스테이지 파이프라인 ── */
+  .stage-pipeline { display:flex; gap:0; overflow-x:auto; padding-bottom:4px; }
+  .stage-node {
+    flex:1; min-width:130px; position:relative;
+    display:flex; flex-direction:column; align-items:center;
+    padding:18px 12px 14px;
+    background:var(--surface2); border:1px solid var(--border);
+    border-right:none; cursor:default;
+    transition:transform .2s;
+  }
+  .stage-node:first-child { border-radius:12px 0 0 12px; }
+  .stage-node:last-child  { border-radius:0 12px 12px 0; border-right:1px solid var(--border); }
+  .stage-node.current {
+    background:rgba(255,255,255,.05);
+    box-shadow:inset 0 0 0 1.5px var(--gold), 0 0 20px rgba(212,175,55,.15);
+  }
+  .stage-node.active { background:rgba(255,255,255,.04); }
+  .stage-color-dot { width:10px; height:10px; border-radius:50%; margin-bottom:8px; }
+  .stage-name { font-size:11px; font-weight:700; text-align:center; margin-bottom:4px; line-height:1.3; }
+  .stage-desc { font-size:10px; color:var(--text2); text-align:center; line-height:1.4; }
+  .stage-change {
+    margin-top:8px; font-size:13px; font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .stage-momentum { font-size:10px; color:var(--text2); margin-top:2px; }
+  .stage-expanding { font-size:9px; margin-top:4px; color:var(--green); font-weight:700; text-transform:uppercase; }
+  .stage-arrow {
+    position:absolute; right:-10px; top:50%; transform:translateY(-50%);
+    font-size:14px; color:var(--text2); z-index:1;
+  }
+  .stage-current-badge {
+    position:absolute; top:6px; right:6px;
+    font-size:8px; font-weight:700; padding:2px 6px;
+    border-radius:4px; background:var(--gold); color:#000;
+    text-transform:uppercase;
+  }
+
+  /* ── 타임라인 차트 ── */
+  .chart-wrap { overflow-x:auto; }
+  .chart-svg { min-width:100%; }
+  .chart-legend { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text2); }
+  .legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+  /* ── 요약 ── */
+  .summary-list { display:flex; flex-direction:column; gap:8px; }
+  .summary-item { font-size:12px; color:var(--text2); line-height:1.5; padding:8px 12px; background:var(--surface2); border-radius:8px; }
+
+  /* ── 전략 박스 ── */
+  .strategy-box {
+    padding:20px; border-radius:12px; text-align:center;
+    background:var(--surface2); border:1px solid var(--border);
+  }
+  .strategy-box .strat-label { font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.8px; margin-bottom:8px; }
+  .strategy-box .strat-val { font-size:20px; font-weight:800; }
+  .strategy-box .strat-desc { font-size:12px; color:var(--text2); margin-top:6px; line-height:1.5; }
+
+  /* ── DART 신호 ── */
+  .dart-item { font-size:11px; padding:8px 12px; background:var(--surface2); border-radius:8px; margin-bottom:6px; border-left:3px solid var(--gold); }
+  .dart-item a { color:var(--blue); text-decoration:none; }
+  .dart-item a:hover { text-decoration:underline; }
+
+  /* ── 종목 칩 ── */
+  .stock-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .stock-chip {
+    display:inline-flex; align-items:center; gap:4px;
+    padding:4px 10px; border-radius:6px; font-size:11px; font-weight:600;
+    background:var(--surface2); border:1px solid var(--border);
+  }
+  .stock-chip.up   { border-color:rgba(0,255,136,.3); color:var(--green); }
+  .stock-chip.down { border-color:rgba(255,0,100,.3); color:#ff4466; }
+
+  /* ── 로딩/에러 ── */
+  .loading { text-align:center; padding:80px; color:var(--text2); font-size:14px; }
+  .error   { text-align:center; padding:40px; color:#ff4466; font-size:14px; background:rgba(255,68,102,.08); border-radius:12px; margin:24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>🔄 순환매 <span>레이더</span></h1>
+    <div class="sub">HOIN Insight — Sector Rotation Engine v5.0 (Rule-based)</div>
+  </div>
+  <div>
+    <div id="strategy-badge" class="badge badge-hold">로딩 중...</div>
+    <div id="timestamp" class="timestamp">—</div>
+  </div>
+</div>
+
+<div id="app"><div class="loading">⚡ 순환매 신호 분석 중...</div></div>
+
+<script>
+// 색상은 rotation_radar.json stages[*].color 에서 읽음 — 하드코딩 없음
+const STAGE_COLORS = {}; // 런타임에 d.stages 로부터 채워짐
+const STAGE_LABELS = {
+  signal_1: '시장폭',
+  signal_2: '호재 무반응',
+  signal_3: '외국인 이동',
+  signal_4: '모멘텀 확산',
+  signal_5: '생태계 확장',
+};
+const SIGNAL_MAX = { signal_1:3, signal_2:1, signal_3:3, signal_4:3, signal_5:3 };
+
+function strategyClass(s) {
+  if (s === 'HOLD') return 'badge-hold';
+  if (s === 'WATCH') return 'badge-watch';
+  if (s === 'ROTATE_CONFIRM') return 'badge-confirm';
+  return 'badge-rotate';
+}
+function changeColor(v) {
+  if (v === null || v === undefined) return 'var(--text2)';
+  return v > 0 ? 'var(--green)' : v < 0 ? '#ff4466' : 'var(--text2)';
+}
+function changeStr(v) {
+  if (v === null || v === undefined) return 'N/A';
+  return (v > 0 ? '+' : '') + v.toFixed(2) + '%';
+}
+function scoreColor(score, max) {
+  const r = score / max;
+  if (r >= .7) return 'var(--green)';
+  if (r >= .4) return 'var(--yellow)';
+  return 'var(--blue)';
+}
+
+async function load() {
+  const app = document.getElementById('app');
+  try {
+    const res = await fetch(`data/monitoring/rotation_radar.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+    render(d);
+  } catch(e) {
+    app.innerHTML = `<div class="error">❌ 데이터 로드 실패: ${e.message}<br><small>rotation_radar.json을 먼저 생성하세요: <code>python scripts/rotation_radar.py</code></small></div>`;
+  }
+}
+
+function render(d) {
+  // 헤더 업데이트
+  const badge = document.getElementById('strategy-badge');
+  badge.textContent = d.strategy + ' — ' + (d.strategy_kor || '');
+  badge.className = 'badge ' + strategyClass(d.strategy);
+  document.getElementById('timestamp').textContent = '마지막 갱신: ' + (d.last_updated || '—');
+
+  const MAX_SCORE = 19;
+  const scoreRatio = Math.min(d.rotation_score / MAX_SCORE, 1);
+  const scoreStroke = Math.round(scoreRatio * 283); // 2π×45
+  const strokeColor = scoreColor(d.rotation_score, MAX_SCORE);
+
+  // ── 신호 목록 ──
+  const signals = d.signals || {};
+  const signalRows = Object.entries(signals).map(([k, v]) => {
+    const max = SIGNAL_MAX[k] || 3;
+    const cls = v.confirmed ? 'confirmed' : (v.score > 0 ? 'watch' : '');
+    const dotColor = v.confirmed ? 'var(--green)' : (v.score > 0 ? 'var(--yellow)' : 'var(--border)');
+    const bars = Array.from({length: max}, (_, i) =>
+      `<div class="sig-bar ${i < v.score ? 'filled' : ''}"></div>`
+    ).join('');
+    return `
+      <div class="signal-item ${cls}">
+        <div class="sig-dot" style="background:${dotColor}"></div>
+        <div class="sig-label">${STAGE_LABELS[k] || k}</div>
+        <div class="sig-msg">${v.message || '—'}</div>
+        <div class="sig-bars">${bars}</div>
+      </div>`;
+  }).join('');
+
+  // ── 스테이지 파이프라인 — 순서와 색상 모두 JSON에서 읽음 ──
+  const stages = d.stages || {};
+  const stageOrder = Object.keys(stages);                  // market_context.json 순서 그대로
+  stageOrder.forEach(sid => {
+    STAGE_COLORS[sid] = (stages[sid] || {}).color || '#888'; // JSON color 필드 사용
+  });
+  const stageNodes = stageOrder.map((sid, i) => {
+    const s = stages[sid] || {};
+    const color = STAGE_COLORS[sid] || '#fff';
+    const isCurrent = s.is_current;
+    const isNext = sid === d.next_stage;
+    const chg = s.avg_change_today;
+    const stockChips = (s.tracking_stocks || []).map(st => {
+      const cls = st.change > 0 ? 'up' : (st.change < 0 ? 'down' : '');
+      return `<span class="stock-chip ${cls}">${st.name} ${changeStr(st.change)}</span>`;
+    }).join('');
+
+    const arrow = i < stageOrder.length - 1
+      ? `<div class="stage-arrow">▶</div>` : '';
+
+    const nextBadge = isNext && !isCurrent
+      ? `<div class="stage-current-badge" style="background:rgba(255,255,255,.15);color:var(--text2)">NEXT</div>` : '';
+    const currBadge = isCurrent
+      ? `<div class="stage-current-badge">PEAK</div>` : '';
+
+    return `
+      <div class="stage-node ${isCurrent ? 'current' : ''} ${s.active ? 'active' : ''}">
+        ${currBadge}${nextBadge}
+        <div class="stage-color-dot" style="background:${color};${isCurrent ? 'box-shadow:0 0 8px '+color : ''}"></div>
+        <div class="stage-name">${s.name || sid}</div>
+        <div class="stage-desc">${s.desc || ''}</div>
+        <div class="stage-change" style="color:${changeColor(chg)}">${chg !== undefined ? changeStr(chg) : '—'}</div>
+        ${s.momentum_expanding ? `<div class="stage-expanding">↑ 모멘텀 가속</div>` : ''}
+        <div class="stock-chips" style="justify-content:center">${stockChips}</div>
+        ${arrow}
+      </div>`;
+  }).join('');
+
+  // ── 타임라인 차트 ──
+  const timeline = d.flow_timeline || [];
+  let chartHtml = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:20px">타임라인 데이터 없음<br><small>collector를 실행해 pykrx 데이터를 수집하세요</small></p>';
+  if (timeline.length > 0) {
+    const allVals = timeline.flatMap(t => Object.values(t.values || {}));
+    const minV = Math.min(...allVals, -1);
+    const maxV = Math.max(...allVals, 1);
+    const W = 600, H = 140, PAD = 28;
+    const innerW = W - PAD * 2;
+    const innerH = H - PAD * 2;
+    const yScale = v => PAD + innerH - ((v - minV) / (maxV - minV)) * innerH;
+    const xScale = i => PAD + (i / (timeline.length - 1)) * innerW;
+
+    const lines = stageOrder.map(sid => {
+      const color = STAGE_COLORS[sid];
+      const pts = timeline.map((t, i) => {
+        const v = (t.values || {})[sid];
+        if (v === undefined) return null;
+        return `${xScale(i).toFixed(1)},${yScale(v).toFixed(1)}`;
+      }).filter(Boolean);
+      if (pts.length < 2) return '';
+      return `<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round" opacity=".85"/>`;
+    }).join('');
+
+    const xLabels = timeline.map((t, i) => {
+      if (i % Math.ceil(timeline.length / 6) !== 0 && i !== timeline.length - 1) return '';
+      return `<text x="${xScale(i).toFixed(1)}" y="${H - 4}" fill="rgba(255,255,255,.3)" font-size="9" text-anchor="middle">${t.date}</text>`;
+    }).join('');
+
+    const legend = stageOrder.map(sid => {
+      const s = stages[sid] || {};
+      return `<span class="legend-item"><span class="legend-dot" style="background:${STAGE_COLORS[sid]}"></span>${s.name || sid}</span>`;
+    }).join('');
+
+    chartHtml = `
+      <div class="chart-legend">${legend}</div>
+      <div class="chart-wrap">
+        <svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+          <line x1="${PAD}" y1="${yScale(0).toFixed(1)}" x2="${W-PAD}" y2="${yScale(0).toFixed(1)}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>
+          ${lines}
+          ${xLabels}
+        </svg>
+      </div>`;
+  }
+
+  // ── DART 신호 ──
+  const dartItems = stageOrder.flatMap(sid => {
+    const s = stages[sid] || {};
+    return (s.dart_signals || []).map(sig =>
+      `<div class="dart-item">
+        <b style="color:${STAGE_COLORS[sid]}">${(stages[sid]||{}).name || sid}</b> —
+        ${sig.company}: <a href="${sig.link}" target="_blank">${sig.title}</a>
+        <span style="color:var(--text2);font-size:10px;margin-left:8px">${sig.date}</span>
+      </div>`
+    );
+  }).join('') || '<p style="color:var(--text2);font-size:12px">수집된 DART 신호 없음 (OPENDART_API_KEY 필요)</p>';
+
+  // ── 전략 설명 ──
+  const stratDesc = {
+    HOLD:           '대장주(반도체) 비중 유지. 이군 섹터 진입 불필요 구간.',
+    WATCH:          '반도체 유지 + 다음 스테이지 소량 선취매 준비.',
+    ROTATE_START:   '반도체 70%+ 유지하면서 에너지 이동 스테이지 비중 추가.',
+    ROTATE_CONFIRM: '순환매 본격화 확인. 에너지 피크 스테이지 비중 적극 확대.',
+  }[d.strategy] || '—';
+
+  // ── 최종 렌더 ──
+  document.getElementById('app').innerHTML = `
+  <div class="main">
+
+    <!-- 스코어 + 전략 -->
+    <div class="row2">
+      <div class="score-hero">
+        <div class="score-ring">
+          <svg viewBox="0 0 100 100" width="100" height="100">
+            <circle class="ring-bg" cx="50" cy="50" r="45"/>
+            <circle class="ring-fill" cx="50" cy="50" r="45"
+              stroke="${strokeColor}"
+              stroke-dasharray="283"
+              stroke-dashoffset="${283 - scoreStroke}"/>
+          </svg>
+          <div class="ring-label">
+            <span class="ring-num" style="color:${strokeColor}">${d.rotation_score}</span>
+            <span class="ring-max">/ ${MAX_SCORE}</span>
+          </div>
+        </div>
+        <div class="score-info">
+          <h2>${d.strategy_kor || '—'}</h2>
+          <p>${stratDesc}</p>
+          <p style="margin-top:10px;font-size:11px">확인된 신호: <b style="color:var(--gold)">${d.confirmed_signals}/5</b>개</p>
+          ${d.breadth_confirmed ? `<p style="color:var(--green);font-size:11px;margin-top:4px">✅ 시장폭 3일 연속 2배+ 확인</p>` : ''}
+        </div>
+      </div>
+      <div class="strategy-box card" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="strat-label">현재 에너지 피크</div>
+        <div class="strat-val" style="color:${STAGE_COLORS[d.current_stage]||'var(--text)'}">
+          ${(stages[d.current_stage]||{}).name || d.current_stage || '감지 중...'}
+        </div>
+        <div class="strat-desc">다음 이동 예상: <b style="color:${STAGE_COLORS[d.next_stage]||'var(--text2)'}">${(stages[d.next_stage]||{}).name || d.next_stage || 'N/A'}</b></div>
+        <div style="margin-top:16px">
+          <div class="strat-label">시장 모드</div>
+          <div style="font-size:14px;margin-top:4px">${d.market_mood || '—'}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신호 5개 -->
+    <div class="card">
+      <div class="card-title">⚡ 순환매 신호 5개</div>
+      <div class="signal-list">${signalRows}</div>
+    </div>
+
+    <!-- 스테이지 파이프라인 -->
+    <div class="card">
+      <div class="card-title">🔄 순환 스테이지 에너지 맵</div>
+      <div class="stage-pipeline">${stageNodes}</div>
+    </div>
+
+    <!-- 타임라인 -->
+    <div class="card">
+      <div class="card-title">📈 15일 스테이지 등락률 타임라인</div>
+      ${chartHtml}
+    </div>
+
+    <!-- DART + 요약 -->
+    <div class="row2">
+      <div class="card">
+        <div class="card-title">📋 DART 공시 신호</div>
+        ${dartItems}
+      </div>
+      <div class="card">
+        <div class="card-title">📝 신호 상세</div>
+        <div class="summary-list">
+          ${(d.summary || []).map(s => `<div class="summary-item">${s}</div>`).join('') || '<p style="color:var(--text2);font-size:12px">—</p>'}
+        </div>
+        <div style="margin-top:16px">
+          <div class="card-title">스테이지 기반 데이터</div>
+          ${stageOrder.map(sid => {
+            const s = stages[sid]||{};
+            if (!s.basis) return '';
+            return `<div class="summary-item"><b style="color:${STAGE_COLORS[sid]}">${s.name}</b><br>${s.basis}</div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>
+
+  </div>`;
+}
+
+load();
+// 5분마다 자동 갱신
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>
