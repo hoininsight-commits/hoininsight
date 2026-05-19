@@ -56,16 +56,33 @@ class SentimentAgent:
                 word_counts.update(valid_words)
 
             premium_sources = ["FT Markets", "CNBC Economy", "CNBC Finance", "Yahoo Finance", "Investing.com", "Bloomberg", "Reuters"]
+            # IB 리포트 탐지 패턴: 목표주가·등급 변경은 경제사냥꾼의 1순위 트리거
+            ib_report_patterns = [
+                "raises target", "cuts target", "raises price target", "cuts price target",
+                "upgrades to buy", "upgrades to", "downgrades to", "initiates coverage",
+                "outperform", "overweight", "underweight", "price target",
+                "analyst note", "analyst rating", "analyst raises", "analyst cuts",
+                "목표주가 상향", "목표주가 하향", "투자의견 상향", "투자의견 하향",
+                "buy rating", "sell rating", "hold rating",
+            ]
+            # IB 리포트 출처 소스
+            ib_sources = ["MarketBeat", "Benzinga Analyst", "Seeking Alpha"]
 
             for h in headlines:
                 words = set(re.findall(r'[a-zA-Z가-힣]+', h["title"].lower()))
                 base_score = sum(word_counts[w] for w in words if w not in stopwords and len(w) > 1)
-                
+
                 # 출처 기반 프리미엄 점수 부여
                 source = h.get("source", "")
+                title_lower = h.get("title", "").lower()
                 if any(ps in source for ps in premium_sources):
-                    base_score += 100  # 프리미엄 매체는 무조건 최상단 배치
-                    
+                    base_score += 100  # 프리미엄 매체
+
+                # IB 리포트 패턴 탐지: 가장 높은 가중치 (경제사냥꾼 1순위 트리거)
+                if any(src in source for src in ib_sources) or any(pat in title_lower for pat in ib_report_patterns):
+                    base_score += 300
+                    h["is_ib_report"] = True
+
                 h["trend_score"] = base_score
 
             headlines.sort(key=lambda x: (x.get("trend_score", 0), x.get("timestamp", "")), reverse=True)
@@ -121,10 +138,11 @@ class SentimentAgent:
 - 일반적인 시장 상황 (Stock Market, Wall Street, S&P 500 등)
 - 루틴한 실적 발표 (Q1 Earnings, Earnings Call, Quarterly Report 등) - 단, 특정 기업의 파격적 실적/사고는 포함 가능
 
-### 🎯 [우선 선정 대상]
-- 오늘 처음 발생한 구체적인 사건 (예: 특정 은행의 대출 중단, 정부의 환율 개입 등)
-- 고유 명사가 포함된 신선한 이슈 (예: 특정 기업의 인수합병, 신기술 발표, 대규모 사기 등)
-- 시장의 심리가 급격히 변하고 있는 구체적인 지점
+### 🎯 [우선 선정 대상 — 최우선 순서]
+1. **IB 리포트 트리거**: Goldman Sachs, UBS, JP Morgan, Morgan Stanley, 키움, 신한, KB 등 주요 기관의 목표주가 상향/하향, 등급 변경 (예: "UBS raises Samsung target to 95,000") — 이것이 경제사냥꾼 토픽의 1순위 트리거
+2. **오늘 처음 발생한 구체적 사건**: 특정 기관 보고서 발표, 기업 실적 서프라이즈, 정책 공시 등
+3. **고유 명사가 포함된 신선한 이슈**: 특정 기업의 인수합병, 신기술 발표 등
+4. 시장의 심리가 급격히 변하고 있는 구체적인 지점
 
 ### 📊 [현재 데이터 풀]
 {full_context}

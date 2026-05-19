@@ -587,16 +587,20 @@ class CollectorAgent:
         headlines = []
         rss_feeds = [
             # 글로벌 경제/금융 (월가 및 거시경제)
-            {"name": "FT Markets", "url": "https://www.ft.com/markets?format=rss"},
-            {"name": "CNBC Economy", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
-            {"name": "CNBC Finance", "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"},
-            {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/news/rssindex"},
-            {"name": "Investing.com", "url": "https://www.investing.com/rss/news_25.rss"},
+            {"name": "FT Markets",      "url": "https://www.ft.com/markets?format=rss"},
+            {"name": "CNBC Economy",    "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html"},
+            {"name": "CNBC Finance",    "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html"},
+            {"name": "Yahoo Finance",   "url": "https://finance.yahoo.com/news/rssindex"},
+            {"name": "Investing.com",   "url": "https://www.investing.com/rss/news_25.rss"},
+            # IB 리포트 / 애널리스트 등급·목표주가 변경 전용
+            {"name": "MarketBeat",      "url": "https://www.marketbeat.com/rss/analyst-ratings/"},
+            {"name": "Benzinga Analyst","url": "https://www.benzinga.com/feeds/analyst-ratings"},
+            {"name": "Seeking Alpha",   "url": "https://seekingalpha.com/market-currents.xml"},
             # 국내 주요 경제지 (실물 경제 및 시장)
-            {"name": "Yonhap English", "url": "https://en.yna.co.kr/RSS/news.xml"},
-            {"name": "연합뉴스", "url": "https://www.yna.co.kr/rss/economy.xml"},
-            {"name": "한국경제", "url": "https://www.hankyung.com/feed/economy"},
-            {"name": "매일경제", "url": "https://www.mk.co.kr/rss/30100041/"},
+            {"name": "Yonhap English",  "url": "https://en.yna.co.kr/RSS/news.xml"},
+            {"name": "연합뉴스",          "url": "https://www.yna.co.kr/rss/economy.xml"},
+            {"name": "한국경제",          "url": "https://www.hankyung.com/feed/economy"},
+            {"name": "매일경제",          "url": "https://www.mk.co.kr/rss/30100041/"},
         ]
 
         def fetch_rss_worker(feed):

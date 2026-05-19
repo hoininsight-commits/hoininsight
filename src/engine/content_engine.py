@@ -174,16 +174,14 @@ class ContentEngine:
         prompt = WRITER_PROMPT_TEMPLATE.format(
             stocks_json=json.dumps(candidate.get("stocks", []), ensure_ascii=False),
             topic=candidate.get("topic", "N/A"),
+            why_today_trigger=candidate.get("why_today_trigger", "오늘 발생한 주요 이벤트"),
+            trigger_source=candidate.get("trigger_source", "시장 데이터"),
             data_chain=json.dumps(data_chain, ensure_ascii=False, indent=2),
-            social_intelligence=json.dumps(social_intel, ensure_ascii=False, indent=2),
             arbiter_rationale=candidate.get("arbiter_rationale", "N/A"),
             hunter_insight=candidate.get("hunter_insight", "N/A"),
-            analysis_json=json.dumps(analysis_data, ensure_ascii=False)
         )
         
-        # JSON 응답을 위한 최종 지시사항 추가 (고충실도 리포트 포맷)
-        prompt += "\n\n반드시 아래 JSON 형식으로만 응답해라:\n"
-        prompt += "{\"title\": \"리포트 제목\", \"script\": \"[본문 내용 (마크다운 형식, 영상 대본 포맷 절대 금지)]\"}"
+        # 프롬프트 템플릿에 JSON 지시사항 포함됨 (writer_prompt.py WRITER_PROMPT_TEMPLATE 말미)
 
         try:
             res = self.gemini.call_json_controlled(

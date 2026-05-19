@@ -1,57 +1,12 @@
 {
-  "topic": "[데이터 통계] AI 중심 시장 변화 포착",
-  "event": "[데이터 통계] AI 중심 시장 변화 포착",
-  "arbiter_rationale": "수집된 1972개의 데이터 노드 중 'AI'(빈도: 31.0)가 가장 강력한 연결 고리로 포착되었습니다.",
-  "hunter_insight": "현재 Trump, China, Korea와(과) 연계된 수급 쏠림이 통계적으로 유의미한 수준입니다.",
-  "data_chain": "통계적 우위 키워드: AI(31.0), Trump(30.0), China(24.0), Korea(18.0), rates(15.0)",
-  "evidence": [
-    {
-      "text": "[NEWS] [2026-05-17] Bain Capital closes largest Asia fund after raising $10.5bn",
-      "url": "https://www.ft.com/content/cf65b157-6a10-4525-851b-508333ee94d0"
-    },
-    {
-      "text": "[NEWS] Buyout firm raised $2.1bn more from external investors than had been targeted",
-      "url": "https://www.ft.com/content/cf65b157-6a10-4525-851b-508333ee94d0"
-    },
-    {
-      "text": "[NEWS] [2026-05-17] How Britain can tackle its mountain of unpaid energy bills",
-      "url": "https://www.ft.com/content/f687a5b7-bc66-44a7-887a-a8c8877c4457"
-    },
-    {
-      "text": "[NEWS] DayOne aims to raise $5bn using new rules intended to boost Asian listings in city-state",
-      "url": "https://www.ft.com/content/602baf9f-9e66-428e-baec-6c2850d5fad5"
-    },
-    {
-      "text": "[NEWS] [2026-05-16] AI boom could end the de-equitisation ‘put’",
-      "url": "https://www.ft.com/content/e2a9af42-27be-4c51-bd56-3f51500fb1e7"
-    },
-    {
-      "text": "[NEWS] [2026-05-15] Peru run-off pits autocrat’s daughter against leftwinger",
-      "url": "https://www.ft.com/content/5332646a-8c75-4c4b-9b97-e664ebdf9bd1"
-    }
-  ],
+  "topic": "[🚨 메타의 4조원 낙점] AI 데이터센터 '혈관' 선점, 가온전선의 역대급 수주와 전력 인프라 낙수효과의 임계점 포착",
+  "event": "[🚨 메타의 4조원 낙점] AI 데이터센터 '혈관' 선점, 가온전선의 역대급 수주와 전력 인프라 낙수효과의 임계점 포착",
+  "why_today_trigger": "2026년 5월 18일 한국경제 단독 보도: 가온전선이 글로벌 빅테크 메타(Meta)에 역대 최대 규모인 4조 원대 버스덕트(Busduct) 공급 계약을 체결했다는 소식과 정부의 1.1조 원 규모 '산업성장펀드' 출범이 교차함",
+  "trigger_type": "MARKET_ACTION",
+  "trigger_source": "한국경제 단독 보도(Item 239) 및 산업통상자원부 산업성장펀드 출범 공시(Item 201)",
+  "arbiter_rationale": "'글로벌 거인의 뒷모습(Giant's Footsteps)' 렌즈를 적용. 엔비디아 칩 확보 전쟁이 일단락된 후, 빅테크의 자금 흐름이 '설계/제조'에서 '인프라(전력/에너지)'로 이동하는 '자금 순환 지도(Capital Flow Map)'의 결정적 증거 포착. 특히 오늘 국고채 10년물 금리가 4.59%를 돌파하며 AI 버블론이 고개를 드는 와중에도(Item 237), 메타가 실물 인프라에 4조 원을 투입했다는 점은 '전술적 위성 자산'이 아닌 '핵심 자산'으로서의 전력 섹터 가치를 증명함",
+  "hunter_insight": "AI 데이터센터의 전력 병목을 해결하는 '버스덕트(Busduct)' 및 '초고압 변압기' 섹터. 칩(Chip)에서 전력(Power)으로 자금이 이동하는 경로상에서 실질적 수주 숫자가 찍히는 제조 기반 인프라 기업",
+  "data_chain": "가온전선-메타 간 4조 원 규모 공급 계약(가온전선 창사 이래 최대 규모), 정부 주도 1.1조 원 '산업성장펀드'의 제조 AI 전환 집중 투자 발표, 오늘 장중 코스피 사이드카 발동에도 불구하고 전력/전선 섹터로의 수급 방어 기제 작동",
   "tier": "MAIN/TIER_1",
-  "source": "DETERMINISTIC_STATISTICS",
-  "stocks": [
-    {
-      "name": "AI",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    },
-    {
-      "name": "CNBC",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    },
-    {
-      "name": "GM",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    },
-    {
-      "name": "DRAM",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    },
-    {
-      "name": "ETF",
-      "rationale": "뉴스 제목 내 주요 키워드 'AI'와 함께 언급됨"
-    }
-  ]
+  "source": "STRATEGIC_HUNT"
 }

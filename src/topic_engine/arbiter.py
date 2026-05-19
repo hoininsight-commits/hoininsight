@@ -42,6 +42,16 @@ class TopicArbiter:
 
         base_condensed_data = "\n".join(raw_context)
 
+        # [WHY_TODAY] 주간 이벤트 캘린더 주입 — 예고형 토픽 생성 가능
+        event_cal_path = Path("data/flow/event_calendar.json")
+        if event_cal_path.exists():
+            try:
+                cal_text = event_cal_path.read_text(encoding="utf-8")
+                base_condensed_data += f"\n\n### [UPCOMING_EVENTS_CALENDAR — 향후 5일 주요 경제 일정]\n{cal_text}\n"
+                print("  📅 [Arbiter] Event calendar injected.")
+            except Exception as e:
+                print(f"  ⚠️ [Arbiter] Event calendar load failed: {e}")
+
         # [v21.1] 자율 심층 리서치 레이어 (Autonomous Deep Research)
         researcher = DeepResearchAgent()
         deep_context = researcher.conduct_research(base_condensed_data)
@@ -80,22 +90,41 @@ class TopicArbiter:
   특정 테마(반도체, 조선 등)에 대한 고정관념을 완전히 버리고, 오직 데이터가 가리키는 **'인과관계의 끝단'**을 추적하십시오.
   {exclude_instruction}
 
-  ### 🏹 [사냥꾼의 3대 전략 렌즈 (The 3 Strategic Lenses)]
-  다음 3가지 관점 중 하나 이상의 강력한 시그널이 포착될 때만 토픽으로 선정하십시오.
+  ### 🏹 [사냥꾼의 4대 전략 렌즈 (The 4 Strategic Lenses)]
+  다음 4가지 관점 중 하나 이상의 강력한 시그널이 포착될 때만 토픽으로 선정하십시오.
 
-  1. **필연적 연쇄 반응 (Structural Chain)**: 
+  1. **IB 리포트 즉각 반응 (IB Report Trigger)** ← 최우선 렌즈:
+     - Goldman Sachs, UBS, JP Morgan, Morgan Stanley, KB증권, 신한, 키움 등 주요 IB·증권사가 **오늘/어제** 새로 발표한 리포트가 있는가?
+     - 목표주가 상향/하향, 투자등급 변경, EPS 추정치 조정, 섹터 전망 변경 중 하나라도 있으면 **즉시 최우선 토픽 후보**로 선정하십시오.
+     - (예: "5월 13일 UBS 니콜라스 가드 팀, 삼성전자 HBM 2027 점유율 40% 전망 상향" → 다음날 즉시 토픽화)
+     - **역설 탐지**: 같은 날 같은 섹터에서 A는 상향, B는 하향이 동시에 나왔다면 그 역설이 진짜 토픽이다.
+       (예: "UBS, 삼성 올리면서 하이닉스는 낮춘 진짜 이유" — 이 구조가 가장 강력한 토픽)
+
+  2. **필연적 연쇄 반응 (Structural Chain)**:
      - "A가 터졌으니, 논리적으로 B가 뒤따를 수밖에 없다"는 기술적/물리적 필연성을 추적하십시오.
      - (예: 전력 소모 폭증 -> 구리선 한계 -> 광통신 전환의 필연성)
-  2. **거대 자본의 입구 (Capital Inflow Scarcity)**: 
+
+  3. **거대 자본의 입구 (Capital Inflow Scarcity)**:
      - 정책 자금, IPO 청약 과열, 특정 섹터로의 수급 쏠림 등 '돈의 길목'이 좁아지며 폭발적 에너지가 모이는 지점을 사냥하십시오.
      - (예: 정부 펀드 150조의 최종 수혜처, 상장 가뭄 속 특정 로봇주로의 자금 집중)
-  3. **글로벌 거인의 뒷모습 (Giant's Footsteps)**: 
+
+  4. **글로벌 거인의 뒷모습 (Giant's Footsteps)**:
      - 엔비디아, 메타, 애플 등 글로벌 빅테크나 거물 투자자들이 '실제로 돈을 쓰고 있는(투자/계약)' 구체적인 행보를 사냥하십시오.
      - (예: 빅테크의 특정 부품사 지분 투자, 미 국방부의 한국 시설 실사 등)
 
+  **[WHY TODAY 원칙 — 필수 검증]**
+  토픽 선정 전 반드시 스스로에게 물으십시오: **"이것이 왜 오늘인가?"**
+  - 어제/오늘 새로 발표된 IB 리포트, 기업 실적, 정부 공시, 법안 통과, 정상회담 결과가 있는가?
+  - "어제 UBS가 발표했다", "오늘 오전 상원이 통과시켰다", "방금 공개된 트럼프 재산 목록" 처럼 구체적 시점과 출처를 WHY_TODAY 필드에 반드시 명시하십시오.
+  - **시점 없는 일반 분석은 토픽이 아닙니다.** 데이터에 "언제"가 없으면 그 토픽은 탈락입니다.
+
+  **[이번 주 이벤트 예고 토픽]**
+  - 향후 2~3일 내 발생할 예정인 이벤트(CPI 발표, FOMC, 실적 발표, 정상회담)가 현재 시장 상황과 결합해 폭발적 결과를 낼 수 있다면 "이번 주 반드시 알아야 할" 예고형 토픽도 강력한 사냥감입니다.
+  - UPCOMING_EVENTS_CALENDAR 데이터를 참조하십시오.
+
   **[사냥 원칙 (Hunting Rules)]**
   1. **고정 테마 금지**: "요즘은 이게 유행이니까"라는 식의 접근은 사냥꾼의 자격 미달입니다. 데이터가 증명하지 못하는 유행은 거부하십시오.
-  2. **이면의 본질(Paradox & Truth)**: 표면적인 뉴스 뒤에 숨겨진 '진짜 의도'나 '수급의 병목'을 찌르십시오.
+  2. **이면의 본질(Paradox & Truth)**: 표면적인 뉴스 뒤에 숨겨진 '진짜 의도'나 '수급의 병목'을 찌르십시오. 특히 A와 B가 동시에 상반된 방향이면 그 역설이 진짜 토픽이다.
   3. **내일 아침의 선점**: 이미 모두가 알고 있는 결과가 아니라, 내일 아침 개장과 동시에 자금이 쏟아져 들어올 '구조적 입구'를 찾아내십시오.
 
   ### 📊 [현재 시장 및 DART 전수 조사 데이터]
@@ -110,8 +139,11 @@ class TopicArbiter:
 
   {{
     "hunting_target_topic": "내일 한국 시장을 뒤흔들 가장 뜨거운 전략적 토픽 제목 (사냥꾼의 톤 유지)",
-    "hunting_rationale": "위 3가지 렌즈 중 어떤 논리로 이 토픽이 선정되었는가? (데이터 간의 인과관계 증명)",
-    "hard_evidence": "DART 공시, 수치 데이터, 글로벌 뉴스 등 사냥의 근거가 된 핵심 팩트",
+    "why_today_trigger": "이 토픽이 오늘인 이유. 어제/오늘 발생한 구체적 이벤트(보고서 발표일, 기관명, 법안 통과, 공시 날짜)를 반드시 명시. 예: '5월 13일 UBS 니콜라스 가드 팀 반도체 리포트 발표'",
+    "trigger_type": "IB_REPORT | EARNINGS | POLITICAL_EVENT | MARKET_ACTION | POLICY | CALENDAR_EVENT 중 하나",
+    "trigger_source": "구체적 출처. 예: UBS 니콜라스 가드 / 미국 상원 표결 / 트럼프 OGE Form 278 / 코스피 장중 8000 급락",
+    "hunting_rationale": "위 4가지 렌즈 중 어떤 논리로 이 토픽이 선정되었는가? 역설(A 상향·B 하향)이 있다면 반드시 명시",
+    "hard_evidence": "DART 공시, IB 리포트 수치, 시장 데이터 등 사냥의 근거가 된 핵심 팩트",
     "next_money_spot": "내일 아침 돈이 몰릴 수밖에 없는 구체적인 섹터 설명",
     "target_stocks": [
       {{
@@ -142,9 +174,19 @@ class TopicArbiter:
                 return {"MAIN": None}
 
             # 3. 결과 래핑 (ContentEngine 호환성 유지)
+            why_today = response.get("why_today_trigger", "")
+            trigger_type = response.get("trigger_type", "UNKNOWN")
+            trigger_source = response.get("trigger_source", "")
+            if why_today:
+                print(f"  📌 [Arbiter] WHY TODAY: {why_today}")
+                print(f"  🏷️  [Arbiter] Trigger: [{trigger_type}] {trigger_source}")
+
             main_topic = {
                 "topic": response.get("hunting_target_topic"),
                 "event": response.get("hunting_target_topic"),
+                "why_today_trigger": why_today,
+                "trigger_type": trigger_type,
+                "trigger_source": trigger_source,
                 "arbiter_rationale": response.get("hunting_rationale"),
                 "hunter_insight": response.get("next_money_spot"),
                 "data_chain": response.get("hard_evidence"),

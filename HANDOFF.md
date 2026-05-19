@@ -4,7 +4,7 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-18 (2차 세션)
+## 마지막 업데이트: 2026-05-19
 
 ---
 
@@ -47,6 +47,20 @@
   - Phase 2: 2개 종속 에이전트 동시 실행
   - 실행 검증 완료: 9/9 성공, 21.4초
 
+### 3차 세션 (2026-05-19) — GitHub 확인 및 코드 개선 커밋
+
+**1. GitHub 레포 상태 확인**
+- `hoininsight-commits/hoininsight` (public) 정상 연결 확인
+- Secrets 12개 등록 완료 (필수 8개 + KRX_ID/PW, YOUTUBE_COOKIES, TELEGRAM_CHAT_ID_TRANSCRIPT)
+
+**2. 코드 개선 사항 커밋 (staged 15개 파일)**
+- `src/prompts/writer_prompt.py`: 프롬프트 대폭 개선 (+143줄)
+- `src/topic_engine/arbiter.py`: 토픽 선정 로직 강화 (+58줄)
+- `src/engine/content_engine.py`: 콘텐츠 엔진 수정
+- `src/agents/collector/`: 수집기 안정성 개선
+- `dashboard/`: 대시보드 데이터 업데이트
+- `data/history/`: 콘텐츠 이력 업데이트
+
 ---
 
 ## 현재 이슈 / 주의사항
@@ -54,7 +68,7 @@
 | 이슈 | 심각도 | 내용 |
 |---|---|---|
 | Gemini API 할당량 초과 | ⚠️ 높음 | `429 RESOURCE_EXHAUSTED` — AI Studio에서 monthly spend cap 확인/조정 필요 |
-| Schedule 루틴 미활성화 | ⚠️ 높음 | GitHub 레포 미연결로 `enabled: false` 상태. GitHub 설정 후 루틴 업데이트 필요 |
+| Schedule 루틴 미활성화 | ⚠️ 높음 | GitHub 레포 연결은 완료. Schedule 루틴만 `enabled: true`로 업데이트 필요 |
 | Python 3.9 사용 중 | ℹ️ 낮음 | google-auth 등에서 deprecation warning. 3.11+ 권장 |
 | Gemini API 모델명 불일치 | ℹ️ 낮음 | `arbiter.py`에서 `gemini-1.5-pro` 참조하나 실제는 `gemini-flash-latest` 사용 |
 
@@ -64,8 +78,8 @@
 
 ### 즉시
 - [ ] Gemini spend cap 조정 (AI Studio) → AI 기반 스크립트 생성 정상화 확인
-- [ ] git init → GitHub 저장소 생성 → Secrets 8개 등록 → Actions 첫 실행 테스트
-- [ ] GitHub 완료 후 → Schedule 루틴 활성화: `enabled: true` + repo URL 추가
+- [x] GitHub 레포 설정 완료 (Secrets 12개 등록)
+- [ ] Schedule 루틴 활성화: `enabled: true` + repo URL 추가 → GitHub Actions 첫 실행 테스트
 
 ### 단기
 - [ ] `src/ui/narratives/` 학습 시스템을 파이프라인에 연동 (현재 고립 상태)

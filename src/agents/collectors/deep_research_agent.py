@@ -1,6 +1,6 @@
 import json
 from typing import List, Dict
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from src.core.gemini_client import GeminiClient
 
 class DeepResearchAgent:
