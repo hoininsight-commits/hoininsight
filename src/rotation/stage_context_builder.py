@@ -318,7 +318,96 @@ def rank_sectors_by_correlation(sector_list: list, leader_returns, leader_ticker
         return []
 
 
-# ── 6. 스테이지 엔트리 생성 ───────────────────────────────
+# ── 6. 생태계 맵 기반 STAGE 2~5 구성 ──────────────────────
+
+def _detect_ecosystem_type(leader_names: list) -> str:
+    """대장주 이름으로 생태계 타입 감지. 미매칭 시 DEFAULT 반환."""
+    from src.rotation.ecosystem_maps import ECOSYSTEM_MAPS, DEFAULT_ECOSYSTEM
+    for eco_type, eco_data in ECOSYSTEM_MAPS.items():
+        keywords = eco_data.get("leader_keywords", [])
+        if any(kw in name for name in leader_names for kw in keywords):
+            return eco_type
+    return DEFAULT_ECOSYSTEM
+
+
+def _resolve_fallback_tickers(tickers: list) -> list:
+    """pykrx로 종목명 조회. 실패 시 코드 그대로 사용."""
+    try:
+        from pykrx import stock
+        result = []
+        for t in tickers:
+            try:
+                name = stock.get_market_ticker_name(t)
+                result.append({"ticker": t, "name": name or t, "change": 0.0})
+            except Exception:
+                result.append({"ticker": t, "name": t, "change": 0.0})
+        return result
+    except Exception:
+        return [{"ticker": t, "name": t, "change": 0.0} for t in tickers]
+
+
+def _build_eco_stages(eco_type: str, sector_list: list) -> dict:
+    """
+    생태계 맵 기반으로 STAGE 2~5 구성.
+    각 스테이지별로 네이버 업종 키워드 매칭 → 종목 추출.
+    매칭 실패 시 fallback_tickers 사용.
+    """
+    from src.rotation.ecosystem_maps import ECOSYSTEM_MAPS, DEFAULT_ECOSYSTEM
+
+    eco_data = ECOSYSTEM_MAPS.get(eco_type, ECOSYSTEM_MAPS[DEFAULT_ECOSYSTEM])
+    eco_stages = eco_data["stages"]
+    stages = {}
+
+    sector_lookup = {s["sector"]: s for s in sector_list}
+
+    for i, (eco_stage, fw) in enumerate(zip(eco_stages, STAGE_FRAMEWORK[1:])):
+        theme = eco_stage["theme"]
+        keywords = eco_stage["sector_keywords"]
+
+        # 네이버 업종에서 키워드 우선순위대로 매칭 (앞 키워드 > 뒤 키워드)
+        best = None
+        for kw in keywords:
+            kw_matched = [s for s in sector_list if kw in s["sector"]]
+            if kw_matched:
+                best = max(kw_matched, key=lambda x: abs(x.get("change", 0)))
+                break
+
+        if best:
+            time.sleep(0.2)
+            tickers = fetch_sector_tickers(best["no"], top_n=5) if best.get("no") else []
+            matched_sector = best["sector"]
+            change_today = best.get("change", 0.0)
+            print(f"  [{i+2}/5] {fw['role']} ← 생태계: {theme} (매칭 업종: {matched_sector}, {change_today:+.2f}%)")
+        else:
+            tickers = _resolve_fallback_tickers(eco_stage.get("fallback_tickers", []))
+            matched_sector = theme
+            change_today = 0.0
+            print(f"  [{i+2}/5] {fw['role']} ← 생태계: {theme} (업종 미매칭 → fallback 종목 사용)")
+
+        ticker_names = [t["name"] for t in tickers]
+        ticker_codes = [t["ticker"] for t in tickers]
+        base_names = [_base_company_name(n) for n in ticker_names]
+        extra = [n for n in base_names if n not in ticker_names]
+
+        stages[fw["id"]] = {
+            "name": f"{fw['role']} — {theme}",
+            "desc": " / ".join(ticker_names[:4]) if ticker_names else theme,
+            "basis": eco_stage["rationale"],
+            "keywords": [matched_sector] + ticker_names[:4] + extra,
+            "tickers": ticker_codes,
+            "color": fw["color"],
+            "is_current": False,
+            "concept": fw["concept"],
+            "ecosystem": eco_type,
+            "theme": theme,
+            "_matched_naver_sector": matched_sector,
+            "_change_today": change_today,
+        }
+
+    return stages
+
+
+# ── 7. 스테이지 엔트리 생성 (상관계수 방식 — fallback용) ────
 
 def _base_company_name(name: str) -> str:
     """우선주 접미사 제거: '대신증권2우B' → '대신증권', '삼성전자우' → '삼성전자'"""
@@ -401,12 +490,9 @@ class StageContextBuilder:
         leader_names = [l["name"] for l in leaders]
         print(f"  ✅ 대장주 {len(leaders)}종목 (집중도 {concentration:.1f}%): {', '.join(leader_names)}")
 
-        # ── 대장주 수익률 시계열 ──
-        print("  📈 대장주 수익률 시계열 계산 중...")
-        leader_returns = get_leader_returns(leaders)
-        if leader_returns.empty:
-            print("  ❌ 대장주 수익률 계산 실패 — 빌드 중단")
-            return False
+        # ── 생태계 타입 감지 ──
+        eco_type = _detect_ecosystem_type(leader_names)
+        print(f"  🗺 생태계 타입 감지: {eco_type}")
 
         # ── 네이버 업종 리스트 ──
         print("  🌐 네이버 업종 데이터 수집 중...")
@@ -415,17 +501,10 @@ class StageContextBuilder:
             print("  ❌ 업종 데이터 수집 실패 — 빌드 중단")
             return False
 
-        # ── STAGE 2~5: 상관계수 기반 랭킹 ──
-        print(f"  📊 상위 {PRE_FILTER_TOP_N}개 업종 상관계수 계산 중...")
-        ranked = rank_sectors_by_correlation(sectors, leader_returns, leader_ticker_set)
-        if len(ranked) < 4:
-            print(f"  ❌ 유효 업종 부족 ({len(ranked)}개) — 빌드 중단")
-            return False
-
         # ── 스테이지 조합 ──
         stages = {}
 
-        # STAGE 1: 대장주
+        # STAGE 1: 대장주 (시총 자동 탐지)
         leader_names_str = " / ".join(leader_names[:5])
         stages["STAGE_1_SPARK"] = {
             "name": f"대장주 — {leader_names_str}",
@@ -436,27 +515,14 @@ class StageContextBuilder:
             "color": STAGE_FRAMEWORK[0]["color"],
             "is_current": False,
             "concept": STAGE_FRAMEWORK[0]["concept"],
+            "ecosystem": eco_type,
             "_concentration_pct": concentration,
             "_leaders": leaders,
         }
 
-        # STAGE 2~5: 상관계수 순 배정
-        for i, framework in enumerate(STAGE_FRAMEWORK[1:]):
-            if i >= len(ranked):
-                break
-            sector_info = ranked[i]
-            tickers = sector_info.get("_preview_tickers") or []
-            if not tickers and sector_info.get("no"):
-                tickers = fetch_sector_tickers(sector_info["no"], top_n=5)
-                time.sleep(0.2)
-
-            entry = build_stage_entry(framework, sector_info, tickers)
-            print(
-                f"  [{i+2}/5] {framework['role']} ← {sector_info['sector']} "
-                f"(상관계수 {sector_info['corr_to_leader']:.2f}, "
-                f"5일모멘텀 {sector_info['momentum_5d']:+.1f}%)"
-            )
-            stages[framework["id"]] = entry
+        # STAGE 2~5: 생태계 맵 기반 배정
+        eco_stages = _build_eco_stages(eco_type, sectors)
+        stages.update(eco_stages)
 
         # ── 기존 컨텍스트 보존값 ──
         existing = {}
