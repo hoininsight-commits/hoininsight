@@ -38,9 +38,9 @@ def main():
                 from src.agents.collector import CollectorAgent
                 pipeline_results["collector"] = CollectorAgent().run()
             elif name == "ROTATION":
-                from scripts.rotation_radar import RotationRadar
-                radar = RotationRadar()
-                pipeline_results["rotation"] = radar.run()
+                from scripts.rotation_radar import run as rotation_run
+                rotation_run()
+                pipeline_results["rotation"] = {"status": "ok"}
             elif name == "DETECTOR":
                 from src.agents.detector import DetectorAgent
                 pipeline_results["detector"] = DetectorAgent().run()
