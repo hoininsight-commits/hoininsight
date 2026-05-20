@@ -100,7 +100,10 @@ def get_dart_signals(stages_config: dict, days: int = 3) -> dict:
         if df is None or df.empty:
             return {}
 
-        target = df[df["report_nm"].str.contains("공급계약|시설투자|수주", na=False)]
+        target = df[df["report_nm"].str.contains(
+            "공급계약|시설투자|수주|투자결정|전략적제휴|업무협약|자기주식|합병|분할|MOU",
+            na=False
+        )]
         result = {}
 
         for _, row in target.iterrows():

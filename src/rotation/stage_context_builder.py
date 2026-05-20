@@ -320,6 +320,12 @@ def rank_sectors_by_correlation(sector_list: list, leader_returns, leader_ticker
 
 # ── 6. 스테이지 엔트리 생성 ───────────────────────────────
 
+def _base_company_name(name: str) -> str:
+    """우선주 접미사 제거: '대신증권2우B' → '대신증권', '삼성전자우' → '삼성전자'"""
+    cleaned = re.sub(r'(\d+우[AB]?|우[AB]?|\d+[AB]?)$', '', name).strip()
+    return cleaned if cleaned else name
+
+
 def build_stage_entry(framework: dict, sector_info: dict, tickers: list) -> dict:
     sector_name = sector_info.get("sector", "")
     role = framework["role"]
@@ -328,7 +334,11 @@ def build_stage_entry(framework: dict, sector_info: dict, tickers: list) -> dict
 
     name = f"{role} — {sector_name}"
     desc = " / ".join(ticker_names[:4]) if ticker_names else sector_name
-    keywords = [sector_name] + ticker_names[:4]
+
+    # 우선주 접미사 제거한 기본 회사명도 키워드에 추가 (DART 매칭용)
+    base_names = [_base_company_name(n) for n in ticker_names]
+    extra = [n for n in base_names if n not in ticker_names]
+    keywords = [sector_name] + ticker_names[:4] + extra
 
     change_today = sector_info.get("change", 0.0)
     mom_5d = sector_info.get("momentum_5d", 0.0)

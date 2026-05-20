@@ -50,7 +50,8 @@ def _strategy_for_score(score: int) -> tuple:
 def _peak_stage(stage_changes: dict):
     if not stage_changes:
         return None
-    return max(stage_changes, key=stage_changes.get)
+    best = max(stage_changes, key=stage_changes.get)
+    return best if stage_changes[best] > 0 else None
 
 
 def _next_stage(current):

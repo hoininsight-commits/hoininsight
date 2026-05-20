@@ -4,11 +4,52 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-20 (7차 세션)
+## 마지막 업데이트: 2026-05-20 (9차 세션)
 
 ---
 
 ## 현재 상태 (완료)
+
+### 9차 세션 (2026-05-20) — 순환매 레이더 버그 수정 및 DART 개선
+
+**수정 사항**
+- `src/rotation/confirmation_engine.py`: 전 섹터 하락 시 `current_stage`가 "가장 덜 빠진 섹터"로 잘못 선정되던 버그 수정 → 양봉 없으면 `None` 반환
+- `scripts/rotation_radar.py`: DART 검색 키워드 확장 (`공급계약|시설투자|수주` → +`투자결정|전략적제휴|업무협약|자기주식|합병|분할|MOU`)
+- `src/rotation/stage_context_builder.py`: 우선주 접미사 제거 함수 추가 (`대신증권2우B` → `대신증권`), DART 매칭 키워드 자동 확장
+
+**분석 사항 (미구현)**
+- 경제사냥꾼 영상 5개 신호와 현재 코드 대조 완료
+  - Signal 4(이익 추정치 상향)가 가격 모멘텀으로 잘못 대체됨 → FN가이드 컨센서스 데이터 연동 필요
+  - 스테이지 섹터가 상관계수 기반이라 반도체 밸류체인 순서와 불일치
+- 스테이지 설계 방향 결정: **B안 채택 예정** — 대장주별 고정 생태계 맵 + 종목은 자동
+  - 반도체 대장일 때: 전력기기 → 기판/장비 → 방산/로봇 → 금융/소비재 고정
+  - 대장주 변경 시 맵 추가하는 구조
+
+**다음 세션 우선 작업**
+1. 스테이지 생태계 맵 고정 (반도체 기준) + 종목 자동 추출 구현
+2. Signal 4 FN가이드 컨센서스 연동 또는 대체 지표 설계
+
+---
+
+## 현재 상태 (완료)
+
+### 8차 세션 (2026-05-20) — GitHub Actions 수정 및 push
+
+**수정 사항**
+- `requirements.txt`: `duckduckgo-search` → `ddgs` 교체
+  - DetectorAgent가 `from ddgs import DDGS`로 이미 교체됐으나 requirements.txt가 미반영 상태였음
+  - 원인: 2차 세션에서 `deep_research_agent.py` 수정 시 requirements.txt 동기화 누락
+- `git push` 완료 (origin/main 반영됨)
+- `workflow_dispatch`로 Actions 수동 트리거 → 실행 중 확인
+
+**확인 사항**
+- GitHub 레포 `hoininsight-commits/hoininsight` 이미 존재 ✅
+- Secrets 12개 모두 설정됨 ✅
+- Actions 워크플로우 5개 중 `HOIN Daily Intelligence Pipeline`이 주력 파이프라인
+- 워크플로우가 두 개 중복(`HOIN Daily Intelligence Pipeline` / `HOIN Insight Daily Pipeline`) — 정리 필요
+- `youtube_data/transcripts/`, `docs/dashboard.html` untracked 상태 — gitignore 추가 또는 커밋 결정 필요
+
+---
 
 ### 7차 세션 (2026-05-20) — Karpathy 스킬 설치 + 자동화 훅 추가
 
