@@ -4,7 +4,43 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-20 (9차 세션)
+## 마지막 업데이트: 2026-05-20 (10차 세션)
+
+---
+
+## 현재 상태 (완료)
+
+### 10차 세션 (2026-05-20) — 순환매 생태계 맵 고정 + Pages 배포 수정 + 파이프라인 오류 수정
+
+**구현 사항**
+
+#### 1. 순환매 스테이지 생태계 맵 고정 (`ecosystem_maps.py` 신규)
+- 기존 상관계수 자동 배정 → 경제사냥꾼 프레임워크 기반 고정 생태계 맵으로 교체
+- `src/rotation/ecosystem_maps.py` 신규: 대장주 유형별(반도체/2차전지/방산/바이오) 순환 생태계 정의
+  - STAGE 2: 전력 / 에너지 인프라 (전기장비)
+  - STAGE 3: 기판 / 반도체 장비 (반도체와반도체장비)
+  - STAGE 4: 방산 / 로봇 / 조선 (우주항공과국방)
+  - STAGE 5: 금융 / 소비재 (증권)
+- `stage_context_builder.py`: 생태계 감지 함수 + 네이버 업종 키워드 우선순위 매칭 추가
+- 대장주 변경 시 `ecosystem_maps.py`에 맵 추가만 하면 자동 전환되는 구조
+
+#### 2. GitHub Pages rotation_radar.html 404 수정
+- 원인: `daily_pipeline.yml`이 `dashboard/`와 `data/`만 `_site`로 복사, `docs/` 미포함
+- 수정: Step 3에 `cp -r docs/. _site/` 추가
+- 결과: `https://hoininsight-commits.github.io/hoininsight/rotation_radar.html` 200 OK
+
+#### 3. run_full_pipeline.py ROTATION 단계 ImportError 수정
+- 원인: `RotationRadar` 클래스 없이 `run()` 함수만 존재하는데 클래스 임포트 시도
+- 수정: `RotationRadar().run()` → `from scripts.rotation_radar import run as rotation_run; rotation_run()`
+
+**현재 알려진 이슈**
+- Signal 4(이익 추정치 상향)가 가격 모멘텀으로 대체된 상태 — FN가이드 컨센서스 연동 미구현
+- Gemini monthly spend cap 초과 중 → AI Studio에서 한도 조정 필요
+- `youtube_data/transcripts/`, `docs/dashboard.html` untracked 상태
+
+**다음 세션 우선 작업**
+1. Signal 4 FN가이드 컨센서스 연동 또는 대체 지표 설계
+2. Gemini spend cap 해결 후 파이프라인 정상 동작 확인
 
 ---
 
