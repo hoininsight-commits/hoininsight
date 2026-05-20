@@ -59,8 +59,12 @@ jobs:
           mkdir -p _site
           cp -r dashboard _site/
           cp -r data _site/
-          # 루트에 index.html이 없으므로 dashboard/index.html을 루트로 복사하여 접근성 향상
-          cp dashboard/index.html _site/index.html
+          # docs/ 전체 복사 (rotation_radar.html 등 정적 페이지 포함)
+          cp -r docs/. _site/
+          # 루트 index.html은 docs/index.html 우선, 없으면 dashboard/index.html
+          if [ ! -f _site/index.html ]; then
+            cp dashboard/index.html _site/index.html
+          fi
 
       - name: Step 4 - Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
