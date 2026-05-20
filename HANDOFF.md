@@ -4,11 +4,39 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-19 (5차 세션)
+## 마지막 업데이트: 2026-05-20 (7차 세션)
 
 ---
 
 ## 현재 상태 (완료)
+
+### 7차 세션 (2026-05-20) — Karpathy 스킬 설치 + 자동화 훅 추가
+
+**설치 사항**
+- `~/.claude/plugins/marketplaces/claude-plugins-official/plugins/andrej-karpathy-skills/skills/karpathy-guidelines/SKILL.md` 신규 생성
+  - Andrej Karpathy LLM 코딩 실수 방지 가이드라인 4가지 (Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution)
+  - `/karpathy-guidelines` 스킬로 호출 가능 (Claude Code 재시작 후 활성화)
+- `.claude/settings.json` PreToolUse 훅 추가: `git push` 실행 전 HANDOFF.md 자동 업데이트 systemMessage 주입
+
+---
+
+### 6차 세션 (2026-05-19) — LearnerAgent 구조 확인
+
+**확인 사항**
+- `src/agents/learner_agent.py` — 경제사냥꾼 유튜브 스크립트 수집 전담 에이전트
+- `scripts/auto_learner.py` — LearnerAgent 실행 진입점 (KST 라운드 자동 판별)
+- 실행 흐름: `auto_learner.py` → `LearnerAgent.run_evolution_loop()` → `run_watcher()` (대본 수집) → DNA 분석 (현재 중단)
+- DNA 분석 단계는 Gemini API 할당량 문제로 주석 처리 상태 — 파일 저장만 진행됨
+- **이번 세션에서 실제 실행은 하지 않음**
+
+**실행 방법 (집에서 재개 시)**
+```bash
+cd /Users/jihopa/claude/hoininsight
+source hoin_venv/bin/activate
+python scripts/auto_learner.py
+```
+
+---
 
 ### 1차 세션 (2026-05-18) — 구조 정비
 

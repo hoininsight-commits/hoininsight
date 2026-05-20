@@ -22,6 +22,18 @@
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json; d=json.load(sys.stdin); cmd=d.get('tool_input',{}).get('command',''); ('git push' in cmd) and print(json.dumps({'systemMessage': '[HOIN 자동화] git push 감지 — HANDOFF.md 마지막 업데이트, 현재 상태, 다음 할 일 섹션을 이 세션 작업 내용으로 먼저 업데이트하고 커밋에 포함하세요.'}))\" 2>/dev/null || true",
+            "statusMessage": "HANDOFF.md 업데이트 확인 중..."
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Bash",
