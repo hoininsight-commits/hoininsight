@@ -4,7 +4,7 @@
 Signal 1: 시장폭 — advancing > declining × 2 연속 streak
 Signal 2: 호재 무반응 — 대장주 KOSPI 대비 지속 언더퍼폼
 Signal 3: 외국인 수급 이동 — 반도체 연속 순매도 + 타 업종 연속 순매수
-Signal 4: 모멘텀 확장 — 비대장 스테이지 5일 모멘텀 > 20일 모멘텀
+Signal 4: 이익 추정치 상향 — 네이버 리서치 대장주 목표주가 상향 리포트 탐지
 Signal 5: 생태계 확장 — 3개 이상 스테이지 동반 양봉
 """
 
@@ -247,72 +247,151 @@ def compute_signal_3(raw_dir: Path) -> dict:
     }
 
 
-# ─── Signal 4: 모멘텀 확장 ─────────────────────────────────
+# ─── Signal 4: 이익 추정치 상향 ────────────────────────────
 
 LEAD_STAGE = "STAGE_1_SPARK"
 
-def compute_signal_4(stages: dict) -> dict:
-    """비대장 스테이지의 5일 모멘텀이 20일 모멘텀을 상회하면 자금 유입 가속."""
+_NAVER_RESEARCH_URL = (
+    "https://finance.naver.com/research/company_list.naver"
+    "?searchType=itemCode&itemCode={ticker}"
+)
+_NAVER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    )
+}
+# 제목에 이 키워드가 있으면 상향 리포트로 간주
+_UPGRADE_KEYWORDS = ["상향", "목표 상향", "TP 상향", "목표가 상향", "투자의견 상향", "Up"]
+# 제목에 이 키워드가 있으면 하향/중립으로 제외
+_DOWNGRADE_KEYWORDS = ["하향", "중립", "HOLD", "SELL", "매도"]
+
+
+def _fetch_research_reports(ticker: str, days: int = 7) -> list[dict]:
+    """네이버 증권 리서치 리포트 스크래핑 (최근 N일)"""
+    import requests
+    from bs4 import BeautifulSoup
+
+    cutoff = datetime.now() - timedelta(days=days)
+    url = _NAVER_RESEARCH_URL.format(ticker=ticker)
+
     try:
-        import pandas as pd
-        from pykrx import stock
+        resp = requests.get(url, headers=_NAVER_HEADERS, timeout=10)
+        resp.encoding = "euc-kr"
+        soup = BeautifulSoup(resp.text, "html.parser")
 
-        start, end = _pykrx_date_range(40)
+        table = soup.find("table", class_="type_1")
+        if not table:
+            return []
 
-        expanding = []
-        stage_data = {}
-
-        for stage_id, info in stages.items():
-            if stage_id == LEAD_STAGE:
+        reports = []
+        for row in table.find_all("tr"):
+            cols = row.find_all("td")
+            if len(cols) < 5:
                 continue
 
-            tickers = info.get("tickers", [])
-            series_list = []
-
-            for ticker in tickers:
-                try:
-                    df = stock.get_market_ohlcv_by_date(start, end, ticker)
-                    if not df.empty:
-                        series_list.append(df["등락률"])
-                except Exception:
-                    continue
-
-            if not series_list:
-                stage_data[stage_id] = {"status": "NO_DATA"}
+            title_tag = cols[1].find("a")
+            date_td = cols[4]
+            if not title_tag or not date_td:
                 continue
 
-            combined = pd.concat(series_list, axis=1).mean(axis=1)
-            avg_5d = float(combined.tail(5).mean())
-            avg_20d = float(combined.tail(20).mean())
+            title = title_tag.get_text().strip()
+            date_str = date_td.get_text().strip()  # 형식: "26.05.21"
 
-            # 최근 5일이 20일 평균보다 강하고 절대값도 양봉 → 자금 유입 가속
-            is_expanding = avg_5d > avg_20d and avg_5d > 0.3
+            try:
+                report_date = datetime.strptime("20" + date_str, "%Y.%m.%d")
+            except ValueError:
+                continue
 
-            if is_expanding:
-                expanding.append(stage_id)
+            if report_date < cutoff:
+                break  # 날짜 내림차순 정렬이므로 이후는 모두 오래된 것
 
-            stage_data[stage_id] = {
-                "avg_5d": round(avg_5d, 2),
-                "avg_20d": round(avg_20d, 2),
-                "expanding": is_expanding
-            }
+            reports.append({"title": title, "date": date_str})
 
-        confirmed = len(expanding) >= 2
-        score = min(len(expanding), 3)
+        return reports
 
-        icon = "✅" if confirmed else "⏸"
-        return {
-            "score": score,
-            "confirmed": confirmed,
-            "status": "EXPANDING" if confirmed else "IDLE",
-            "expanding_stages": expanding,
-            "stage_data": stage_data,
-            "message": f"{icon} {len(expanding)}개 스테이지 모멘텀 확장: {expanding}"
+    except Exception:
+        return []
+
+
+def _classify_report(title: str) -> str:
+    """리포트 제목 → 'upgrade' / 'downgrade' / 'neutral'"""
+    if any(kw in title for kw in _DOWNGRADE_KEYWORDS):
+        return "downgrade"
+    if any(kw in title for kw in _UPGRADE_KEYWORDS):
+        return "upgrade"
+    return "neutral"
+
+
+def compute_signal_4(context_path: Path = None) -> dict:
+    """
+    네이버 증권 리서치에서 대장주 목표주가 상향 리포트를 탐지해
+    이익 추정치 개선 신호를 계산한다.
+
+    confirmed 조건: 대장주 중 2종목 이상 최근 7일 내 상향 리포트 보유
+    score: 상향 리포트 확인 종목 수 (최대 3)
+    """
+    lead_tickers = _load_lead_tickers(context_path)
+
+    per_stock: dict[str, dict] = {}
+    upgrade_stock_count = 0
+    all_upgrade_reports: list[dict] = []
+
+    for ticker, name in lead_tickers.items():
+        reports = _fetch_research_reports(ticker, days=7)
+        if not reports:
+            per_stock[name] = {"total": 0, "upgrades": 0, "reports": []}
+            continue
+
+        classified = [{"title": r["title"], "date": r["date"],
+                        "type": _classify_report(r["title"])} for r in reports]
+        upgrades = [r for r in classified if r["type"] == "upgrade"]
+
+        per_stock[name] = {
+            "total": len(classified),
+            "upgrades": len(upgrades),
+            "reports": classified[:5],  # 최신 5개만 보관
         }
 
-    except Exception as e:
-        return {"score": 0, "confirmed": False, "status": "ERROR",
-                "error": str(e), "message": f"❌ Signal4 오류: {e}"}
+        if upgrades:
+            upgrade_stock_count += 1
+            all_upgrade_reports.extend(
+                {"ticker": ticker, "name": name, **r} for r in upgrades
+            )
+
+    if not per_stock:
+        return {
+            "score": 0, "confirmed": False, "status": "NO_DATA",
+            "message": "⚠️ 리서치 데이터 없음",
+            "per_stock": {},
+            "upgrade_reports": [],
+        }
+
+    confirmed = upgrade_stock_count >= 2
+    score = min(upgrade_stock_count, 3)
+
+    if confirmed:
+        status = "UPGRADE_CONFIRMED"
+    elif upgrade_stock_count == 1:
+        status = "UPGRADE_WATCH"
+    else:
+        status = "NO_UPGRADE"
+
+    icon = "✅" if confirmed else ("👀" if upgrade_stock_count == 1 else "⏸")
+    stocks_with_upgrade = [n for n, d in per_stock.items() if d["upgrades"] > 0]
+
+    return {
+        "score": score,
+        "confirmed": confirmed,
+        "status": status,
+        "upgrade_stock_count": upgrade_stock_count,
+        "per_stock": per_stock,
+        "upgrade_reports": all_upgrade_reports[:10],
+        "message": (
+            f"{icon} 목표주가 상향 {upgrade_stock_count}개 종목: "
+            f"{stocks_with_upgrade or '없음'}"
+        ),
+    }
 
 
 # ─── Signal 5: 생태계 확장 ─────────────────────────────────

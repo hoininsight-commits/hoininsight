@@ -4,7 +4,40 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-20 (10차 세션)
+## 마지막 업데이트: 2026-05-21 (11차 세션)
+
+---
+
+## 현재 상태 (완료)
+
+### 11차 세션 (2026-05-21) — Signal 4 네이버 리서치 스크래핑으로 교체
+
+**구현 사항**
+
+#### Signal 4: 모멘텀 확장 → 이익 추정치 상향으로 교체
+- 기존: 비대장 스테이지 5일 모멘텀 > 20일 모멘텀 (pykrx 기반 가격 모멘텀)
+- 신규: 네이버 증권 리서치 리포트 스크래핑 → 대장주 목표주가 상향 탐지
+- `src/rotation/signals.py`
+  - `compute_signal_4(stages)` → `compute_signal_4(context_path)` 시그니처 변경
+  - `_fetch_research_reports(ticker, days=7)`: 네이버 리서치 HTML 스크래핑 (EUC-KR 디코딩)
+  - `_classify_report(title)`: 키워드 기반 upgrade/downgrade/neutral 분류
+  - confirmed 조건: 대장주 2종목 이상 최근 7일 내 상향 리포트 보유
+  - score 0~3 (상향 확인 종목 수 기준)
+- `src/rotation/confirmation_engine.py`: Signal 4 `stage_data` 참조 제거, 스테이지 피크는 Signal 5만 사용
+- `scripts/rotation_radar.py`: Signal 4 호출 인자 변경 (`stages_config` → `CONTEXT_PATH`), `stages_out`에서 momentum 필드 제거
+
+**동작 확인**
+- `python scripts/rotation_radar.py --force` 오류 없이 완료
+- 오늘(2026-05-21) 상향 리포트 없음 → NO_UPGRADE(score 0) 정상 반영
+
+**현재 알려진 이슈**
+- Signal 4(이익 추정치 상향)가 가격 모멘텀으로 대체된 상태 — FN가이드 컨센서스 연동 미구현
+- Gemini monthly spend cap 초과 중 → AI Studio에서 한도 조정 필요
+- `youtube_data/transcripts/`, `docs/dashboard.html` untracked 상태
+
+**다음 세션 우선 작업**
+1. Gemini spend cap 해결 후 파이프라인 정상 동작 확인
+2. Signal 3 외국인 수급 — `sector_flow_*.json` 수집 경로 확인 후 연동
 
 ---
 
@@ -251,6 +284,7 @@ python scripts/auto_learner.py
 - [x] GitHub 레포 설정 완료 (Secrets 12개 등록)
 - [ ] Schedule 루틴 활성화: `enabled: true` + repo URL 추가 → GitHub Actions 첫 실행 테스트
 - [x] `rotation_radar.html` 데이터 로드 실패 수정 (NaN→null 처리 + docs/ 동기화)
+- [x] Signal 4 네이버 리서치 스크래핑으로 교체 (이익 추정치 상향 탐지)
 - [ ] Signal 3 (외국인 수급 이동) — `sector_flow_*.json` 수집 경로 확인 후 연동 검증
 - [ ] `collector` 실행 후 rotation_radar 재실행해서 Signal 3~5 실제 데이터로 검증
 

@@ -188,7 +188,7 @@ def run():
         "signal_1": sig.compute_signal_1(RAW_DIR),
         "signal_2": sig.compute_signal_2(CONTEXT_PATH),
         "signal_3": sig.compute_signal_3(RAW_DIR),
-        "signal_4": sig.compute_signal_4(stages_config),
+        "signal_4": sig.compute_signal_4(CONTEXT_PATH),
         "signal_5": sig.compute_signal_5(stages_config),
     }
 
@@ -214,24 +214,25 @@ def run():
         return sum(s["change"] for s in stocks) / len(stocks)
 
     stages_out = {}
+    s4_upgrade_reports = computed_signals["signal_4"].get("upgrade_reports", [])
+    s4_per_stock = computed_signals["signal_4"].get("per_stock", {})
+
     for sid, info in stages_config.items():
         avg_chg = _avg_change(sid)
-        s4_info = computed_signals["signal_4"].get("stage_data", {}).get(sid, {})
 
         stages_out[sid] = {
-            "name":               info["name"],
-            "desc":               info.get("desc", ""),
-            "basis":              info.get("basis", ""),
-            "color":              _stage_color(sid),
-            "is_current":         sid == evaluation.get("current_stage"),
-            "active":             sid in evaluation.get("active_stages", []) or bool(dart_signals.get(sid)),
-            "dart_signals":       dart_signals.get(sid, []),
-            "tracking_stocks":    tracking_data.get(sid, []),
-            "avg_change_today":   round(avg_chg, 2),
-            "momentum_5d":        s4_info.get("avg_5d"),
-            "momentum_20d":       s4_info.get("avg_20d"),
-            "momentum_expanding": s4_info.get("expanding", False),
+            "name":             info["name"],
+            "desc":             info.get("desc", ""),
+            "basis":            info.get("basis", ""),
+            "color":            _stage_color(sid),
+            "is_current":       sid == evaluation.get("current_stage"),
+            "active":           sid in evaluation.get("active_stages", []) or bool(dart_signals.get(sid)),
+            "dart_signals":     dart_signals.get(sid, []),
+            "tracking_stocks":  tracking_data.get(sid, []),
+            "avg_change_today": round(avg_chg, 2),
         }
+
+    # Signal 4 리포트 정보는 stages 아닌 signal_detail에 그대로 노출됨
 
     # ── 최종 JSON 저장 ──
     analysis = {

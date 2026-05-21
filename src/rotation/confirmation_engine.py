@@ -2,11 +2,11 @@
 5개 신호 종합 판정 + 스테이지 이동 감지
 
 점수 체계:
-  Signal 1 (시장폭)      × 2  → 최대 6점
-  Signal 2 (호재 무반응) × 1  → 최대 1점
-  Signal 3 (수급 이동)   × 2  → 최대 6점
-  Signal 4 (모멘텀 확장) × 1  → 최대 3점
-  Signal 5 (생태계 확장) × 1  → 최대 3점
+  Signal 1 (시장폭)          × 2  → 최대 6점
+  Signal 2 (호재 무반응)     × 1  → 최대 1점
+  Signal 3 (수급 이동)       × 2  → 최대 6점
+  Signal 4 (이익 추정치 상향) × 1  → 최대 3점
+  Signal 5 (생태계 확장)     × 1  → 최대 3점
   합계 최대 19점
 
 전략 맵:
@@ -81,15 +81,8 @@ def evaluate(signals: dict, stages: dict) -> dict:
     # 현재 에너지 피크 스테이지 (Signal 5 당일 등락률 기반)
     stage_changes = signals.get("signal_5", {}).get("stage_changes", {})
 
-    # Signal 4의 5일 모멘텀도 참고해 피크 보정
-    s4_data = signals.get("signal_4", {}).get("stage_data", {})
-    momentum_map = {
-        sid: s4_data[sid].get("avg_5d", 0)
-        for sid in s4_data if s4_data[sid].get("avg_5d") is not None
-    }
-
-    # 당일 등락률이 없으면 5일 모멘텀으로 대체
-    combined_map = {**momentum_map, **stage_changes}
+    # 당일 등락률 기준으로 피크 스테이지 결정 (Signal 5만 사용)
+    combined_map = stage_changes
 
     current_stage = _peak_stage(combined_map)
     next_stg = _next_stage(current_stage)
