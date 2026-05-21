@@ -226,7 +226,7 @@ def run():
             "basis":            info.get("basis", ""),
             "color":            _stage_color(sid),
             "is_current":       sid == evaluation.get("current_stage"),
-            "active":           sid in evaluation.get("active_stages", []) or bool(dart_signals.get(sid)),
+            "active":           avg_chg > 0 or sid in evaluation.get("active_stages", []) or bool(dart_signals.get(sid)),
             "dart_signals":     dart_signals.get(sid, []),
             "tracking_stocks":  tracking_data.get(sid, []),
             "avg_change_today": round(avg_chg, 2),

@@ -4,9 +4,17 @@
 
 import json
 import os
+import re
 from pathlib import Path
 from datetime import datetime
 from src.utils.target_date import get_target_ymd, get_current_round
+
+try:
+    import requests
+    from bs4 import BeautifulSoup
+    _HTTP_OK = True
+except ImportError:
+    _HTTP_OK = False
 
 class FlowCollector:
     name = "FLOW"
@@ -23,17 +31,20 @@ class FlowCollector:
 
     def run(self):
         print(f"🌊 AGENT-01 FLOW_COLLECTOR 시작 [{self.today}]")
-        
+
         try:
             # 1. 외국인 수급 데이터 입수 (기존 market.json 활용 및 가공)
             self.collect_foreign_flow()
-            
-            # 2. ETF Flow 데이터 입수 (글로벌 자금 흐름)
+
+            # 2. 업종별 외국인 순매수 — Signal 3용 (네이버 frgn.naver 스크래핑)
+            self.collect_sector_flow()
+
+            # 3. ETF Flow 데이터 입수 (글로벌 자금 흐름)
             self.collect_etf_flow()
-            
-            # 3. 이벤트 캘린더 추출 (consensus.json 활용)
+
+            # 4. 이벤트 캘린더 추출 (consensus.json 활용)
             self.collect_event_calendar()
-            
+
             print("  ✅ Flow 데이터 레이어 구축 완료")
             return {
                 "agent": self.name,
@@ -74,6 +85,88 @@ class FlowCollector:
             }
             (self.flow_dir / "foreign_flow.json").write_text(json.dumps(flow_data, indent=2))
         except: pass
+
+    def collect_sector_flow(self):
+        """스테이지별 외국인 순매수 수집 → sector_flow_{today}.json 저장 (Signal 3 입력)
+
+        market_context.json의 각 스테이지 tickers를 기반으로
+        네이버 frgn.naver를 스크래핑해 업종별 외국인 순매수(주수)를 합산한다.
+        STAGE_1(대장주)은 sector명을 '전기전자'로 고정 (SEMI_KEYWORDS 매칭용).
+        """
+        if not _HTTP_OK:
+            print("  ⚠️ requests/bs4 미설치 — sector_flow 수집 건너뜀")
+            return
+
+        context_path = self.base_dir / "data/monitoring/market_context.json"
+        if not context_path.exists():
+            print("  ⚠️ market_context.json 없음 — rotation_radar 먼저 실행 필요")
+            return
+
+        try:
+            context = json.loads(context_path.read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"  ⚠️ market_context.json 파싱 실패: {e}")
+            return
+
+        stages = context.get("stages", {})
+        sectors = []
+
+        # STAGE_1 sector명 고정 (대장주 = 전기전자, SEMI_KEYWORDS 매칭)
+        stage_sector_map = {
+            "STAGE_1_SPARK": "전기전자",
+        }
+
+        for stage_key, stage_data in stages.items():
+            sector_name = stage_sector_map.get(
+                stage_key,
+                stage_data.get("_matched_naver_sector", stage_key)
+            )
+            tickers = stage_data.get("tickers", [])[:3]  # 상위 3종목만
+
+            total_foreign = 0
+            for ticker in tickers:
+                net = self._fetch_foreign_net(ticker)
+                if net is not None:
+                    total_foreign += net
+
+            sectors.append({"sector": sector_name, "foreigner": total_foreign})
+            print(f"    {sector_name}: 외국인 {total_foreign:+,}주")
+
+        if not sectors:
+            return
+
+        flow_data = {
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "data": {"sectors": sectors}
+        }
+
+        self.raw_dir.mkdir(parents=True, exist_ok=True)
+        out_path = self.raw_dir / f"sector_flow_{self.today}.json"
+        out_path.write_text(json.dumps(flow_data, indent=2, ensure_ascii=False))
+        print(f"  ✅ sector_flow 저장: {out_path.name}")
+
+    def _fetch_foreign_net(self, ticker: str):
+        """네이버 frgn.naver에서 최근 확정 거래일의 외국인 순매수(주수) 반환."""
+        url = f"https://finance.naver.com/item/frgn.naver?code={ticker}"
+        headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
+        try:
+            res = requests.get(url, headers=headers, timeout=8)
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            for table in soup.find_all("table"):
+                ths = [th.text.strip() for th in table.find_all("th")]
+                if "외국인" not in ths or "날짜" not in ths:
+                    continue
+                for row in table.find_all("tr"):
+                    cols = [td.text.strip() for td in row.find_all("td")]
+                    if len(cols) < 7:
+                        continue
+                    raw = cols[6].replace(",", "").replace("+", "").strip()
+                    if raw and re.match(r"^-?\d+$", raw):
+                        return int(raw)
+            return None
+        except Exception:
+            return None
 
     def collect_etf_flow(self):
         """ETF 순유입/유출 데이터 (프록시 데이터 사용 또는 수집)"""

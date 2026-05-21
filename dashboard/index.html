@@ -238,6 +238,38 @@
         .gauge-lbl { display:flex; justify-content:space-between; font-size:.62rem; color:var(--dim); font-family:'Orbitron'; margin-bottom:3px; }
         .rdr-foot { text-align:center; margin-top:46px; color:#333; font-size:.65rem; font-family:'Orbitron'; }
         .rdr-loading { text-align:center; padding:60px; color:var(--primary); font-family:'Orbitron'; font-size:.72rem; letter-spacing:2px; }
+
+        /* ── 스코어 / 전략 배지 ── */
+        .score-strategy { display:flex; gap:10px; margin-bottom:4px; }
+        .score-badge { background:rgba(0,242,255,.08); border:1px solid rgba(0,242,255,.2); border-radius:12px; padding:10px 18px; text-align:center; min-width:90px; }
+        .score-num { font-family:'Orbitron'; font-size:1.5rem; font-weight:900; color:var(--primary); line-height:1; }
+        .score-denom { font-size:.7rem; color:rgba(0,242,255,.5); }
+        .score-lbl { font-size:.52rem; color:var(--dim); font-family:'Orbitron'; margin-top:3px; letter-spacing:1px; }
+        .strategy-badge { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:10px 18px; text-align:center; }
+        .strategy-txt { font-size:.85rem; font-weight:800; color:#fff; }
+        .strategy-lbl { font-size:.52rem; color:var(--dim); font-family:'Orbitron'; margin-top:3px; letter-spacing:1px; }
+
+        /* ── 신호 5개 패널 ── */
+        .signals-panel { max-width:1800px; margin:0 auto 28px; }
+        .signals-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+        @media(max-width:900px){ .signals-grid{ grid-template-columns:repeat(2,1fr); } }
+        .sig-card { background:var(--card-bg); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:18px 16px; transition:all .3s; }
+        .sig-card.confirmed { border-color:var(--green); box-shadow:0 0 24px rgba(0,255,136,.1); }
+        .sig-card.watching  { border-color:#ffea00; box-shadow:0 0 24px rgba(255,234,0,.08); }
+        .sig-num { font-family:'Orbitron'; font-size:.55rem; color:var(--dim); letter-spacing:2px; margin-bottom:4px; }
+        .sig-name-kr { font-size:.82rem; font-weight:800; margin-bottom:8px; color:#fff; }
+        .sig-badge { display:inline-block; padding:2px 9px; border-radius:4px; font-family:'Orbitron'; font-size:.5rem; font-weight:700; margin-bottom:10px; letter-spacing:.5px; }
+        .sig-badge.ok    { background:rgba(0,255,136,.15); color:var(--green); }
+        .sig-badge.watch { background:rgba(255,234,0,.15); color:#ffea00; }
+        .sig-badge.idle  { background:rgba(255,255,255,.05); color:var(--dim); }
+        .sig-score-wrap { margin-bottom:10px; }
+        .sig-score-row { display:flex; justify-content:space-between; font-size:.58rem; color:var(--dim); font-family:'Orbitron'; margin-bottom:4px; }
+        .sig-bar-bg { height:5px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
+        .sig-bar-fill { height:100%; border-radius:3px; transition:width .8s ease-out; }
+        .sig-msg-txt { font-size:.62rem; color:#aaa; line-height:1.55; word-break:keep-all; }
+        .sig-detail { margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.05); }
+        .sig-detail-row { display:flex; justify-content:space-between; font-size:.6rem; padding:2px 0; color:#888; }
+        .sig-detail-row span:last-child { color:#ccc; font-weight:600; }
     </style>
 </head>
 <body>
@@ -299,9 +331,21 @@
         <div id="rdr-loading" class="rdr-loading">⚡ ANALYZING WATERFLOW...</div>
 
         <div id="rdr-hdr" class="radar-hdr" style="display:none">
-            <div>
-                <div class="radar-title">ROTATION RADAR</div>
-                <div id="mkt-msg" class="mkt-msg">ANALYZING...</div>
+            <div style="display:flex;align-items:flex-end;gap:18px">
+                <div>
+                    <div class="radar-title">ROTATION RADAR</div>
+                    <div id="mkt-msg" class="mkt-msg">ANALYZING...</div>
+                </div>
+                <div class="score-strategy">
+                    <div class="score-badge">
+                        <div class="score-num"><span id="score-val">—</span><span class="score-denom"> / 19</span></div>
+                        <div class="score-lbl">SCORE</div>
+                    </div>
+                    <div class="strategy-badge">
+                        <div id="strategy-txt" class="strategy-txt">—</div>
+                        <div class="strategy-lbl">STRATEGY</div>
+                    </div>
+                </div>
             </div>
             <div class="breadth-board">
                 <div class="stat-item"><div class="stat-lbl">ADVANCING</div><div id="adv" class="stat-val up">—</div></div>
@@ -314,6 +358,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- ── 신호 5개 패널 ── -->
+        <div id="signals-panel" class="signals-panel" style="display:none">
+            <div class="signals-grid" id="signals-grid"></div>
         </div>
 
         <div id="rdr-timeline" class="timeline-sec" style="display:none">
@@ -524,16 +573,96 @@ async function loadRadar() {
 function renderRadar(d) {
     document.getElementById('rdr-loading').style.display = 'none';
     document.getElementById('rdr-hdr').style.display = 'flex';
+    document.getElementById('signals-panel').style.display = 'block';
     document.getElementById('rdr-timeline').style.display = 'block';
     document.getElementById('rdr-foot').style.display = 'block';
 
+    // 헤더 — 스코어 / 전략
+    document.getElementById('score-val').innerText = d.rotation_score ?? '—';
+    document.getElementById('strategy-txt').innerText = d.strategy_kor || d.strategy || '—';
+    document.getElementById('mkt-msg').innerText = 'CURRENT: ' + (d.current_stage_name || (d.current_stage||'—')).toUpperCase();
+    document.getElementById('sync-time').innerText = d.last_updated || '—';
+
+    // 헤더 — 시장폭
     const b = d.breadth || {};
     document.getElementById('adv').innerText = b.today_adv ?? '—';
     document.getElementById('dec').innerText = b.today_dec ?? '—';
     document.getElementById('ratio').innerText = b.today_ratio != null ? b.today_ratio.toFixed(2) : '—';
-    document.getElementById('mkt-msg').innerText = 'CURRENT FOCUS: ' + (d.current_stage_name || '—').toUpperCase();
-    document.getElementById('sync-time').innerText = d.last_updated || '—';
     for (let i=1; i<=3; i++) document.getElementById('s'+i).classList.toggle('on', i <= (b.streak_days||0));
+
+    // ── 신호 5개 패널 ──────────────────────────────────────
+    const SIG_META = [
+        { key:'signal_1', name:'시장폭',        desc:'상승>하락×2 연속', maxScore:3,  color:'#00f2ff' },
+        { key:'signal_2', name:'호재 무반응',   desc:'대장주 지수 언더퍼폼', maxScore:3,  color:'#ff8800' },
+        { key:'signal_3', name:'외국인 수급',   desc:'반도체 외인 순매도 이동', maxScore:3,  color:'#ff007a' },
+        { key:'signal_4', name:'이익 추정 상향',desc:'대장주 목표주가 상향', maxScore:3,  color:'#b47fff' },
+        { key:'signal_5', name:'생태계 확장',   desc:'3개+ 스테이지 동반 상승', maxScore:7,  color:'#00ff88' },
+    ];
+    const sigs = d.signals || {};
+    const sigDetail = d.signal_detail || {};
+    const sigGrid = document.getElementById('signals-grid');
+    sigGrid.innerHTML = '';
+
+    SIG_META.forEach(meta => {
+        const s = sigs[meta.key] || {};
+        const det = sigDetail[meta.key] || {};
+        const confirmed = s.confirmed === true || s.confirmed === 'True';
+        const watching  = !confirmed && (s.score > 0 || s.status === 'WATCH' || s.status === 'MIGRATION_WATCH');
+        const score = s.score || 0;
+        const pct = Math.min((score / meta.maxScore) * 100, 100);
+
+        const badgeCls = confirmed ? 'ok' : watching ? 'watch' : 'idle';
+        const badgeTxt = confirmed ? 'CONFIRMED' : watching ? 'WATCHING' : 'IDLE';
+        const cardCls  = confirmed ? 'confirmed' : watching ? 'watching' : '';
+
+        // 신호별 상세 정보 rows
+        let detailRows = '';
+        if (meta.key === 'signal_1' && det.streak !== undefined) {
+            detailRows += `<div class="sig-detail-row"><span>연속 일수</span><span>${det.streak}일</span></div>`;
+            if (det.latest_advancing) detailRows += `<div class="sig-detail-row"><span>상승/하락</span><span>${det.latest_advancing} / ${det.latest_declining}</span></div>`;
+        }
+        if (meta.key === 'signal_2') {
+            if (det.lead_avg_5d !== undefined) detailRows += `<div class="sig-detail-row"><span>대장주 5일평균</span><span>${det.lead_avg_5d > 0 ? '+' : ''}${(+det.lead_avg_5d).toFixed(2)}%</span></div>`;
+            if (det.kospi_5d !== undefined) detailRows += `<div class="sig-detail-row"><span>KOSPI 5일</span><span>${det.kospi_5d > 0 ? '+' : ''}${(+det.kospi_5d).toFixed(2)}%</span></div>`;
+        }
+        if (meta.key === 'signal_3') {
+            if (det.semi_sell_streak !== undefined) detailRows += `<div class="sig-detail-row"><span>반도체 순매도</span><span>${det.semi_sell_streak}일 연속</span></div>`;
+            const ts = det.target_sectors || {};
+            const moved = Object.keys(ts);
+            if (moved.length) detailRows += `<div class="sig-detail-row"><span>이동 업종</span><span>${moved.slice(0,2).join(', ')}</span></div>`;
+        }
+        if (meta.key === 'signal_4') {
+            if (det.upgrade_stock_count !== undefined) detailRows += `<div class="sig-detail-row"><span>상향 종목</span><span>${det.upgrade_stock_count}개</span></div>`;
+            const perStock = det.per_stock || {};
+            Object.entries(perStock).slice(0,2).forEach(([name, v]) => {
+                if (v.upgrades > 0) detailRows += `<div class="sig-detail-row"><span>${name}</span><span>+${v.upgrades}건</span></div>`;
+            });
+        }
+        if (meta.key === 'signal_5') {
+            const pos = det.positive_stages || det.rising_stages || [];
+            detailRows += `<div class="sig-detail-row"><span>상승 스테이지</span><span>${pos.length}개</span></div>`;
+            const changes = det.stage_changes || {};
+            Object.entries(changes).slice(0, 2).forEach(([stg, chg]) => {
+                const stgNum = stg.match(/STAGE_(\d)/)?.[1];
+                detailRows += `<div class="sig-detail-row"><span>S${stgNum}</span><span style="color:var(--green)">+${(+chg).toFixed(1)}%</span></div>`;
+            });
+        }
+
+        const sigCard = document.createElement('div');
+        sigCard.className = `sig-card ${cardCls}`;
+        sigCard.innerHTML = `
+            <div class="sig-num">SIGNAL ${meta.key.slice(-1)}</div>
+            <div class="sig-name-kr">${meta.name}</div>
+            <span class="sig-badge ${badgeCls}">${badgeTxt}</span>
+            <div class="sig-score-wrap">
+                <div class="sig-score-row"><span>SCORE</span><span>${score} / ${meta.maxScore}</span></div>
+                <div class="sig-bar-bg"><div class="sig-bar-fill" style="width:${pct}%;background:${meta.color}"></div></div>
+            </div>
+            <div class="sig-msg-txt">${s.message || '—'}</div>
+            ${detailRows ? `<div class="sig-detail">${detailRows}</div>` : ''}
+        `;
+        sigGrid.appendChild(sigCard);
+    });
 
     const stIds = Object.keys(d.stages || {});
     const tl = d.flow_timeline || [];

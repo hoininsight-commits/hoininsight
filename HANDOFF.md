@@ -4,7 +4,31 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-21 (11차 세션)
+## 마지막 업데이트: 2026-05-21 (13차 세션)
+
+---
+
+## 현재 상태 (진행 중)
+
+### 13차 세션 (2026-05-21) — Signal 3 외국인 수급 연동 완료
+
+**로컬 서버 설정 (확정)**
+- 8765 포트: `docs/` 서버 (rotation_radar.html 등)
+- 8766 포트: **`hoininsight/` 루트**에서 실행 (중요: `dashboard/`에서 실행하면 content_log.json 404)
+- **메인 진입점: `http://localhost:8766/dashboard/index.html`** ← 확정
+- 서버 시작: `cd /Users/jihopa/claude/hoininsight && python3 -m http.server 8766 &`
+
+**완료**
+- 인스타뷰 탭 카드뉴스 그리드 정상 표시 확인 ✅
+- Signal 3 외국인 수급 연동 완료 ✅
+
+**Signal 3 구현 내용 (`src/agents/collector/flow_collector.py`)**
+- `collect_sector_flow()` 추가: `market_context.json` 스테이지별 tickers → 네이버 `frgn.naver` 스크래핑
+- `_fetch_foreign_net(ticker)`: 최근 확정 거래일 외국인 순매수(주수) 파싱
+- 저장 위치: `data/raw/{today}/{round}/sector_flow_{today}.json`
+- STAGE_1(대장주) sector명 = "전기전자" 고정 (SEMI_KEYWORDS 매칭)
+- `FlowCollector.run()`에서 자동 호출 → collector 실행 시 Signal 3 데이터 자동 생성
+- 2026-05-21 실행 결과: 전기전자 -5,823,631주 / 전기장비 +864,607주 / 반도체장비 -106,701주 등
 
 ---
 
@@ -285,8 +309,8 @@ python scripts/auto_learner.py
 - [ ] Schedule 루틴 활성화: `enabled: true` + repo URL 추가 → GitHub Actions 첫 실행 테스트
 - [x] `rotation_radar.html` 데이터 로드 실패 수정 (NaN→null 처리 + docs/ 동기화)
 - [x] Signal 4 네이버 리서치 스크래핑으로 교체 (이익 추정치 상향 탐지)
-- [ ] Signal 3 (외국인 수급 이동) — `sector_flow_*.json` 수집 경로 확인 후 연동 검증
-- [ ] `collector` 실행 후 rotation_radar 재실행해서 Signal 3~5 실제 데이터로 검증
+- [x] Signal 3 (외국인 수급 이동) — FlowCollector에 sector_flow 수집 추가, rotation_radar 연동 확인
+- [ ] `collector` 실행 후 rotation_radar 재실행해서 Signal 3~5 실제 데이터로 검증 (Signal 3 단독은 완료)
 
 ### 단기
 - [ ] `src/ui/narratives/` 학습 시스템을 파이프라인에 연동 (현재 고립 상태)
