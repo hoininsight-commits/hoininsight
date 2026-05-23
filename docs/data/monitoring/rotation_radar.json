@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-05-22 19:08:10",
+  "last_updated": "2026-05-23 00:20:00",
   "market_mood": "자동 생성",
-  "rotation_score": 3,
+  "rotation_score": 0,
   "strategy": "HOLD",
   "strategy_kor": "대장주 유지, 관망",
   "rotation_active": false,
   "breadth_confirmed": false,
-  "current_stage": "STAGE_3_BODY",
-  "next_stage": "STAGE_4_SOUL",
-  "confirmed_signals": 1,
+  "current_stage": null,
+  "next_stage": null,
+  "confirmed_signals": 0,
   "signals": {
     "signal_1": {
       "score": 0,
@@ -35,10 +35,10 @@
       "message": "⏸ 목표주가 상향 0개 종목: 없음"
     },
     "signal_5": {
-      "score": 3,
-      "confirmed": true,
-      "status": "ECOSYSTEM_EXPANDING",
-      "message": "✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
+      "score": 0,
+      "confirmed": false,
+      "status": "IDLE",
+      "message": "⏸ 0개 생태계 스테이지 동반 상승: []"
     }
   },
   "signal_detail": {
@@ -151,22 +151,12 @@
       "message": "⏸ 목표주가 상향 0개 종목: 없음"
     },
     "signal_5": {
-      "score": 3,
-      "confirmed": true,
-      "status": "ECOSYSTEM_EXPANDING",
-      "positive_stages": [
-        "STAGE_2_SKELETON",
-        "STAGE_3_BODY",
-        "STAGE_4_SOUL",
-        "STAGE_5_TAIL"
-      ],
-      "stage_changes": {
-        "STAGE_2_SKELETON": 14.12,
-        "STAGE_3_BODY": 27.49,
-        "STAGE_4_SOUL": 10.9,
-        "STAGE_5_TAIL": 3.84
-      },
-      "message": "✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
+      "score": 0,
+      "confirmed": false,
+      "status": "IDLE",
+      "positive_stages": [],
+      "stage_changes": {},
+      "message": "⏸ 0개 생태계 스테이지 동반 상승: []"
     }
   },
   "flow_timeline": [
@@ -233,7 +223,7 @@
     {
       "date": "05/12",
       "values": {
-        "STAGE_1_SPARK": -2.7725382293876413,
+        "STAGE_1_SPARK": -2.772538229387641,
         "STAGE_2_SKELETON": -5.711645114276884,
         "STAGE_3_BODY": 2.1934742768459685,
         "STAGE_4_SOUL": -3.2876995202504515,
@@ -283,7 +273,7 @@
     {
       "date": "05/19",
       "values": {
-        "STAGE_1_SPARK": -5.004243432865254,
+        "STAGE_1_SPARK": -5.0042434328652545,
         "STAGE_2_SKELETON": -0.2473416056237845,
         "STAGE_3_BODY": -0.07842481300003454,
         "STAGE_4_SOUL": -1.0581996436577128,
@@ -293,7 +283,7 @@
     {
       "date": "05/20",
       "values": {
-        "STAGE_1_SPARK": -0.5164411715684779,
+        "STAGE_1_SPARK": -0.5164411715684778,
         "STAGE_2_SKELETON": -1.2796097319621587,
         "STAGE_3_BODY": 1.4936753183792626,
         "STAGE_4_SOUL": -6.210884495284456,
@@ -313,7 +303,7 @@
     {
       "date": "05/22",
       "values": {
-        "STAGE_1_SPARK": -0.717634506190333,
+        "STAGE_1_SPARK": -0.7176345061903331,
         "STAGE_2_SKELETON": 14.115816416280307,
         "STAGE_3_BODY": 27.491886912304892,
         "STAGE_4_SOUL": 10.90148901684395,
@@ -334,30 +324,30 @@
         {
           "name": "현대차",
           "ticker": "005380",
-          "change": -1.6516516516516515
-        },
-        {
-          "name": "SK스퀘어",
-          "ticker": "402340",
-          "change": 0.5089058524173028
+          "change": 0.0
         },
         {
           "name": "삼성전자우",
           "ticker": "005935",
-          "change": -0.1597444089456869
+          "change": 0.0
         },
         {
           "name": "SK하이닉스",
           "ticker": "000660",
-          "change": 0.051546391752577324
+          "change": 0.0
+        },
+        {
+          "name": "SK스퀘어",
+          "ticker": "402340",
+          "change": 0.0
         },
         {
           "name": "삼성전자",
           "ticker": "005930",
-          "change": -2.337228714524207
+          "change": 0.0
         }
       ],
-      "avg_change_today": -0.72
+      "avg_change_today": 0.0
     },
     "STAGE_2_SKELETON": {
       "name": "직접 수혜 — 전력 / 에너지 인프라",
@@ -365,43 +355,43 @@
       "basis": "반도체 팹 전력 수요 급증 → 전력기기/변압기/UPS 발주 직접 수혜",
       "color": "#00ff88",
       "is_current": false,
-      "active": true,
+      "active": false,
       "dart_signals": [],
       "tracking_stocks": [
         {
           "name": "비나텍",
           "ticker": "126340",
-          "change": 19.09795630725863
+          "change": 0.0
         },
         {
           "name": "키스트론",
           "ticker": "475430",
-          "change": 18.57292759706191
+          "change": 0.0
         },
         {
           "name": "썬테크",
           "ticker": "217320",
-          "change": 14.959145191703332
+          "change": 0.0
         },
         {
           "name": "KBI메탈",
           "ticker": "024840",
-          "change": 10.88534107402032
+          "change": 0.0
         },
         {
           "name": "서진시스템",
           "ticker": "178320",
-          "change": 7.063711911357341
+          "change": 0.0
         }
       ],
-      "avg_change_today": 14.12
+      "avg_change_today": 0.0
     },
     "STAGE_3_BODY": {
       "name": "2차 수혜 — 기판 / 반도체 장비",
       "desc": "시지트로닉스 / 피델릭스 / 미래산업 / 인텍플러스",
       "basis": "팹 증설 발주 → 반도체 장비/기판/소재 2차 수혜",
       "color": "#ffea00",
-      "is_current": true,
+      "is_current": false,
       "active": true,
       "dart_signals": [
         {
@@ -421,30 +411,30 @@
         {
           "name": "시지트로닉스",
           "ticker": "429270",
-          "change": 29.985443959243085
+          "change": 0.0
         },
         {
           "name": "피델릭스",
           "ticker": "032580",
-          "change": 29.953917050691242
+          "change": 0.0
         },
         {
           "name": "미래산업",
           "ticker": "025560",
-          "change": 29.891304347826086
+          "change": 0.0
         },
         {
           "name": "인텍플러스",
           "ticker": "064290",
-          "change": 26.67844522968198
+          "change": 0.0
         },
         {
           "name": "주성엔지니어링",
           "ticker": "036930",
-          "change": 20.950323974082075
+          "change": 0.0
         }
       ],
-      "avg_change_today": 27.49
+      "avg_change_today": 0.0
     },
     "STAGE_4_SOUL": {
       "name": "이익 확산 — 방산 / 로봇 / 조선",
@@ -452,36 +442,36 @@
       "basis": "AI/자동화 수요 확대 + 국방 예산 증가 → 방산/로봇/조선 이익 확산",
       "color": "#ff8800",
       "is_current": false,
-      "active": true,
+      "active": false,
       "dart_signals": [],
       "tracking_stocks": [
         {
           "name": "아스트",
           "ticker": "067390",
-          "change": 12.164296998420221
+          "change": 0.0
         },
         {
           "name": "그린광학",
           "ticker": "0015G0",
-          "change": 12.040816326530612
+          "change": 0.0
         },
         {
           "name": "켄코아에어로스페이스",
           "ticker": "274090",
-          "change": 11.545988258317024
+          "change": 0.0
         },
         {
           "name": "RF머트리얼즈",
           "ticker": "327260",
-          "change": 9.761634506242906
+          "change": 0.0
         },
         {
           "name": "삼양컴텍",
           "ticker": "484590",
-          "change": 8.994708994708994
+          "change": 0.0
         }
       ],
-      "avg_change_today": 10.9
+      "avg_change_today": 0.0
     },
     "STAGE_5_TAIL": {
       "name": "낙수 효과 — 금융 / 소비재",
@@ -502,30 +492,30 @@
         {
           "name": "삼성증권",
           "ticker": "016360",
-          "change": 6.127450980392156
+          "change": 0.0
         },
         {
           "name": "LS네트웍스",
           "ticker": "000680",
-          "change": 4.503311258278146
+          "change": 0.0
         },
         {
           "name": "NH투자증권",
           "ticker": "005940",
-          "change": 2.978056426332288
+          "change": 0.0
         },
         {
           "name": "다우데이타",
           "ticker": "032190",
-          "change": 2.8301886792452833
+          "change": 0.0
         },
         {
           "name": "신영증권",
           "ticker": "001720",
-          "change": 2.7762354247640197
+          "change": 0.0
         }
       ],
-      "avg_change_today": 3.84
+      "avg_change_today": 0.0
     }
   },
   "summary": [
@@ -533,6 +523,6 @@
     "[SIGNAL_2] ⏸ 대장주 5일 +0.9% vs KOSPI +1.1% (차이 -0.2%)",
     "[SIGNAL_3] ⚠️ 수급 데이터 없음",
     "[SIGNAL_4] ⏸ 목표주가 상향 0개 종목: 없음",
-    "[SIGNAL_5] ✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
+    "[SIGNAL_5] ⏸ 0개 생태계 스테이지 동반 상승: []"
   ]
 }
