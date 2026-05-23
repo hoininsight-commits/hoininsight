@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-23 00:20:00",
+  "last_updated": "2026-05-23 07:39:35",
   "market_mood": "자동 생성",
   "rotation_score": 0,
   "strategy": "HOLD",
@@ -193,7 +193,7 @@
     {
       "date": "05/07",
       "values": {
-        "STAGE_1_SPARK": 1.6472303858136523,
+        "STAGE_1_SPARK": 1.647230385813652,
         "STAGE_2_SKELETON": 2.607980220285974,
         "STAGE_3_BODY": 0.618592327743046,
         "STAGE_4_SOUL": -2.1702510592993467,
@@ -223,7 +223,7 @@
     {
       "date": "05/12",
       "values": {
-        "STAGE_1_SPARK": -2.772538229387641,
+        "STAGE_1_SPARK": -2.7725382293876413,
         "STAGE_2_SKELETON": -5.711645114276884,
         "STAGE_3_BODY": 2.1934742768459685,
         "STAGE_4_SOUL": -3.2876995202504515,
@@ -273,7 +273,7 @@
     {
       "date": "05/19",
       "values": {
-        "STAGE_1_SPARK": -5.0042434328652545,
+        "STAGE_1_SPARK": -5.004243432865254,
         "STAGE_2_SKELETON": -0.2473416056237845,
         "STAGE_3_BODY": -0.07842481300003454,
         "STAGE_4_SOUL": -1.0581996436577128,
@@ -303,7 +303,7 @@
     {
       "date": "05/22",
       "values": {
-        "STAGE_1_SPARK": -0.7176345061903331,
+        "STAGE_1_SPARK": -0.717634506190333,
         "STAGE_2_SKELETON": 14.115816416280307,
         "STAGE_3_BODY": 27.491886912304892,
         "STAGE_4_SOUL": 10.90148901684395,
@@ -322,18 +322,13 @@
       "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "현대차",
-          "ticker": "005380",
-          "change": 0.0
-        },
-        {
           "name": "삼성전자우",
           "ticker": "005935",
           "change": 0.0
         },
         {
-          "name": "SK하이닉스",
-          "ticker": "000660",
+          "name": "삼성전자",
+          "ticker": "005930",
           "change": 0.0
         },
         {
@@ -342,8 +337,13 @@
           "change": 0.0
         },
         {
-          "name": "삼성전자",
-          "ticker": "005930",
+          "name": "SK하이닉스",
+          "ticker": "000660",
+          "change": 0.0
+        },
+        {
+          "name": "현대차",
+          "ticker": "005380",
           "change": 0.0
         }
       ],
