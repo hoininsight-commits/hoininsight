@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-24 12:07:54",
+  "last_updated": "2026-05-24 18:09:41",
   "market_mood": "자동 생성",
   "rotation_score": 0,
   "strategy": "HOLD",
@@ -193,7 +193,7 @@
     {
       "date": "05/07",
       "values": {
-        "STAGE_1_SPARK": 1.6472303858136523,
+        "STAGE_1_SPARK": 1.647230385813652,
         "STAGE_2_SKELETON": 2.607980220285974,
         "STAGE_3_BODY": 0.618592327743046,
         "STAGE_4_SOUL": -2.1702510592993467,
@@ -243,7 +243,7 @@
     {
       "date": "05/14",
       "values": {
-        "STAGE_1_SPARK": 1.0078670460633157,
+        "STAGE_1_SPARK": 1.0078670460633155,
         "STAGE_2_SKELETON": 3.3857672009647777,
         "STAGE_3_BODY": 2.0605236174914325,
         "STAGE_4_SOUL": -1.6130062327135177,
@@ -273,7 +273,7 @@
     {
       "date": "05/19",
       "values": {
-        "STAGE_1_SPARK": -5.004243432865254,
+        "STAGE_1_SPARK": -5.0042434328652545,
         "STAGE_2_SKELETON": -0.2473416056237845,
         "STAGE_3_BODY": -0.07842481300003454,
         "STAGE_4_SOUL": -1.0581996436577128,
@@ -322,13 +322,8 @@
       "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "SK스퀘어",
-          "ticker": "402340",
-          "change": 0.0
-        },
-        {
-          "name": "SK하이닉스",
-          "ticker": "000660",
+          "name": "현대차",
+          "ticker": "005380",
           "change": 0.0
         },
         {
@@ -337,8 +332,13 @@
           "change": 0.0
         },
         {
-          "name": "현대차",
-          "ticker": "005380",
+          "name": "SK하이닉스",
+          "ticker": "000660",
+          "change": 0.0
+        },
+        {
+          "name": "SK스퀘어",
+          "ticker": "402340",
           "change": 0.0
         },
         {
