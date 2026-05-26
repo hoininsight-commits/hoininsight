@@ -1,14 +1,14 @@
 {
-  "last_updated": "2026-05-25 18:35:20",
+  "last_updated": "2026-05-26 00:17:26",
   "market_mood": "자동 생성",
-  "rotation_score": 0,
+  "rotation_score": 3,
   "strategy": "HOLD",
   "strategy_kor": "대장주 유지, 관망",
   "rotation_active": false,
   "breadth_confirmed": false,
-  "current_stage": null,
-  "next_stage": null,
-  "confirmed_signals": 0,
+  "current_stage": "STAGE_3_BODY",
+  "next_stage": "STAGE_4_SOUL",
+  "confirmed_signals": 1,
   "signals": {
     "signal_1": {
       "score": 0,
@@ -20,7 +20,7 @@
       "score": 0,
       "confirmed": "False",
       "status": "NORMAL",
-      "message": "⏸ 대장주 5일 +0.9% vs KOSPI +1.1% (차이 -0.2%)"
+      "message": "⏸ 대장주 5일 +1.3% vs KOSPI +1.5% (차이 -0.2%)"
     },
     "signal_3": {
       "score": 0,
@@ -35,10 +35,10 @@
       "message": "⏸ 목표주가 상향 0개 종목: 없음"
     },
     "signal_5": {
-      "score": 0,
-      "confirmed": false,
-      "status": "IDLE",
-      "message": "⏸ 0개 생태계 스테이지 동반 상승: []"
+      "score": 3,
+      "confirmed": true,
+      "status": "ECOSYSTEM_EXPANDING",
+      "message": "✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
     }
   },
   "signal_detail": {
@@ -53,33 +53,33 @@
       "score": 0,
       "confirmed": "False",
       "status": "NORMAL",
-      "lead_avg_5d": 0.95,
-      "kospi_5d": 1.1,
-      "underperform_5d": -0.16,
-      "underperform_10d": 0.24,
+      "lead_avg_5d": 1.28,
+      "kospi_5d": 1.46,
+      "underperform_5d": -0.18,
+      "underperform_10d": -0.02,
       "per_stock": {
         "삼성전자": {
-          "avg_5d": 1.66,
-          "avg_10d": 0.97
+          "avg_5d": 1.32,
+          "avg_10d": 0.56
         },
         "SK하이닉스": {
-          "avg_5d": 1.44,
-          "avg_10d": 1.6
+          "avg_5d": 2.02,
+          "avg_10d": 0.86
         },
         "SK스퀘어": {
-          "avg_5d": 1.77,
-          "avg_10d": 0.97
+          "avg_5d": 2.14,
+          "avg_10d": 0.3
         },
         "삼성전자우": {
-          "avg_5d": 0.93,
-          "avg_10d": 0.35
+          "avg_5d": 0.46,
+          "avg_10d": -0.24
         },
         "현대차": {
-          "avg_5d": -1.06,
-          "avg_10d": 0.86
+          "avg_5d": 0.45,
+          "avg_10d": 0.55
         }
       },
-      "message": "⏸ 대장주 5일 +0.9% vs KOSPI +1.1% (차이 -0.2%)"
+      "message": "⏸ 대장주 5일 +1.3% vs KOSPI +1.5% (차이 -0.2%)"
     },
     "signal_3": {
       "score": 0,
@@ -121,15 +121,9 @@
           ]
         },
         "SK스퀘어": {
-          "total": 1,
+          "total": 0,
           "upgrades": 0,
-          "reports": [
-            {
-              "title": "높은 주가 탄력성",
-              "date": "26.05.19",
-              "type": "neutral"
-            }
-          ]
+          "reports": []
         },
         "삼성전자우": {
           "total": 0,
@@ -146,163 +140,173 @@
       "message": "⏸ 목표주가 상향 0개 종목: 없음"
     },
     "signal_5": {
-      "score": 0,
-      "confirmed": false,
-      "status": "IDLE",
-      "positive_stages": [],
-      "stage_changes": {},
-      "message": "⏸ 0개 생태계 스테이지 동반 상승: []"
+      "score": 3,
+      "confirmed": true,
+      "status": "ECOSYSTEM_EXPANDING",
+      "positive_stages": [
+        "STAGE_2_SKELETON",
+        "STAGE_3_BODY",
+        "STAGE_4_SOUL",
+        "STAGE_5_TAIL"
+      ],
+      "stage_changes": {
+        "STAGE_2_SKELETON": 5.88,
+        "STAGE_3_BODY": 20.46,
+        "STAGE_4_SOUL": 13.76,
+        "STAGE_5_TAIL": 3.3
+      },
+      "message": "✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
     }
   },
   "flow_timeline": [
     {
-      "date": "04/30",
-      "values": {
-        "STAGE_1_SPARK": -1.8653069538968041,
-        "STAGE_2_SKELETON": 3.1318506694405834,
-        "STAGE_3_BODY": -0.373750034321307,
-        "STAGE_4_SOUL": -0.33768790103942564,
-        "STAGE_5_TAIL": -2.5790960161119543
-      }
-    },
-    {
       "date": "05/04",
       "values": {
         "STAGE_1_SPARK": 8.888492575674999,
-        "STAGE_2_SKELETON": 8.47667231117274,
-        "STAGE_3_BODY": 2.106268812667792,
-        "STAGE_4_SOUL": 5.079995669836361,
-        "STAGE_5_TAIL": 7.783620314653701
+        "STAGE_2_SKELETON": 5.400560551601121,
+        "STAGE_3_BODY": 4.607141936178573,
+        "STAGE_4_SOUL": 0.6028176902126676,
+        "STAGE_5_TAIL": 4.2418681586609095
       }
     },
     {
       "date": "05/06",
       "values": {
-        "STAGE_1_SPARK": 9.719338915419874,
-        "STAGE_2_SKELETON": 2.3328925222471795,
-        "STAGE_3_BODY": 5.127246323023687,
-        "STAGE_4_SOUL": -1.7576215249686882,
-        "STAGE_5_TAIL": 3.9842396271512683
+        "STAGE_1_SPARK": 9.719338915419875,
+        "STAGE_2_SKELETON": -1.111218333521558,
+        "STAGE_3_BODY": 0.7713003844366394,
+        "STAGE_4_SOUL": -1.7887642307809535,
+        "STAGE_5_TAIL": 8.493754160319
       }
     },
     {
       "date": "05/07",
       "values": {
-        "STAGE_1_SPARK": 1.6472303858136523,
-        "STAGE_2_SKELETON": 2.607980220285974,
-        "STAGE_3_BODY": 0.618592327743046,
-        "STAGE_4_SOUL": -2.1702510592993467,
-        "STAGE_5_TAIL": -2.656327013508535
+        "STAGE_1_SPARK": 1.647230385813652,
+        "STAGE_2_SKELETON": -0.17803128287290343,
+        "STAGE_3_BODY": -1.0828584669454,
+        "STAGE_4_SOUL": -4.938906330253934,
+        "STAGE_5_TAIL": -5.43325303293408
       }
     },
     {
       "date": "05/08",
       "values": {
         "STAGE_1_SPARK": 1.290052210056278,
-        "STAGE_2_SKELETON": 2.099038023024437,
-        "STAGE_3_BODY": 5.52335049169755,
-        "STAGE_4_SOUL": -0.6251984470799145,
-        "STAGE_5_TAIL": -2.141683484778103
+        "STAGE_2_SKELETON": 0.3695547777744606,
+        "STAGE_3_BODY": 0.21389772279928695,
+        "STAGE_4_SOUL": 4.731707599207509,
+        "STAGE_5_TAIL": -1.4789748499237496
       }
     },
     {
       "date": "05/11",
       "values": {
-        "STAGE_1_SPARK": 7.600923236055513,
-        "STAGE_2_SKELETON": 0.8246970523724997,
-        "STAGE_3_BODY": 7.787450129621227,
-        "STAGE_4_SOUL": 0.8457158742520938,
-        "STAGE_5_TAIL": -2.0831282433097096
+        "STAGE_1_SPARK": 7.600923236055512,
+        "STAGE_2_SKELETON": -1.3085367940866566,
+        "STAGE_3_BODY": 2.661882920384592,
+        "STAGE_4_SOUL": 3.7879723707487294,
+        "STAGE_5_TAIL": -1.5128170367690636
       }
     },
     {
       "date": "05/12",
       "values": {
         "STAGE_1_SPARK": -2.7725382293876413,
-        "STAGE_2_SKELETON": -5.711645114276884,
-        "STAGE_3_BODY": 2.1934742768459685,
-        "STAGE_4_SOUL": -3.2876995202504515,
-        "STAGE_5_TAIL": -5.4532006788455485
+        "STAGE_2_SKELETON": -3.1124733943334197,
+        "STAGE_3_BODY": -2.8352350672541884,
+        "STAGE_4_SOUL": -7.72465878489957,
+        "STAGE_5_TAIL": -5.794945543504504
       }
     },
     {
       "date": "05/13",
       "values": {
-        "STAGE_1_SPARK": 5.237998077240218,
-        "STAGE_2_SKELETON": -1.778385580954349,
-        "STAGE_3_BODY": 14.43015780894748,
-        "STAGE_4_SOUL": -1.2234636962332481,
-        "STAGE_5_TAIL": -1.586018844712476
+        "STAGE_1_SPARK": 5.237998077240219,
+        "STAGE_2_SKELETON": -2.5667299995853368,
+        "STAGE_3_BODY": 7.2818821499061555,
+        "STAGE_4_SOUL": -0.5772076723522108,
+        "STAGE_5_TAIL": -2.6499171332603924
       }
     },
     {
       "date": "05/14",
       "values": {
         "STAGE_1_SPARK": 1.0078670460633157,
-        "STAGE_2_SKELETON": 3.3857672009647777,
-        "STAGE_3_BODY": 2.0605236174914325,
-        "STAGE_4_SOUL": -1.6130062327135177,
-        "STAGE_5_TAIL": 3.293613369030273
+        "STAGE_2_SKELETON": 0.780873377877605,
+        "STAGE_3_BODY": 1.421900866056936,
+        "STAGE_4_SOUL": -3.741285040515623,
+        "STAGE_5_TAIL": 1.5934966725181163
       }
     },
     {
       "date": "05/15",
       "values": {
-        "STAGE_1_SPARK": -6.316354224511627,
-        "STAGE_2_SKELETON": -2.556233199206907,
-        "STAGE_3_BODY": -8.549059347440629,
-        "STAGE_4_SOUL": -5.662276615884875,
-        "STAGE_5_TAIL": -5.050948214928636
+        "STAGE_1_SPARK": -6.316354224511626,
+        "STAGE_2_SKELETON": -4.165950039383299,
+        "STAGE_3_BODY": -8.685139793884241,
+        "STAGE_4_SOUL": -3.442977171112279,
+        "STAGE_5_TAIL": -3.012112859133852
       }
     },
     {
       "date": "05/18",
       "values": {
         "STAGE_1_SPARK": 0.49447017429743934,
-        "STAGE_2_SKELETON": 2.5960504627021526,
-        "STAGE_3_BODY": 12.059577834584468,
-        "STAGE_4_SOUL": 5.332048948366689,
-        "STAGE_5_TAIL": 2.1137944435531444
+        "STAGE_2_SKELETON": 3.0933592765298057,
+        "STAGE_3_BODY": 2.816781051306905,
+        "STAGE_4_SOUL": 15.479875489947895,
+        "STAGE_5_TAIL": -2.4073696386192873
       }
     },
     {
       "date": "05/19",
       "values": {
         "STAGE_1_SPARK": -5.004243432865254,
-        "STAGE_2_SKELETON": -0.2473416056237845,
-        "STAGE_3_BODY": -0.07842481300003454,
-        "STAGE_4_SOUL": -1.0581996436577128,
-        "STAGE_5_TAIL": -4.41464094863512
+        "STAGE_2_SKELETON": -0.3825339152630917,
+        "STAGE_3_BODY": -3.113105523374292,
+        "STAGE_4_SOUL": -1.9405557079011218,
+        "STAGE_5_TAIL": -4.704215828471174
       }
     },
     {
       "date": "05/20",
       "values": {
-        "STAGE_1_SPARK": -0.5164411715684778,
-        "STAGE_2_SKELETON": -1.2796097319621587,
-        "STAGE_3_BODY": 1.4936753183792626,
-        "STAGE_4_SOUL": -6.210884495284456,
-        "STAGE_5_TAIL": -2.8907297323255765
+        "STAGE_1_SPARK": -0.5164411715684779,
+        "STAGE_2_SKELETON": -2.3923054658991996,
+        "STAGE_3_BODY": 0.9403663524547194,
+        "STAGE_4_SOUL": -12.410665840000169,
+        "STAGE_5_TAIL": -3.096366932207196
       }
     },
     {
       "date": "05/21",
       "values": {
         "STAGE_1_SPARK": 10.478166858401604,
-        "STAGE_2_SKELETON": 11.623408777943975,
-        "STAGE_3_BODY": 10.78699321887826,
-        "STAGE_4_SOUL": 0.777152498430304,
-        "STAGE_5_TAIL": 5.631007403771875
+        "STAGE_2_SKELETON": 9.95539127552613,
+        "STAGE_3_BODY": 7.913451605789502,
+        "STAGE_4_SOUL": 5.365469336906822,
+        "STAGE_5_TAIL": 5.595451321085443
       }
     },
     {
       "date": "05/22",
       "values": {
         "STAGE_1_SPARK": -0.7176345061903331,
-        "STAGE_2_SKELETON": 14.115816416280307,
-        "STAGE_3_BODY": 27.491886912304892,
-        "STAGE_4_SOUL": 10.90148901684395,
-        "STAGE_5_TAIL": 3.8430485538023786
+        "STAGE_2_SKELETON": 5.691130824514476,
+        "STAGE_3_BODY": 1.9967044163522765,
+        "STAGE_4_SOUL": 4.552423087214409,
+        "STAGE_5_TAIL": 1.0937416006167848
+      }
+    },
+    {
+      "date": "05/26",
+      "values": {
+        "STAGE_1_SPARK": 2.158240954487128,
+        "STAGE_2_SKELETON": 5.875922589473505,
+        "STAGE_3_BODY": 20.46295182056568,
+        "STAGE_4_SOUL": 13.762080673060087,
+        "STAGE_5_TAIL": 3.298308672030976
       }
     }
   ],
@@ -310,201 +314,194 @@
     "STAGE_1_SPARK": {
       "name": "대장주 — 삼성전자 / SK하이닉스 / SK스퀘어 / 삼성전자우 / 현대차",
       "desc": "삼성전자 / SK하이닉스 / SK스퀘어 / 삼성전자우 / 현대차",
-      "basis": "KOSPI 시총 집중도 상위 종목군 (합산 66.1%). 5개 종목 자동 선정.",
+      "basis": "KOSPI 시총 집중도 상위 종목군 (합산 66.3%). 5개 종목 자동 선정.",
       "color": "#00f2ff",
       "is_current": false,
-      "active": false,
+      "active": true,
       "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "SK하이닉스",
-          "ticker": "000660",
-          "change": 0.0
-        },
-        {
-          "name": "SK스퀘어",
-          "ticker": "402340",
-          "change": 0.0
+          "name": "현대차",
+          "ticker": "005380",
+          "change": 2.2900763358778624
         },
         {
           "name": "삼성전자",
           "ticker": "005930",
-          "change": 0.0
-        },
-        {
-          "name": "현대차",
-          "ticker": "005380",
-          "change": 0.0
+          "change": 2.2222222222222223
         },
         {
           "name": "삼성전자우",
           "ticker": "005935",
-          "change": 0.0
+          "change": 0.8
+        },
+        {
+          "name": "SK스퀘어",
+          "ticker": "402340",
+          "change": 1.4345991561181435
+        },
+        {
+          "name": "SK하이닉스",
+          "ticker": "000660",
+          "change": 4.044307058217414
         }
       ],
-      "avg_change_today": 0.0
+      "avg_change_today": 2.16
     },
     "STAGE_2_SKELETON": {
       "name": "직접 수혜 — 전력 / 에너지 인프라",
-      "desc": "비나텍 / 키스트론 / 썬테크 / KBI메탈",
+      "desc": "LS / 티씨머티리얼즈 / 서남 / 비나텍",
       "basis": "반도체 팹 전력 수요 급증 → 전력기기/변압기/UPS 발주 직접 수혜",
       "color": "#00ff88",
       "is_current": false,
-      "active": false,
+      "active": true,
       "dart_signals": [],
       "tracking_stocks": [
         {
+          "name": "LS",
+          "ticker": "006260",
+          "change": 6.985294117647059
+        },
+        {
+          "name": "티씨머티리얼즈",
+          "ticker": "125020",
+          "change": 5.549510337323178
+        },
+        {
+          "name": "서남",
+          "ticker": "294630",
+          "change": 6.037735849056604
+        },
+        {
           "name": "비나텍",
           "ticker": "126340",
-          "change": 0.0
-        },
-        {
-          "name": "키스트론",
-          "ticker": "475430",
-          "change": 0.0
-        },
-        {
-          "name": "썬테크",
-          "ticker": "217320",
-          "change": 0.0
-        },
-        {
-          "name": "KBI메탈",
-          "ticker": "024840",
-          "change": 0.0
+          "change": 5.502958579881657
         },
         {
           "name": "서진시스템",
           "ticker": "178320",
-          "change": 0.0
+          "change": 4.657179818887451
         }
       ],
-      "avg_change_today": 0.0
+      "avg_change_today": 5.75
     },
     "STAGE_3_BODY": {
       "name": "2차 수혜 — 기판 / 반도체 장비",
-      "desc": "시지트로닉스 / 피델릭스 / 미래산업 / 인텍플러스",
+      "desc": "해성디에스 / HPSP / DB하이텍 / 세미파이브",
       "basis": "팹 증설 발주 → 반도체 장비/기판/소재 2차 수혜",
       "color": "#ffea00",
-      "is_current": false,
-      "active": false,
+      "is_current": true,
+      "active": true,
       "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "시지트로닉스",
-          "ticker": "429270",
-          "change": 0.0
+          "name": "해성디에스",
+          "ticker": "195870",
+          "change": 23.952095808383234
         },
         {
-          "name": "피델릭스",
-          "ticker": "032580",
-          "change": 0.0
+          "name": "HPSP",
+          "ticker": "403870",
+          "change": 22.6691042047532
         },
         {
-          "name": "미래산업",
-          "ticker": "025560",
-          "change": 0.0
+          "name": "DB하이텍",
+          "ticker": "000990",
+          "change": 19.823302043070125
         },
         {
-          "name": "인텍플러스",
-          "ticker": "064290",
-          "change": 0.0
+          "name": "세미파이브",
+          "ticker": "490470",
+          "change": 18.20689655172414
         },
         {
-          "name": "주성엔지니어링",
-          "ticker": "036930",
-          "change": 0.0
+          "name": "KX하이텍",
+          "ticker": "052900",
+          "change": 14.425427872860636
         }
       ],
-      "avg_change_today": 0.0
+      "avg_change_today": 19.82
     },
     "STAGE_4_SOUL": {
       "name": "이익 확산 — 방산 / 로봇 / 조선",
-      "desc": "아스트 / 그린광학 / 켄코아에어로스페이스 / RF머트리얼즈",
+      "desc": "켄코아에어로스페이스 / 스피어 / 나라스페이스테크놀로지 / 컨텍",
       "basis": "AI/자동화 수요 확대 + 국방 예산 증가 → 방산/로봇/조선 이익 확산",
       "color": "#ff8800",
       "is_current": false,
-      "active": false,
+      "active": true,
       "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "아스트",
-          "ticker": "067390",
-          "change": 0.0
-        },
-        {
-          "name": "그린광학",
-          "ticker": "0015G0",
-          "change": 0.0
-        },
-        {
           "name": "켄코아에어로스페이스",
           "ticker": "274090",
-          "change": 0.0
+          "change": 24.736842105263158
         },
         {
-          "name": "RF머트리얼즈",
-          "ticker": "327260",
-          "change": 0.0
+          "name": "스피어",
+          "ticker": "347700",
+          "change": 14.602803738317757
         },
         {
-          "name": "삼양컴텍",
-          "ticker": "484590",
-          "change": 0.0
+          "name": "나라스페이스테크놀로지",
+          "ticker": "478340",
+          "change": 13.058419243986256
+        },
+        {
+          "name": "컨텍",
+          "ticker": "451760",
+          "change": 13.08562197092084
+        },
+        {
+          "name": "루미르",
+          "ticker": "474170",
+          "change": 11.024844720496894
         }
       ],
-      "avg_change_today": 0.0
+      "avg_change_today": 15.3
     },
     "STAGE_5_TAIL": {
       "name": "낙수 효과 — 금융 / 소비재",
-      "desc": "삼성증권 / LS네트웍스 / NH투자증권 / 다우데이타",
+      "desc": "SK증권 / 미래에셋증권우 / 한국금융지주 / 다우데이타",
       "basis": "시장 호황 → 자산관리 수익 증가 + 소비 여력 확대 (낙수 효과)",
       "color": "#ff007a",
       "is_current": false,
       "active": true,
-      "dart_signals": [
-        {
-          "company": "세미티에스",
-          "title": "[기재정정]증권발행실적보고서(합병등)",
-          "date": "20260522",
-          "link": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260522000123"
-        }
-      ],
+      "dart_signals": [],
       "tracking_stocks": [
         {
-          "name": "삼성증권",
-          "ticker": "016360",
-          "change": 0.0
+          "name": "SK증권",
+          "ticker": "001510",
+          "change": 4.1558441558441555
         },
         {
-          "name": "LS네트웍스",
-          "ticker": "000680",
-          "change": 0.0
+          "name": "미래에셋증권우",
+          "ticker": "006805",
+          "change": 3.9195461578133055
         },
         {
-          "name": "NH투자증권",
-          "ticker": "005940",
-          "change": 0.0
+          "name": "한국금융지주",
+          "ticker": "071050",
+          "change": 3.3398821218074657
         },
         {
           "name": "다우데이타",
           "ticker": "032190",
-          "change": 0.0
+          "change": 2.7522935779816518
         },
         {
-          "name": "신영증권",
-          "ticker": "001720",
-          "change": 0.0
+          "name": "한화투자증권우",
+          "ticker": "003535",
+          "change": 2.756892230576441
         }
       ],
-      "avg_change_today": 0.0
+      "avg_change_today": 3.38
     }
   },
   "summary": [
     "[SIGNAL_1] ⚠️ 시장폭 데이터 없음",
-    "[SIGNAL_2] ⏸ 대장주 5일 +0.9% vs KOSPI +1.1% (차이 -0.2%)",
+    "[SIGNAL_2] ⏸ 대장주 5일 +1.3% vs KOSPI +1.5% (차이 -0.2%)",
     "[SIGNAL_3] ⚠️ 수급 데이터 없음",
     "[SIGNAL_4] ⏸ 목표주가 상향 0개 종목: 없음",
-    "[SIGNAL_5] ⏸ 0개 생태계 스테이지 동반 상승: []"
+    "[SIGNAL_5] ✅ 4개 생태계 스테이지 동반 상승: ['STAGE_2_SKELETON', 'STAGE_3_BODY', 'STAGE_4_SOUL', 'STAGE_5_TAIL']"
   ]
 }
