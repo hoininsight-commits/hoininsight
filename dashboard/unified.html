@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOIN Insight | 통합 대시보드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:        #08090f;
+            --surface:   rgba(255,255,255,0.035);
+            --surface2:  rgba(255,255,255,0.06);
+            --border:    rgba(255,255,255,0.07);
+            --border2:   rgba(255,255,255,0.13);
+            --cyan:      #00f2ff;
+            --pink:      #ff007a;
+            --green:     #00ff88;
+            --amber:     #ffb300;
+            --red:       #ff3d57;
+            --text:      #dce4f0;
+            --dim:       #4e566a;
+            --dim2:      #7a869c;
+            --cyan-glow: rgba(0,242,255,0.12);
+            --green-glow:rgba(0,255,136,0.1);
+            --amber-glow:rgba(255,179,0,0.1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scrollbar-color: #1a1d28 var(--bg); scrollbar-width: thin; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─────────────── TOPBAR ─────────────── */
+        .topbar {
+            position: sticky; top: 0; z-index: 200;
+            height: 52px;
+            display: flex; align-items: center; gap: 0;
+            padding: 0;
+            background: rgba(8,9,15,0.95);
+            backdrop-filter: blur(24px) saturate(1.5);
+            border-bottom: 1px solid var(--border);
+        }
+        .tb-brand {
+            padding: 0 28px;
+            display: flex; align-items: center; gap: 14px;
+            border-right: 1px solid var(--border);
+            height: 100%;
+        }
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: .78rem; font-weight: 900; letter-spacing: 5px;
+            background: linear-gradient(90deg, var(--cyan) 0%, #ffffff 65%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+        }
+        .logo-tag {
+            font-size: .52rem; font-family: 'Orbitron', monospace;
+            color: var(--dim2); letter-spacing: 2.5px; text-transform: uppercase;
+        }
+        .tb-tabs {
+            display: flex; gap: 2px; padding: 0 18px; flex: 1;
+        }
+        .tb-tab {
+            padding: 6px 18px; border-radius: 6px; border: none;
+            background: transparent; color: var(--dim2);
+            font-family: 'Orbitron', monospace; font-size: .55rem;
+            font-weight: 700; letter-spacing: 1.5px; cursor: pointer;
+            transition: all .18s;
+        }
+        .tb-tab.active { background: var(--cyan-glow); color: var(--cyan); }
+        .tb-tab:hover:not(.active) { color: var(--text); }
+        .tb-right {
+            margin-left: auto; padding: 0 24px;
+            display: flex; align-items: center; gap: 16px;
+            border-left: 1px solid var(--border); height: 100%;
+        }
+        .live-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--green); box-shadow: 0 0 8px var(--green);
+            animation: blink 2s ease-in-out infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+        .clock {
+            font-family: 'Orbitron', monospace; font-size: .6rem;
+            color: var(--dim2); letter-spacing: 1.5px;
+            font-variant-numeric: tabular-nums;
+        }
+        .refresh-btn {
+            background: transparent;
+            border: 1px solid var(--border2);
+            color: var(--dim2); cursor: pointer;
+            padding: 5px 14px; border-radius: 20px;
+            font-family: 'Orbitron', monospace; font-size: .52rem;
+            letter-spacing: 1px; transition: all .18s;
+        }
+        .refresh-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+        .refresh-btn.spinning { color: var(--cyan); animation: spin .8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ─────────────── MAIN LAYOUT ─────────────── */
+        .main {
+            padding: 20px 24px 64px;
+            max-width: 1900px; margin: 0 auto;
+        }
+
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        /* ─────────────── TILE ─────────────── */
+        .tile {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px 24px;
+            position: relative;
+            overflow: hidden;
+            min-height: 0;
+        }
+        .tile-glow-tl::before {
+            content: '';
+            position: absolute; top: -40px; left: -40px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .tile-glow-br::after {
+            content: '';
+            position: absolute; bottom: -40px; right: -40px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(255,0,122,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-label {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Orbitron', monospace;
+            font-size: .5rem; color: var(--dim); letter-spacing: 2.5px;
+            text-transform: uppercase; margin-bottom: 16px;
+        }
+        .section-label::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, var(--border2) 0%, transparent 100%);
+        }
+
+        /* ─────────── GRID PLACEMENTS ─────────── */
+        .tile-topic    { grid-column: 1 / 7; }
+        .tile-radar    { grid-column: 7 / 10; }
+        .tile-pipe     { grid-column: 10 / 13; }
+        .tile-history  { grid-column: 1 / 6; }
+        .tile-signals  { grid-column: 6 / 13; }
+
+        @media (max-width: 1280px) {
+            .tile-topic   { grid-column: 1 / 8; }
+            .tile-radar   { grid-column: 8 / 10; }
+            .tile-pipe    { grid-column: 10 / 13; }
+            .tile-history { grid-column: 1 / 13; }
+            .tile-signals { grid-column: 1 / 13; }
+        }
+        @media (max-width: 900px) {
+            .bento { grid-template-columns: 1fr 1fr; }
+            .tile-topic, .tile-history, .tile-signals { grid-column: 1 / 3; }
+            .tile-radar { grid-column: 1 / 2; }
+            .tile-pipe  { grid-column: 2 / 3; }
+        }
+        @media (max-width: 560px) {
+            .main { padding: 14px 14px 60px; }
+            .bento { grid-template-columns: 1fr; gap: 10px; }
+            .tile-topic, .tile-radar, .tile-pipe, .tile-history, .tile-signals { grid-column: 1 / 2; }
+        }
+
+        /* ─────────────── TODAY'S TOPIC ─────────────── */
+        .status-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 3px 11px; border-radius: 20px;
+            font-size: .52rem; font-family: 'Orbitron', monospace; font-weight: 700;
+            letter-spacing: 1px; margin-bottom: 14px;
+        }
+        .status-pill::before {
+            content: ''; width: 5px; height: 5px; border-radius: 50%;
+        }
+        .sp-candidate { background: rgba(0,242,255,.1); color: var(--cyan); border: 1px solid rgba(0,242,255,.2); }
+        .sp-candidate::before { background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
+        .sp-approved  { background: rgba(0,255,136,.1); color: var(--green); border: 1px solid rgba(0,255,136,.2); }
+        .sp-approved::before { background: var(--green); box-shadow: 0 0 5px var(--green); }
+        .sp-draft     { background: rgba(255,179,0,.1);  color: var(--amber); border: 1px solid rgba(255,179,0,.2); }
+        .sp-draft::before { background: var(--amber); box-shadow: 0 0 5px var(--amber); }
+        .sp-default   { background: rgba(255,255,255,.05); color: var(--dim2); border: 1px solid var(--border); }
+        .sp-default::before { background: var(--dim); }
+
+        .topic-title {
+            font-size: 1.2rem; font-weight: 700; line-height: 1.5;
+            color: #ffffff; word-break: keep-all; text-wrap: balance;
+            margin-bottom: 12px; letter-spacing: -.01em;
+        }
+        .topic-oneliner {
+            font-size: .82rem; color: var(--dim2); line-height: 1.65;
+            word-break: keep-all; margin-bottom: 18px;
+        }
+        .chips-row {
+            display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px;
+        }
+        .actor-chip {
+            padding: 4px 12px; border-radius: 7px;
+            font-size: .68rem; font-weight: 600;
+            background: rgba(255,0,122,.08); color: var(--pink);
+            border: 1px solid rgba(255,0,122,.2);
+        }
+        .ticker-chip {
+            padding: 4px 10px; border-radius: 7px;
+            font-family: 'Orbitron', monospace; font-size: .54rem; font-weight: 700;
+            letter-spacing: .5px;
+            background: rgba(0,242,255,.06); color: var(--cyan);
+            border: 1px solid rgba(0,242,255,.15);
+        }
+        .topic-opening {
+            font-size: .78rem; color: #9aa4b8; line-height: 1.75;
+            border-left: 2px solid var(--cyan); padding-left: 14px;
+            word-break: keep-all;
+        }
+        .topic-footer {
+            margin-top: 18px; padding-top: 14px;
+            border-top: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .topic-id {
+            font-family: 'Orbitron', monospace; font-size: .5rem;
+            color: var(--dim); letter-spacing: 1px;
+        }
+        .trigger-badge {
+            padding: 3px 9px; border-radius: 5px; font-size: .52rem; font-weight: 700;
+            background: rgba(255,255,255,.04); color: var(--dim2);
+            border: 1px solid var(--border);
+        }
+
+        /* ─────────────── RADAR ─────────────── */
+        .radar-ring-wrap {
+            position: relative; width: 108px; height: 108px;
+            margin: 4px auto 16px;
+        }
+        .radar-ring-wrap canvas { display: block; }
+        .ring-center {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .ring-score {
+            font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 900;
+            line-height: 1; color: var(--cyan);
+        }
+        .ring-denom {
+            font-family: 'Orbitron', monospace; font-size: .52rem; color: var(--dim);
+        }
+        .radar-strategy {
+            text-align: center; font-size: .85rem; font-weight: 700;
+            color: #fff; margin-bottom: 14px; word-break: keep-all;
+            line-height: 1.4;
+        }
+        .stage-box {
+            background: rgba(0,0,0,.25); border-radius: 10px; padding: 10px 14px;
+            border-left: 2px solid var(--cyan); margin-bottom: 14px;
+        }
+        .stage-box-lbl {
+            font-family: 'Orbitron', monospace; font-size: .46rem;
+            color: var(--dim); letter-spacing: 2px; margin-bottom: 4px;
+        }
+        .stage-box-val { font-size: .82rem; font-weight: 700; color: var(--text); }
+        .stage-box-next { font-size: .65rem; color: var(--dim2); margin-top: 4px; }
+
+        .radar-kpis {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        }
+        .kpi {
+            background: rgba(0,0,0,.2); border: 1px solid var(--border);
+            border-radius: 10px; padding: 9px 11px; text-align: center;
+        }
+        .kpi-lbl {
+            font-family: 'Orbitron', monospace; font-size: .45rem;
+            color: var(--dim); letter-spacing: 1.5px; margin-bottom: 5px;
+        }
+        .kpi-val {
+            font-family: 'Orbitron', monospace; font-size: .95rem; font-weight: 900;
+            font-variant-numeric: tabular-nums;
+        }
+        .cv  { color: var(--cyan); }
+        .gv  { color: var(--green); }
+        .av  { color: var(--amber); }
+        .dv  { color: var(--dim2); }
+        .radar-ts {
+            margin-top: 12px;
+            font-family: 'Orbitron', monospace; font-size: .46rem;
+            color: var(--dim); text-align: center; letter-spacing: 1px;
+        }
+
+        /* ─────────────── PIPELINE ─────────────── */
+        .pipe-run-hdr {
+            display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;
+        }
+        .pipe-run-lbl {
+            font-family: 'Orbitron', monospace; font-size: .5rem;
+            color: var(--dim); letter-spacing: 2px;
+        }
+        .pipe-run-date {
+            font-family: 'Orbitron', monospace; font-size: .82rem;
+            font-weight: 900; color: var(--cyan);
+        }
+
+        .pipe-step {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+        }
+        .pipe-step:last-child { border-bottom: none; }
+        .pipe-ico {
+            width: 34px; height: 34px; border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: .8rem; font-weight: 900;
+        }
+        .pico-ok   { background: rgba(0,255,136,.1); color: var(--green); border: 1px solid rgba(0,255,136,.2); }
+        .pico-warn { background: rgba(255,179,0,.1);  color: var(--amber); border: 1px solid rgba(255,179,0,.2); }
+        .pico-err  { background: rgba(255,61,87,.1);  color: var(--red);   border: 1px solid rgba(255,61,87,.2); }
+        .pico-idle { background: rgba(255,255,255,.04); color: var(--dim); border: 1px solid var(--border); }
+        .pipe-info { flex: 1; min-width: 0; }
+        .pipe-name {
+            font-size: .78rem; font-weight: 700; color: var(--text);
+            font-family: 'Orbitron', monospace; font-size: .62rem; letter-spacing: .5px;
+        }
+        .pipe-sub { font-size: .62rem; color: var(--dim2); margin-top: 2px; }
+        .pipe-state {
+            font-size: .54rem; font-family: 'Orbitron', monospace;
+            letter-spacing: .5px; flex-shrink: 0;
+        }
+        .ps-ok   { color: var(--green); }
+        .ps-warn { color: var(--amber); }
+        .ps-idle { color: var(--dim); }
+
+        /* ─────────────── HISTORY ─────────────── */
+        .hist-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 10px 8px; border-radius: 10px;
+            cursor: pointer; transition: background .15s;
+            border-bottom: 1px solid var(--border);
+        }
+        .hist-item:last-child { border-bottom: none; }
+        .hist-item:hover { background: var(--surface2); }
+        .hist-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            flex-shrink: 0; margin-top: 6px;
+        }
+        .hd-fresh { background: var(--cyan); box-shadow: 0 0 6px rgba(0,242,255,.6); }
+        .hd-old   { background: #2a2f40; }
+        .hist-meta { flex: 1; min-width: 0; }
+        .hist-title {
+            font-size: .76rem; font-weight: 600; line-height: 1.45;
+            color: var(--text); word-break: keep-all;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .hist-sub {
+            font-size: .6rem; color: var(--dim2); margin-top: 3px;
+            font-variant-numeric: tabular-nums;
+        }
+        .hist-badge {
+            flex-shrink: 0; padding: 2px 8px; border-radius: 5px;
+            font-size: .52rem; font-weight: 700; margin-top: 2px;
+            font-family: 'Orbitron', monospace; letter-spacing: .5px;
+        }
+        .hb-long  { background: rgba(0,242,255,.08); color: var(--cyan); border: 1px solid rgba(0,242,255,.15); }
+        .hb-short { background: rgba(255,0,122,.07); color: var(--pink); border: 1px solid rgba(255,0,122,.15); }
+        .hb-def   { background: rgba(255,255,255,.04); color: var(--dim); border: 1px solid var(--border); }
+
+        .hist-total {
+            margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);
+            font-family: 'Orbitron', monospace; font-size: .5rem;
+            color: var(--dim); letter-spacing: 1.5px;
+        }
+
+        /* ─────────────── SIGNALS ─────────────── */
+        .sigs-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+        }
+        @media (max-width: 1100px) { .sigs-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 700px)  { .sigs-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .sig-card {
+            background: rgba(0,0,0,.22);
+            border: 1px solid var(--border);
+            border-radius: 14px; padding: 15px 13px;
+            transition: border-color .25s, box-shadow .25s;
+        }
+        .sig-card.sc-confirmed {
+            border-color: rgba(0,255,136,.28);
+            box-shadow: 0 0 22px rgba(0,255,136,.07);
+        }
+        .sig-card.sc-watching {
+            border-color: rgba(255,179,0,.28);
+            box-shadow: 0 0 22px rgba(255,179,0,.06);
+        }
+        .sig-num {
+            font-family: 'Orbitron', monospace; font-size: .46rem;
+            color: var(--dim); letter-spacing: 2px; margin-bottom: 3px;
+        }
+        .sig-name {
+            font-size: .76rem; font-weight: 700; color: #fff;
+            margin-bottom: 8px; word-break: keep-all; line-height: 1.3;
+        }
+        .sig-pill {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-family: 'Orbitron', monospace; font-size: .46rem; font-weight: 700;
+            letter-spacing: .5px; margin-bottom: 10px;
+        }
+        .sp-ok    { background: rgba(0,255,136,.12); color: var(--green); }
+        .sp-watch { background: rgba(255,179,0,.12);  color: var(--amber); }
+        .sp-idle  { background: rgba(255,255,255,.04); color: var(--dim2); }
+        .sp-nodata{ background: rgba(255,61,87,.1);   color: var(--red); }
+
+        .sig-bar-row {
+            display: flex; justify-content: space-between;
+            font-family: 'Orbitron', monospace; font-size: .46rem;
+            color: var(--dim); margin-bottom: 4px;
+            font-variant-numeric: tabular-nums;
+        }
+        .sig-bar-bg {
+            height: 4px; background: rgba(255,255,255,.06);
+            border-radius: 2px; overflow: hidden; margin-bottom: 9px;
+        }
+        .sig-bar-fill { height: 100%; border-radius: 2px; transition: width .9s cubic-bezier(.4,0,.2,1); }
+        .bf-green { background: var(--green); box-shadow: 0 0 6px rgba(0,255,136,.4); }
+        .bf-amber { background: var(--amber); }
+        .bf-dim   { background: #2a3040; }
+        .bf-red   { background: var(--red); }
+
+        .sig-msg {
+            font-size: .62rem; color: var(--dim2); line-height: 1.55;
+            word-break: keep-all;
+        }
+
+        /* ─────────────── STATES ─────────────── */
+        .loading-state {
+            padding: 32px 20px; text-align: center;
+            font-family: 'Orbitron', monospace; font-size: .6rem;
+            color: var(--cyan); letter-spacing: 2px;
+        }
+        .loading-state::after { content: '…'; animation: ldots 1.2s steps(3,end) infinite; }
+        @keyframes ldots { 0%{content:'.'} 33%{content:'..'} 66%{content:'...'} }
+
+        .err-state {
+            padding: 20px 0; font-size: .72rem;
+            color: var(--red); opacity: .7;
+        }
+
+        /* stage progression mini-bar */
+        .stage-prog {
+            display: flex; gap: 4px; margin-top: 14px;
+        }
+        .sp-step {
+            flex: 1; height: 3px; border-radius: 2px;
+            background: var(--border);
+            transition: background .3s;
+        }
+        .sp-step.sps-done { background: var(--dim); }
+        .sp-step.sps-curr { background: var(--cyan); box-shadow: 0 0 6px rgba(0,242,255,.6); }
+        .sp-step.sps-next { background: rgba(0,242,255,.2); }
+    </style>
+</head>
+<body>
+
+<!-- ── TOPBAR ── -->
+<header class="topbar">
+    <div class="tb-brand">
+        <div class="logo">HOIN INSIGHT</div>
+        <div class="logo-tag">통합 대시보드</div>
+    </div>
+    <div class="tb-right">
+        <div class="live-dot"></div>
+        <div class="clock" id="clock">--:--:-- KST</div>
+        <button class="refresh-btn" id="refresh-btn" onclick="loadAll()">↻ REFRESH</button>
+    </div>
+</header>
+
+<!-- ── BENTO GRID ── -->
+<main class="main">
+    <div class="bento">
+
+        <!-- ① TODAY'S TOPIC -->
+        <div class="tile tile-topic tile-glow-tl tile-glow-br">
+            <div class="section-label">오늘의 토픽</div>
+            <div id="topic-content"><div class="loading-state">LOADING</div></div>
+        </div>
+
+        <!-- ② ROTATION RADAR -->
+        <div class="tile tile-radar tile-glow-tl">
+            <div class="section-label">순환매 레이더</div>
+            <div id="radar-content"><div class="loading-state">LOADING</div></div>
+        </div>
+
+        <!-- ③ PIPELINE STATUS -->
+        <div class="tile tile-pipe">
+            <div class="section-label">파이프라인</div>
+            <div id="pipe-content"><div class="loading-state">LOADING</div></div>
+        </div>
+
+        <!-- ④ CONTENT HISTORY -->
+        <div class="tile tile-history">
+            <div class="section-label">콘텐츠 이력</div>
+            <div id="history-content"><div class="loading-state">LOADING</div></div>
+        </div>
+
+        <!-- ⑤ SIGNALS -->
+        <div class="tile tile-signals">
+            <div class="section-label">순환매 신호</div>
+            <div id="signals-content"><div class="loading-state">LOADING</div></div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+/* ── CLOCK ── */
+function tick() {
+    const now  = new Date();
+    const kst  = new Date(now.getTime() + (9 * 60 - now.getTimezoneOffset()) * 60000);
+    document.getElementById('clock').textContent =
+        kst.toISOString().slice(11, 19) + ' KST';
+}
+tick(); setInterval(tick, 1000);
+
+/* ── FETCH ── */
+async function fjson(url) {
+    const r = await fetch(url + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+}
+
+/* ── STATUS ── */
+function statusInfo(s) {
+    const k = (s || '').toUpperCase();
+    if (k.includes('APPROVED') || k.includes('PUBLISH'))   return ['발행 확정', 'sp-approved'];
+    if (k.includes('CANDIDATE') || k.includes('EDITORIAL')) return ['편집 후보', 'sp-candidate'];
+    if (k.includes('DRAFT'))    return ['초안', 'sp-draft'];
+    if (k.includes('HOLD'))     return ['보류', 'sp-draft'];
+    return [s || '상태 없음', 'sp-default'];
+}
+
+/* ── RENDER: TOPIC ── */
+function renderTopic(d) {
+    if (!d || !d.title) return '<div class="err-state">today.json: 데이터 없음</div>';
+
+    const [slabel, scls] = statusInfo(d.status);
+    const tickers = Array.isArray(d.tickers)
+        ? d.tickers
+        : Object.keys(d.tickers || {});
+    const tickerHtml = tickers.slice(0, 8)
+        .map(t => `<span class="ticker-chip">${t}</span>`).join('');
+    const actorHtml  = d.actor
+        ? `<span class="actor-chip">${d.actor}</span>` : '';
+    const opening    = d.opening_sentence || '';
+    const footer = `
+        <div class="topic-footer">
+            <span class="topic-id">${d.topic_id || ''}</span>
+            ${d.trigger_type ? `<span class="trigger-badge">${d.trigger_type}</span>` : ''}
+        </div>`;
+
+    return `
+        <div class="status-pill ${scls}">${slabel}</div>
+        <div class="topic-title">${d.title}</div>
+        ${d.one_liner ? `<div class="topic-oneliner">${d.one_liner}</div>` : ''}
+        <div class="chips-row">${actorHtml}${tickerHtml}</div>
+        ${opening ? `<div class="topic-opening">${opening}</div>` : ''}
+        ${footer}
+    `;
+}
+
+/* ── DRAW RING (canvas) ── */
+function drawRing(canvasId, score, maxScore) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return '#00f2ff';
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width, cx = w / 2, cy = w / 2, r = cx - 9;
+    const pct = Math.max(0, Math.min(score / maxScore, 1));
+    const color = pct >= .65 ? '#00ff88' : pct >= .35 ? '#ffb300' : '#00f2ff';
+
+    ctx.clearRect(0, 0, w, w);
+
+    // track
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.stroke();
+
+    if (pct > 0) {
+        // glow layer
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+        ctx.strokeStyle = color + '30';
+        ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.stroke();
+
+        // fill
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.stroke();
+    }
+
+    return color;
+}
+
+/* ── RENDER: RADAR ── */
+function renderRadar(d) {
+    if (!d) return '<div class="err-state">rotation_radar.json 없음</div>';
+
+    const score   = d.rotation_score ?? 0;
+    const maxSc   = 19;
+    const stgRaw  = d.current_stage || '';
+    const nxtRaw  = d.next_stage || '';
+    const stgFmt  = stgRaw.replace('STAGE_','S').replace('_SPARK','  스파크').replace('_SKELETON',' 골격').replace('_BODY','  본체').replace('_SOUL','  영혼').replace('_TAIL','  테일');
+    const nxtFmt  = nxtRaw.replace('STAGE_','S').replace(/_SPARK|_SKELETON|_BODY|_SOUL|_TAIL/g, s => ({_SPARK:'  스파크',_SKELETON:' 골격',_BODY:'  본체',_SOUL:'  영혼',_TAIL:'  테일'})[s]||s);
+    const sigs    = d.confirmed_signals ?? 0;
+    const breadth = d.breadth_confirmed;
+    const active  = d.rotation_active;
+
+    // stage progression
+    const stages = ['STAGE_1','STAGE_2','STAGE_3','STAGE_4','STAGE_5'];
+    const currIdx = stages.findIndex(s => stgRaw.startsWith(s));
+    const progDots = stages.map((s, i) => {
+        const cls = i < currIdx ? 'sps-done' : i === currIdx ? 'sps-curr' : i === currIdx + 1 ? 'sps-next' : '';
+        return `<div class="sp-step ${cls}"></div>`;
+    }).join('');
+
+    const ts = d.last_updated
+        ? d.last_updated.slice(0, 16).replace('T', ' ')
+        : '--';
+
+    return `
+        <div class="radar-ring-wrap">
+            <canvas id="radar-ring" width="108" height="108"></canvas>
+            <div class="ring-center">
+                <div class="ring-score" id="ring-score-val">${score}</div>
+                <div class="ring-denom">/ ${maxSc}</div>
+            </div>
+        </div>
+        <div class="radar-strategy">${d.strategy_kor || d.strategy || '전략 없음'}</div>
+        <div class="stage-box">
+            <div class="stage-box-lbl">현재 스테이지</div>
+            <div class="stage-box-val">${stgFmt || '미확정'}</div>
+            ${nxtRaw ? `<div class="stage-box-next">다음 → ${nxtFmt}</div>` : ''}
+            <div class="stage-prog">${progDots}</div>
+        </div>
+        <div class="radar-kpis">
+            <div class="kpi">
+                <div class="kpi-lbl">신호 확인</div>
+                <div class="kpi-val ${sigs >= 3 ? 'gv' : sigs >= 1 ? 'av' : 'dv'}">${sigs}<span style="font-size:.55rem;color:var(--dim)">/5</span></div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-lbl">시장 폭</div>
+                <div class="kpi-val ${breadth ? 'gv' : 'av'}">${breadth ? 'OK' : 'WATCH'}</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-lbl">순환매</div>
+                <div class="kpi-val ${active ? 'gv' : 'dv'}">${active ? 'ON' : 'OFF'}</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-lbl">분위기</div>
+                <div class="kpi-val dv" style="font-size:.62rem;font-weight:700">${d.market_mood || '--'}</div>
+            </div>
+        </div>
+        <div class="radar-ts">UPD ${ts}</div>
+    `;
+}
+
+/* ── RENDER: PIPELINE ── */
+function renderPipeline(d) {
+    const runDate  = d?.run_date || '알 수 없음';
+    const missing  = (v) => !v || v === 'missing' || v === null;
+
+    const steps = [
+        {
+            name: 'COLLECTOR', sub: '데이터 수집',
+            ok: !missing(d?.fact_first_shadow_json) || !missing(d?.topic_seeds_json),
+        },
+        {
+            name: 'DETECTOR',  sub: '이상징후 탐지 + 토픽 선정',
+            ok: !missing(d?.topic_view_json) || !missing(d?.issue_signal_narrative_json),
+        },
+        {
+            name: 'WRITER',    sub: '스크립트 생성',
+            ok: !missing(d?.script_md) || !missing(d?.speak_bundle_md),
+        },
+        {
+            name: 'PUBLISHER', sub: '배포 & 텔레그램',
+            ok: !missing(d?.report_md),
+        },
+    ];
+
+    const stepsHtml = steps.map(s => {
+        const ico    = s.ok ? '✓' : '○';
+        const icoCls = s.ok ? 'pico-ok' : 'pico-idle';
+        const stCls  = s.ok ? 'ps-ok'   : 'ps-idle';
+        const stTxt  = s.ok ? '완료'    : '대기';
+        return `
+            <div class="pipe-step">
+                <div class="pipe-ico ${icoCls}">${ico}</div>
+                <div class="pipe-info">
+                    <div class="pipe-name">${s.name}</div>
+                    <div class="pipe-sub">${s.sub}</div>
+                </div>
+                <div class="pipe-state ${stCls}">${stTxt}</div>
+            </div>`;
+    }).join('');
+
+    return `
+        <div class="pipe-run-hdr">
+            <span class="pipe-run-lbl">최근 실행</span>
+            <span class="pipe-run-date">${runDate}</span>
+        </div>
+        ${stepsHtml}
+    `;
+}
+
+/* ── RENDER: HISTORY ── */
+function renderHistory(d) {
+    const contents = d?.contents || [];
+    if (!contents.length)
+        return '<div class="err-state">content_log.json: 이력 없음</div>';
+
+    const sorted = [...contents].sort((a, b) =>
+        (b.date || '').localeCompare(a.date || '') ||
+        (b.id   || '').localeCompare(a.id   || '')
+    );
+
+    const today = new Date().toISOString().slice(0, 10);
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 7);
+    const cutStr = cutoff.toISOString().slice(0, 10);
+
+    const html = sorted.slice(0, 8).map((item, i) => {
+        const isRecent = (item.date || '') >= cutStr;
+        const dotCls   = isRecent ? 'hd-fresh' : 'hd-old';
+        const type     = (item.type || '').toLowerCase();
+        const badgeCls = type.includes('롱') ? 'hb-long' : type.includes('short') || type.includes('숏') ? 'hb-short' : 'hb-def';
+        const badgeTxt = item.type || '';
+        return `
+            <div class="hist-item">
+                <div class="hist-dot ${dotCls}"></div>
+                <div class="hist-meta">
+                    <div class="hist-title">${item.title || '제목 없음'}</div>
+                    <div class="hist-sub">${item.date || '날짜 없음'}</div>
+                </div>
+                ${badgeTxt ? `<span class="hist-badge ${badgeCls}">${badgeTxt}</span>` : ''}
+            </div>`;
+    }).join('');
+
+    return `
+        ${html}
+        <div class="hist-total">총 ${contents.length}건 수록</div>
+    `;
+}
+
+/* ── RENDER: SIGNALS ── */
+const SIG_META = [
+    { key: 'signal_1', name: '시장 폭',        max: 4 },
+    { key: 'signal_2', name: '호재 무반응',    max: 3 },
+    { key: 'signal_3', name: '외인 이동',      max: 3 },
+    { key: 'signal_4', name: '이익 추정 상향', max: 3 },
+    { key: 'signal_5', name: '생태계 확산',    max: 3 },
+];
+
+function renderSignals(d) {
+    const sigs = d?.signals || {};
+
+    const cards = SIG_META.map((m, i) => {
+        const s    = sigs[m.key] || {};
+        const sc   = parseInt(s.score) || 0;
+        const max  = m.max;
+        const conf = s.confirmed === true || s.confirmed === 'true' || s.confirmed === 'True';
+        const isNoData = (s.status || '').includes('NO_DATA');
+        const pct  = max > 0 ? Math.min(sc / max * 100, 100) : 0;
+
+        let cardCls = '';
+        let pillCls = 'sp-idle';
+        let pillTxt = 'IDLE';
+        let fillCls = 'bf-dim';
+
+        if (isNoData) {
+            pillCls = 'sp-nodata'; pillTxt = 'NO DATA';
+        } else if (conf) {
+            cardCls = 'sc-confirmed'; pillCls = 'sp-ok'; pillTxt = 'CONFIRMED'; fillCls = 'bf-green';
+        } else if (sc > 0) {
+            cardCls = 'sc-watching'; pillCls = 'sp-watch'; pillTxt = 'WATCHING'; fillCls = 'bf-amber';
+        }
+
+        const msg = (s.message || '데이터 없음').replace(/[⚠✅⏸️]/g, '').trim();
+
+        return `
+            <div class="sig-card ${cardCls}">
+                <div class="sig-num">S${i + 1}</div>
+                <div class="sig-name">${m.name}</div>
+                <span class="sig-pill ${pillCls}">${pillTxt}</span>
+                <div class="sig-bar-row"><span>SCORE</span><span>${sc} / ${max}</span></div>
+                <div class="sig-bar-bg">
+                    <div class="sig-bar-fill ${fillCls}" style="width:${pct}%"></div>
+                </div>
+                <div class="sig-msg">${msg}</div>
+            </div>`;
+    }).join('');
+
+    return `<div class="sigs-grid">${cards}</div>`;
+}
+
+/* ── LOAD ALL ── */
+async function loadAll() {
+    const btn = document.getElementById('refresh-btn');
+    btn.classList.add('spinning');
+    btn.disabled = true;
+
+    const results = await Promise.allSettled([
+        fjson('docs/data/today.json'),
+        fjson('docs/data/monitoring/rotation_radar.json'),
+        fjson('docs/data/latest_run.json'),
+        fjson('data/history/content_log.json'),
+    ]);
+
+    const [topicR, radarR, pipeR, histR] = results;
+
+    // Topic
+    document.getElementById('topic-content').innerHTML =
+        topicR.status === 'fulfilled'
+            ? renderTopic(topicR.value)
+            : `<div class="err-state">today.json 로드 실패: ${topicR.reason?.message}</div>`;
+
+    // Radar + Signals
+    if (radarR.status === 'fulfilled') {
+        document.getElementById('radar-content').innerHTML   = renderRadar(radarR.value);
+        document.getElementById('signals-content').innerHTML = renderSignals(radarR.value);
+        requestAnimationFrame(() => {
+            const color = drawRing('radar-ring', radarR.value.rotation_score ?? 0, 19);
+            const sv = document.getElementById('ring-score-val');
+            if (sv) sv.style.color = color;
+        });
+    } else {
+        const msg = `<div class="err-state">rotation_radar.json 로드 실패: ${radarR.reason?.message}</div>`;
+        document.getElementById('radar-content').innerHTML   = msg;
+        document.getElementById('signals-content').innerHTML = msg;
+    }
+
+    // Pipeline
+    document.getElementById('pipe-content').innerHTML =
+        pipeR.status === 'fulfilled'
+            ? renderPipeline(pipeR.value)
+            : `<div class="err-state">latest_run.json 로드 실패: ${pipeR.reason?.message}</div>`;
+
+    // History
+    document.getElementById('history-content').innerHTML =
+        histR.status === 'fulfilled'
+            ? renderHistory(histR.value)
+            : `<div class="err-state">content_log.json 로드 실패: ${histR.reason?.message}</div>`;
+
+    btn.classList.remove('spinning');
+    btn.disabled = false;
+}
+
+loadAll();
+</script>
+</body>
+</html>

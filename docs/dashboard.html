@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOIN Insight | Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #08080C;
+    --surface:    #111118;
+    --surface2:   #1a1a24;
+    --border:     rgba(255,255,255,0.08);
+    --gold:       #D4AF37;
+    --blue:       #00A3FF;
+    --cyan:       #00cfff;
+    --green:      #00ff88;
+    --yellow:     #ffea00;
+    --orange:     #ff8800;
+    --text:       #f0f0f5;
+    --text2:      rgba(240,240,245,0.55);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Outfit','Noto Sans KR',system-ui,sans-serif;
+    min-height:100vh;
+    background-image: radial-gradient(circle at 50% 0%, #1c223a 0%, #08080c 60%);
+  }
+
+  /* ── 공통 헤더 ── */
+  .top-bar {
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 32px; height:60px;
+    background:rgba(8,8,12,0.92); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo { font-weight:700; font-size:1.2rem; letter-spacing:4px; color:var(--gold); }
+  .live-dot {
+    display:flex; align-items:center; gap:8px;
+    font-size:0.75rem; letter-spacing:2px; color:var(--cyan);
+  }
+  .live-dot::before {
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:var(--cyan); box-shadow:0 0 8px var(--cyan);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  /* ── 탭 네비 ── */
+  .tab-nav {
+    display:flex; align-items:center; gap:4px;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:4px;
+  }
+  .tab-btn {
+    padding:7px 20px; border-radius:7px; border:none; cursor:pointer;
+    font-family:inherit; font-size:0.8rem; font-weight:600; letter-spacing:.5px;
+    background:transparent; color:var(--text2);
+    transition:all .2s;
+  }
+  .tab-btn.active {
+    background:var(--surface2); color:var(--text);
+    box-shadow:0 0 0 1px var(--border);
+  }
+  .tab-btn:hover:not(.active) { color:var(--text); }
+
+  /* ── 탭 패널 ── */
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  /* ══════════════════════════════
+     PANEL A — HUNTER COMMAND CENTER
+     ══════════════════════════════ */
+  #panel-hunter {
+    max-width:1300px; margin:0 auto; padding:3rem 2rem;
+  }
+
+  .hero {
+    background:rgba(18,20,28,0.8); border-radius:32px; padding:5rem;
+    border:1px solid var(--border); margin-bottom:5rem; text-align:center;
+    cursor:pointer; transition:all .5s cubic-bezier(.165,.84,.44,1);
+    position:relative; overflow:hidden;
+  }
+  .hero::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg,rgba(212,175,55,.05) 0%,transparent 100%);
+    pointer-events:none;
+  }
+  .hero:hover { border-color:var(--gold); transform:translateY(-5px); box-shadow:0 30px 60px rgba(0,0,0,.4); }
+  .hero-tag   { color:var(--gold); font-weight:700; font-size:.9rem; letter-spacing:3px; margin-bottom:2rem; display:block; }
+  .hero-title { font-size:3.5rem; font-weight:700; margin-bottom:2rem; line-height:1.1; }
+  .hero-summary { font-size:1.25rem; color:var(--text2); max-width:900px; margin:0 auto 3rem; }
+  .hero-chain { color:var(--blue); font-weight:600; font-size:1.1rem; display:flex; align-items:center; justify-content:center; gap:10px; }
+
+  .section-header { font-size:1.5rem; font-weight:700; margin-bottom:2rem; display:flex; align-items:center; gap:15px; }
+  .section-header::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .timeline-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:2.5rem; margin-bottom:5rem; }
+
+  .item-card {
+    background:rgba(18,20,28,0.8); border-radius:24px; border:1px solid var(--border);
+    padding:2.5rem; cursor:pointer; transition:all .3s;
+  }
+  .item-card:hover { border-color:var(--blue); transform:scale(1.02); }
+  .item-date  { font-size:.85rem; color:var(--blue); font-weight:600; margin-bottom:1rem; display:block; }
+  .item-title { font-size:1.25rem; font-weight:700; margin-bottom:1.5rem; line-height:1.4; }
+  .item-meta  { display:flex; justify-content:space-between; align-items:center; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.05); }
+  .target-label { font-size:.75rem; font-weight:700; background:rgba(212,175,55,.1); color:var(--gold); padding:4px 12px; border-radius:6px; }
+
+  /* MODAL */
+  .modal-overlay {
+    position:fixed; inset:0; background:rgba(4,4,6,.95); backdrop-filter:blur(20px);
+    display:none; justify-content:center; align-items:center; z-index:1000;
+  }
+  .modal-overlay.active { display:flex; }
+  .modal-content {
+    width:95%; max-width:1200px; max-height:90vh;
+    background:#0C0D13; border-radius:40px; border:1px solid var(--border);
+    padding:4rem; position:relative; overflow-y:auto;
+  }
+  .close-btn { position:absolute; top:2rem; right:2rem; background:none; border:none; color:white; font-size:2rem; cursor:pointer; opacity:.5; }
+  .close-btn:hover { opacity:1; }
+  .modal-body { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-top:3rem; }
+  .content-section { background:rgba(255,255,255,.02); padding:3.5rem; border-radius:24px; border:1px solid var(--border); }
+  .section-tag { font-size:.8rem; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:1.5rem; display:block; border-left:3px solid var(--gold); padding-left:12px; }
+  .script-text { white-space:pre-wrap; font-family:'Noto Sans KR',sans-serif; font-size:1.15rem; line-height:2.1; color:rgba(255,255,255,.85); }
+  .copy-btn {
+    margin-top:2rem; width:100%; padding:1.2rem;
+    background:var(--gold); border:none; border-radius:12px;
+    color:black; font-weight:700; font-size:1rem; cursor:pointer; transition:all .2s;
+  }
+  .copy-btn:hover { background:#E5C35D; transform:scale(.98); }
+
+  /* ══════════════════════════════
+     PANEL B — 순환매 레이더
+     ══════════════════════════════ */
+  #panel-radar .radar-main { padding:28px 32px; display:grid; gap:24px; }
+
+  .rdr-row2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .rdr-row3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+  @media(max-width:900px){ .rdr-row2,.rdr-row3,.modal-body{ grid-template-columns:1fr; } }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:22px; }
+  .card-title { font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.8px; margin-bottom:16px; }
+
+  .badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
+  .badge-hold    { background:rgba(255,255,255,.08); color:var(--text2); }
+  .badge-watch   { background:rgba(255,234,0,.12); color:var(--yellow); }
+  .badge-rotate  { background:rgba(0,255,136,.12); color:var(--green); }
+  .badge-confirm { background:rgba(255,136,0,.15); color:var(--orange); }
+
+  .rdr-subheader {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px; background:var(--surface); border-bottom:1px solid var(--border);
+  }
+  .rdr-subheader h2 { font-size:16px; font-weight:700; }
+  .rdr-subheader h2 span { color:var(--gold); }
+  .rdr-sub { font-size:11px; color:var(--text2); margin-top:2px; }
+  .rdr-timestamp { font-size:11px; color:var(--text2); text-align:right; }
+
+  .score-hero { display:flex; align-items:center; gap:28px; padding:28px; background:var(--surface2); border-radius:16px; border:1px solid var(--border); }
+  .score-ring { position:relative; width:100px; height:100px; flex-shrink:0; }
+  .score-ring svg { transform:rotate(-90deg); }
+  .ring-bg   { fill:none; stroke:var(--border); stroke-width:8; }
+  .ring-fill { fill:none; stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset .8s ease; }
+  .ring-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring-num { font-size:26px; font-weight:800; line-height:1; }
+  .ring-max { font-size:11px; color:var(--text2); }
+  .score-info h2 { font-size:24px; font-weight:800; margin-bottom:6px; }
+  .score-info p  { font-size:13px; color:var(--text2); line-height:1.6; }
+
+  .signal-list { display:flex; flex-direction:column; gap:10px; }
+  .signal-item { display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; background:var(--surface2); border:1px solid transparent; }
+  .signal-item.confirmed { border-color:rgba(0,255,136,.3); }
+  .signal-item.watch     { border-color:rgba(255,234,0,.25); }
+  .sig-dot  { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .sig-bars { display:flex; gap:3px; margin-left:auto; flex-shrink:0; }
+  .sig-bar  { width:6px; height:18px; border-radius:2px; background:var(--border); }
+  .sig-bar.filled { background:var(--cyan); }
+  .signal-item.confirmed .sig-bar.filled { background:var(--green); }
+  .signal-item.watch     .sig-bar.filled { background:var(--yellow); }
+  .sig-label { font-size:12px; font-weight:600; min-width:120px; }
+  .sig-msg   { font-size:11px; color:var(--text2); flex:1; }
+
+  .stage-pipeline { display:flex; gap:0; overflow-x:auto; padding-bottom:4px; }
+  .stage-node {
+    flex:1; min-width:130px; position:relative;
+    display:flex; flex-direction:column; align-items:center;
+    padding:18px 12px 14px;
+    background:var(--surface2); border:1px solid var(--border); border-right:none; cursor:default; transition:transform .2s;
+  }
+  .stage-node:first-child { border-radius:12px 0 0 12px; }
+  .stage-node:last-child  { border-radius:0 12px 12px 0; border-right:1px solid var(--border); }
+  .stage-node.current { background:rgba(255,255,255,.05); box-shadow:inset 0 0 0 1.5px var(--gold),0 0 20px rgba(212,175,55,.15); }
+  .stage-node.active  { background:rgba(255,255,255,.04); }
+  .stage-color-dot { width:10px; height:10px; border-radius:50%; margin-bottom:8px; }
+  .stage-name  { font-size:11px; font-weight:700; text-align:center; margin-bottom:4px; line-height:1.3; }
+  .stage-desc  { font-size:10px; color:var(--text2); text-align:center; line-height:1.4; }
+  .stage-change { margin-top:8px; font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; }
+  .stage-momentum  { font-size:10px; color:var(--text2); margin-top:2px; }
+  .stage-expanding { font-size:9px; margin-top:4px; color:var(--green); font-weight:700; text-transform:uppercase; }
+  .stage-arrow { position:absolute; right:-10px; top:50%; transform:translateY(-50%); font-size:14px; color:var(--text2); z-index:1; }
+  .stage-current-badge { position:absolute; top:6px; right:6px; font-size:8px; font-weight:700; padding:2px 6px; border-radius:4px; background:var(--gold); color:#000; text-transform:uppercase; }
+
+  .chart-wrap  { overflow-x:auto; }
+  .chart-svg   { min-width:100%; }
+  .chart-legend { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+  .legend-item  { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text2); }
+  .legend-dot   { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+  .summary-list { display:flex; flex-direction:column; gap:8px; }
+  .summary-item { font-size:12px; color:var(--text2); line-height:1.5; padding:8px 12px; background:var(--surface2); border-radius:8px; }
+
+  .strategy-box { padding:20px; border-radius:12px; text-align:center; background:var(--surface2); border:1px solid var(--border); }
+  .strat-label { font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.8px; margin-bottom:8px; }
+  .strat-val   { font-size:20px; font-weight:800; }
+  .strat-desc  { font-size:12px; color:var(--text2); margin-top:6px; line-height:1.5; }
+
+  .dart-item { font-size:11px; padding:8px 12px; background:var(--surface2); border-radius:8px; margin-bottom:6px; border-left:3px solid var(--gold); }
+  .dart-item a { color:var(--cyan); text-decoration:none; }
+  .dart-item a:hover { text-decoration:underline; }
+
+  .stock-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .stock-chip { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:600; background:var(--surface2); border:1px solid var(--border); }
+  .stock-chip.up   { border-color:rgba(0,255,136,.3); color:var(--green); }
+  .stock-chip.down { border-color:rgba(255,0,100,.3); color:#ff4466; }
+
+  .rdr-loading { text-align:center; padding:80px; color:var(--text2); font-size:14px; }
+  .rdr-error   { text-align:center; padding:40px; color:#ff4466; font-size:14px; background:rgba(255,68,102,.08); border-radius:12px; margin:24px; }
+</style>
+</head>
+<body>
+
+<!-- ── 공통 상단바 ── -->
+<header class="top-bar">
+  <div class="logo">HOIN INSIGHT</div>
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('hunter')">인사이트</button>
+    <button class="tab-btn"        onclick="switchTab('radar')">순환매 레이더</button>
+  </div>
+  <div class="live-dot" id="live-label">LIVE</div>
+</header>
+
+<!-- ══════════════════════════
+     TAB A — Hunter Command Center
+     ══════════════════════════ -->
+<div id="tab-hunter" class="tab-panel active">
+  <div id="panel-hunter">
+    <section id="hero-card" class="hero">
+      <span class="hero-tag">MAIN TARGET</span>
+      <h1 class="hero-title" id="main-title">데이터 사냥 중...</h1>
+      <p class="hero-summary" id="main-summary">엔진이 시장의 이상 징후를 추적하고 있습니다.</p>
+      <div class="hero-chain">
+        <span>🔍</span>
+        <span id="main-chain-text">연결 고리 분석 중</span>
+      </div>
+    </section>
+
+    <div class="section-header">PAST INTEL LOGS</div>
+    <div id="timeline-container" class="timeline-grid"></div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="modal-title" style="font-size:2.5rem;margin-bottom:1rem;line-height:1.2"></h2>
+      <div class="modal-body">
+        <div>
+          <div class="content-section">
+            <span class="section-tag">HUNTER STRATEGY</span>
+            <div id="modal-strategy" class="script-text"></div>
+          </div>
+        </div>
+        <div>
+          <div class="content-section" style="border-color:var(--gold)">
+            <span class="section-tag">BROADCAST SCRIPT</span>
+            <div id="modal-script" class="script-text"></div>
+            <button class="copy-btn" onclick="copyScript()">원고 전체 복사하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     TAB B — 순환매 레이더
+     ══════════════════════════ -->
+<div id="tab-radar" class="tab-panel">
+  <div class="rdr-subheader">
+    <div>
+      <h2>🔄 순환매 <span>레이더</span></h2>
+      <div class="rdr-sub">Sector Rotation Engine v5.0 (Rule-based)</div>
+    </div>
+    <div>
+      <div id="strategy-badge" class="badge badge-hold">로딩 중...</div>
+      <div id="rdr-timestamp" class="rdr-timestamp">—</div>
+    </div>
+  </div>
+  <div id="panel-radar">
+    <div class="rdr-loading">⚡ 순환매 신호 분석 중...</div>
+  </div>
+</div>
+
+<script>
+/* ── 탭 전환 ── */
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if (name === 'radar' && !radarLoaded) loadRadar();
+}
+
+/* ══════════════════════
+   HUNTER PANEL LOGIC
+   ══════════════════════ */
+let globalData = null;
+
+async function loadHunter() {
+  try {
+    const res = await fetch('today_data.json');
+    if (!res.ok) throw new Error('today_data.json 없음');
+    const data = await res.json();
+    globalData = data;
+
+    const top = data.top_decision || {};
+    document.getElementById('main-title').innerText = top.topic || '분석 완료';
+    document.getElementById('main-summary').innerText = top.summary || top.why_now || '시장의 숨겨진 흐름을 포착했습니다.';
+    if (top.why_hypothesis)
+      document.getElementById('main-chain-text').innerText = top.why_hypothesis.substring(0, 100) + '...';
+
+    document.getElementById('hero-card').onclick = () => openModal(top);
+    renderTimeline(data);
+  } catch (err) {
+    document.getElementById('main-title').innerText = '데이터 연결 실패 (서버 확인 필요)';
+    console.error(err);
+  }
+}
+
+function renderTimeline(data) {
+  const container = document.getElementById('timeline-container');
+  container.innerHTML = '';
+  const contents = data.content_pack?.TIER_3 || [];
+  contents.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    card.innerHTML = `
+      <span class="item-date">${data.last_updated?.split('T')[0] || 'NEW'}</span>
+      <div class="item-title">${item.topic}</div>
+      <div class="item-meta">
+        <span class="target-label">${item.content_tier || 'TIER_3'}</span>
+        <span style="font-size:.8rem;color:var(--blue)">분석 완료</span>
+      </div>`;
+    card.onclick = () => openModal(item);
+    container.appendChild(card);
+  });
+}
+
+function openModal(item) {
+  document.getElementById('modal-title').innerText = item.topic || '제목 없음';
+  let strat = `【 선정 이유 】\n${item.summary || item.why_now || 'N/A'}\n\n`;
+  if (item.why_hypothesis) strat += `【 가설 】\n${item.why_hypothesis}\n\n`;
+  if (item.mechanism)      strat += `【 작동 메커니즘 】\n${item.mechanism}\n\n`;
+  document.getElementById('modal-strategy').innerText = strat;
+  document.getElementById('modal-script').innerText = item.script || '상세 분석 내용이 아직 생성되지 않았습니다.';
+  const overlay = document.getElementById('modal-overlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => overlay.classList.add('active'), 10);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay') && !e.currentTarget.classList.contains('modal-overlay')) return;
+  const overlay = document.getElementById('modal-overlay');
+  overlay.classList.remove('active');
+  setTimeout(() => { overlay.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+}
+
+function copyScript() {
+  const script = document.getElementById('modal-script')?.innerText;
+  if (!script) return;
+  navigator.clipboard.writeText(script).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const orig = btn.innerText;
+    btn.innerText = '✅ 복사 완료!';
+    btn.style.background = '#4CAF50';
+    setTimeout(() => { btn.innerText = orig; btn.style.background = 'var(--gold)'; }, 2000);
+  });
+}
+
+/* ══════════════════════
+   RADAR PANEL LOGIC
+   ══════════════════════ */
+let radarLoaded = false;
+const STAGE_COLORS = {};
+const SIGNAL_LABELS = { signal_1:'시장폭', signal_2:'호재 무반응', signal_3:'외국인 이동', signal_4:'모멘텀 확산', signal_5:'생태계 확장' };
+const SIGNAL_MAX    = { signal_1:3, signal_2:1, signal_3:3, signal_4:3, signal_5:3 };
+
+function strategyClass(s) {
+  if (s === 'HOLD') return 'badge-hold';
+  if (s === 'WATCH') return 'badge-watch';
+  if (s === 'ROTATE_CONFIRM') return 'badge-confirm';
+  return 'badge-rotate';
+}
+function changeColor(v) { if (v===null||v===undefined) return 'var(--text2)'; return v>0?'var(--green)':v<0?'#ff4466':'var(--text2)'; }
+function changeStr(v)   { if (v===null||v===undefined) return 'N/A'; return (v>0?'+':'')+v.toFixed(2)+'%'; }
+function scoreColor(s,m){ const r=s/m; return r>=.7?'var(--green)':r>=.4?'var(--yellow)':'var(--cyan)'; }
+
+async function loadRadar() {
+  const app = document.getElementById('panel-radar');
+  try {
+    const res = await fetch(`data/monitoring/rotation_radar.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+    renderRadar(d);
+    radarLoaded = true;
+  } catch(e) {
+    app.innerHTML = `<div class="rdr-error">❌ 데이터 로드 실패: ${e.message}<br><small><code>python scripts/rotation_radar.py</code> 실행 필요</small></div>`;
+  }
+}
+
+function renderRadar(d) {
+  const badge = document.getElementById('strategy-badge');
+  badge.textContent = d.strategy + ' — ' + (d.strategy_kor || '');
+  badge.className = 'badge ' + strategyClass(d.strategy);
+  document.getElementById('rdr-timestamp').textContent = '마지막 갱신: ' + (d.last_updated || '—');
+
+  const MAX = 19;
+  const ratio = Math.min(d.rotation_score / MAX, 1);
+  const dash  = Math.round(ratio * 283);
+  const sc    = scoreColor(d.rotation_score, MAX);
+
+  const stages = d.stages || {};
+  const stageOrder = Object.keys(stages);
+  stageOrder.forEach(sid => { STAGE_COLORS[sid] = (stages[sid]||{}).color || '#888'; });
+
+  // 신호 목록
+  const signalRows = Object.entries(d.signals || {}).map(([k, v]) => {
+    const max = SIGNAL_MAX[k] || 3;
+    const cls = v.confirmed ? 'confirmed' : (v.score > 0 ? 'watch' : '');
+    const dot = v.confirmed ? 'var(--green)' : (v.score > 0 ? 'var(--yellow)' : 'var(--border)');
+    const bars = Array.from({length:max},(_,i) => `<div class="sig-bar ${i<v.score?'filled':''}"></div>`).join('');
+    return `<div class="signal-item ${cls}">
+      <div class="sig-dot" style="background:${dot}"></div>
+      <div class="sig-label">${SIGNAL_LABELS[k]||k}</div>
+      <div class="sig-msg">${v.message||'—'}</div>
+      <div class="sig-bars">${bars}</div>
+    </div>`;
+  }).join('');
+
+  // 스테이지 파이프라인
+  const stageNodes = stageOrder.map((sid, i) => {
+    const s = stages[sid] || {};
+    const color = STAGE_COLORS[sid];
+    const isCur = s.is_current, isNext = sid === d.next_stage;
+    const chg = s.avg_change_today;
+    const chips = (s.tracking_stocks||[]).map(st => {
+      const cls = st.change>0?'up':st.change<0?'down':'';
+      return `<span class="stock-chip ${cls}">${st.name} ${changeStr(st.change)}</span>`;
+    }).join('');
+    const arrow = i < stageOrder.length-1 ? `<div class="stage-arrow">▶</div>` : '';
+    const nextB = isNext&&!isCur ? `<div class="stage-current-badge" style="background:rgba(255,255,255,.15);color:var(--text2)">NEXT</div>` : '';
+    const curB  = isCur ? `<div class="stage-current-badge">PEAK</div>` : '';
+    return `<div class="stage-node ${isCur?'current':''} ${s.active?'active':''}">
+      ${curB}${nextB}
+      <div class="stage-color-dot" style="background:${color};${isCur?'box-shadow:0 0 8px '+color:''}"></div>
+      <div class="stage-name">${s.name||sid}</div>
+      <div class="stage-desc">${s.desc||''}</div>
+      <div class="stage-change" style="color:${changeColor(chg)}">${chg!==undefined?changeStr(chg):'—'}</div>
+      ${s.momentum_expanding?`<div class="stage-expanding">↑ 모멘텀 가속</div>`:''}
+      <div class="stock-chips" style="justify-content:center">${chips}</div>
+      ${arrow}
+    </div>`;
+  }).join('');
+
+  // 타임라인 차트
+  const tl = d.flow_timeline || [];
+  let chartHtml = '<p style="color:var(--text2);font-size:12px;text-align:center;padding:20px">타임라인 데이터 없음<br><small>collector 실행 후 rotation_radar를 재실행하세요</small></p>';
+  if (tl.length > 0) {
+    const allV = tl.flatMap(t => Object.values(t.values||{}));
+    const minV = Math.min(...allV,-1), maxV = Math.max(...allV,1);
+    const W=600,H=140,P=28, iW=W-P*2, iH=H-P*2;
+    const yS = v => P+iH-((v-minV)/(maxV-minV))*iH;
+    const xS = i => P+(i/(tl.length-1))*iW;
+    const lines = stageOrder.map(sid => {
+      const color = STAGE_COLORS[sid];
+      const pts = tl.map((t,i) => { const v=(t.values||{})[sid]; return v!==undefined?`${xS(i).toFixed(1)},${yS(v).toFixed(1)}`:null; }).filter(Boolean);
+      return pts.length<2?'':`<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round" opacity=".85"/>`;
+    }).join('');
+    const xL = tl.map((t,i)=>{
+      if(i%Math.ceil(tl.length/6)!==0&&i!==tl.length-1) return '';
+      return `<text x="${xS(i).toFixed(1)}" y="${H-4}" fill="rgba(255,255,255,.3)" font-size="9" text-anchor="middle">${t.date}</text>`;
+    }).join('');
+    const legend = stageOrder.map(sid=>`<span class="legend-item"><span class="legend-dot" style="background:${STAGE_COLORS[sid]}"></span>${(stages[sid]||{}).name||sid}</span>`).join('');
+    chartHtml = `<div class="chart-legend">${legend}</div><div class="chart-wrap"><svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><line x1="${P}" y1="${yS(0).toFixed(1)}" x2="${W-P}" y2="${yS(0).toFixed(1)}" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="4 4"/>${lines}${xL}</svg></div>`;
+  }
+
+  // DART
+  const dartItems = stageOrder.flatMap(sid => {
+    const s = stages[sid]||{};
+    return (s.dart_signals||[]).map(sig =>
+      `<div class="dart-item"><b style="color:${STAGE_COLORS[sid]}">${s.name||sid}</b> — ${sig.company}: <a href="${sig.link}" target="_blank">${sig.title}</a><span style="color:var(--text2);font-size:10px;margin-left:8px">${sig.date}</span></div>`
+    );
+  }).join('') || '<p style="color:var(--text2);font-size:12px">수집된 DART 신호 없음</p>';
+
+  const stratDesc = {
+    HOLD:           '대장주(반도체) 비중 유지. 이군 섹터 진입 불필요 구간.',
+    WATCH:          '반도체 유지 + 다음 스테이지 소량 선취매 준비.',
+    ROTATE_START:   '반도체 70%+ 유지하면서 에너지 이동 스테이지 비중 추가.',
+    ROTATE_CONFIRM: '순환매 본격화 확인. 에너지 피크 스테이지 비중 적극 확대.',
+  }[d.strategy] || '—';
+
+  document.getElementById('panel-radar').innerHTML = `
+  <div class="radar-main">
+    <div class="rdr-row2">
+      <div class="score-hero">
+        <div class="score-ring">
+          <svg viewBox="0 0 100 100" width="100" height="100">
+            <circle class="ring-bg" cx="50" cy="50" r="45"/>
+            <circle class="ring-fill" cx="50" cy="50" r="45" stroke="${sc}" stroke-dasharray="283" stroke-dashoffset="${283-dash}"/>
+          </svg>
+          <div class="ring-label">
+            <span class="ring-num" style="color:${sc}">${d.rotation_score}</span>
+            <span class="ring-max">/ ${MAX}</span>
+          </div>
+        </div>
+        <div class="score-info">
+          <h2>${d.strategy_kor||'—'}</h2>
+          <p>${stratDesc}</p>
+          <p style="margin-top:10px;font-size:11px">확인된 신호: <b style="color:var(--gold)">${d.confirmed_signals}/5</b>개</p>
+          ${d.breadth_confirmed?`<p style="color:var(--green);font-size:11px;margin-top:4px">✅ 시장폭 3일 연속 2배+ 확인</p>`:''}
+        </div>
+      </div>
+      <div class="strategy-box card" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="strat-label">현재 에너지 피크</div>
+        <div class="strat-val" style="color:${STAGE_COLORS[d.current_stage]||'var(--text)'}">
+          ${(stages[d.current_stage]||{}).name||d.current_stage||'감지 중...'}
+        </div>
+        <div class="strat-desc">다음 이동 예상: <b style="color:${STAGE_COLORS[d.next_stage]||'var(--text2)'}">${(stages[d.next_stage]||{}).name||d.next_stage||'N/A'}</b></div>
+        <div style="margin-top:16px">
+          <div class="strat-label">시장 모드</div>
+          <div style="font-size:14px;margin-top:4px">${d.market_mood||'—'}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚡ 순환매 신호 5개</div>
+      <div class="signal-list">${signalRows}</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔄 순환 스테이지 에너지 맵</div>
+      <div class="stage-pipeline">${stageNodes}</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📈 15일 스테이지 등락률 타임라인</div>
+      ${chartHtml}
+    </div>
+    <div class="rdr-row2">
+      <div class="card">
+        <div class="card-title">📋 DART 공시 신호</div>
+        ${dartItems}
+      </div>
+      <div class="card">
+        <div class="card-title">📝 신호 상세</div>
+        <div class="summary-list">
+          ${(d.summary||[]).map(s=>`<div class="summary-item">${s}</div>`).join('')||'<p style="color:var(--text2);font-size:12px">—</p>'}
+        </div>
+        <div style="margin-top:16px">
+          <div class="card-title">스테이지 기반 데이터</div>
+          ${stageOrder.map(sid=>{const s=stages[sid]||{};if(!s.basis)return '';return `<div class="summary-item"><b style="color:${STAGE_COLORS[sid]}">${s.name}</b><br>${s.basis}</div>`;}).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  // 5분 자동 갱신
+  setTimeout(() => { radarLoaded = false; loadRadar(); }, 5 * 60 * 1000);
+}
+
+/* 초기 로드 */
+document.addEventListener('DOMContentLoaded', loadHunter);
+</script>
+</body>
+</html>

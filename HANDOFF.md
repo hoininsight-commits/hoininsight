@@ -4,11 +4,42 @@
 
 ---
 
-## 마지막 업데이트: 2026-05-21 (13차 세션)
+## 마지막 업데이트: 2026-07-10 (14차 세션)
 
 ---
 
 ## 현재 상태 (진행 중)
+
+### 14차 세션 (2026-07-10) — 통합 대시보드 신규 생성
+
+**구현 사항**
+
+#### `dashboard/unified.html` — 통합 대시보드 (탭 없는 벤토 그리드 레이아웃)
+
+기존 `dashboard/index.html`(탭 기반, 인스타뷰 / 순환매 레이더)을 대체하는 단일 화면 통합 뷰.
+
+- **레이아웃**: 12열 CSS Grid 벤토 방식 — 5개 패널을 한 화면에 동시 표시
+- **패널 1 — 오늘의 토픽** (6/12 col): `docs/data/today.json` 로드 → title, status badge, one_liner, actor chip, tickers, opening_sentence
+- **패널 2 — 순환매 레이더** (3/12 col): `docs/data/monitoring/rotation_radar.json` → Canvas 링 게이지(score/19), strategy_kor, 스테이지 진행 바(S1~S5), KPI 4개(신호확인/시장폭/순환매ON/분위기)
+- **패널 3 — 파이프라인 상태** (3/12 col): `docs/data/latest_run.json` → COLLECTOR/DETECTOR/WRITER/PUBLISHER 4단계 완료 여부 자동 판별
+- **패널 4 — 콘텐츠 이력** (5/12 col): `data/history/content_log.json` → 최신 8건, 7일 이내 cyan dot 표시
+- **패널 5 — 순환매 신호** (7/12 col): `rotation_radar.json`의 `signals` 객체 → S1~S5 각각 CONFIRMED/WATCHING/NO DATA/IDLE 상태, score 바 + 메시지
+
+**서버 설정 (확정)**
+- 8766 포트: **`hoininsight/` 루트**에서 실행 (필수)
+- **통합 대시보드: `http://localhost:8766/dashboard/unified.html`** ← 신규 진입점
+- **기존 대시보드: `http://localhost:8766/dashboard/index.html`** ← 유지
+- 서버 시작: `cd /Users/jihopa/claude/hoininsight && python3 -m http.server 8766 &`
+
+**데이터 소스 (unified.html 기준)**
+| 패널 | JSON 경로 |
+|------|-----------|
+| 오늘의 토픽 | `docs/data/today.json` |
+| 순환매 레이더 + 신호 | `docs/data/monitoring/rotation_radar.json` |
+| 파이프라인 | `docs/data/latest_run.json` |
+| 콘텐츠 이력 | `data/history/content_log.json` |
+
+---
 
 ### 13차 세션 (2026-05-21) — Signal 3 외국인 수급 연동 완료
 
